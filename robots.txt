@@ -1,0 +1,7 @@
+# robots.txt for Almobtaker Alaraby Software
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /admin/
+
+Sitemap: https://almobtaker-alaraby.com/sitemap.xml
