@@ -3,6 +3,10 @@ DirectoryIndex index.php index.html
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # Deploy Webhook Rewrites
+  RewriteRule ^deploy-webhook/?$ deploy-webhook.php [L,QSA]
+  RewriteRule ^api/deploy-webhook/?$ deploy-webhook.php [L,QSA]
   
   # Ensure UTF-8
   AddDefaultCharset UTF-8

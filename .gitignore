@@ -1,0 +1,8 @@
+*.mobtakeraraby.com/
+*.saydleyat.com/
+cgi-bin/
+.well-known/
+error_log
+.DS_Store
+Thumbs.db
+almobtaker-website.zip
