@@ -113,6 +113,13 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     .floating-whatsapp {
       animation: pulse-green 2.5s infinite;
     }
+    @keyframes pulse-cyan {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.6), 0 10px 25px -5px rgba(6, 182, 212, 0.5); }
+      50% { box-shadow: 0 0 0 14px rgba(6, 182, 212, 0), 0 15px 30px -5px rgba(6, 182, 212, 0.7); }
+    }
+    .floating-scroll-top {
+      animation: pulse-cyan 2.5s infinite;
+    }
   </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-slate-950 relative circuit-bg w-full max-w-full overflow-x-hidden">
@@ -4858,20 +4865,6 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       if (drawer) drawer.classList.toggle('hidden');
     }
 
-    // Scroll To Top Button Visibility & Click Handler
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (scrollToTopBtn) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 350) {
-          scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
-          scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        } else {
-          scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
-          scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
-        }
-      }, { passive: true });
-    }
-
     function scrollToTop() {
       window.scrollTo({
         top: 0,
@@ -4881,8 +4874,10 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 </script>
 
   <!-- ================================================= -->
-  <!-- FLOATING ACTION BUTTONS (WHATSAPP & SCROLL TOP) -->
+  <!-- FLOATING ACTION BUTTONS (WHATSAPP & SCROLL TOP UP) -->
   <!-- ================================================= -->
+  
+  <!-- 1. Floating WhatsApp Button (Bottom-Left) -->
   <div class="fixed bottom-5 left-5 z-50 flex items-center gap-3">
     <?php
       $waRaw = preg_replace('/[^0-9]/', '', $whatsapp);
@@ -4894,7 +4889,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     ?>
     <a href="<?= $waUrl ?>" target="_blank" rel="noopener noreferrer" 
        aria-label="تواصل معنا عبر واتساب"
-       class="floating-whatsapp group relative w-13 h-13 sm:w-15 sm:h-15 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-tr from-emerald-600 via-green-500 to-emerald-400 hover:from-emerald-500 hover:to-green-400 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/20">
+       class="floating-whatsapp group relative w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-tr from-emerald-600 via-green-500 to-emerald-400 hover:from-emerald-500 hover:to-green-400 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/20">
       <i class="fa-brands fa-whatsapp drop-shadow"></i>
       
       <!-- Tooltip -->
@@ -4905,13 +4900,22 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     </a>
   </div>
 
-  <!-- Scroll to Top Button (Bottom-Right) -->
-  <button id="scrollToTopBtn" onclick="scrollToTop()" 
-          aria-label="الرجوع لأعلى الصفحة" 
-          title="الرجوع لأعلى الصفحة"
-          class="fixed bottom-5 right-5 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#0c223f]/90 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 border border-cyan-400/40 hover:border-cyan-300 flex items-center justify-center text-base sm:text-lg shadow-xl shadow-cyan-950/50 backdrop-blur-md opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:scale-110 active:scale-95 group">
-    <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition-transform duration-200"></i>
-  </button>
+  <!-- 2. Floating Scroll To Top (UP) Button (Bottom-Right) -->
+  <div class="fixed bottom-5 right-5 z-50 flex items-center gap-3">
+    <button id="scrollToTopBtn" onclick="scrollToTop()" 
+            aria-label="الصعود لأعلى الصفحة UP" 
+            title="الصعود لأعلى الصفحة (UP)"
+            class="floating-scroll-top group relative w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-tr from-cyan-600 via-cyan-400 to-sky-300 hover:from-cyan-400 hover:to-sky-200 text-slate-950 flex flex-col items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/30 cursor-pointer">
+      <i class="fa-solid fa-arrow-up text-lg sm:text-xl font-black group-hover:-translate-y-1 transition-transform duration-200"></i>
+      <span class="text-[9px] sm:text-[10px] font-black tracking-tighter uppercase leading-none mt-0.5">UP</span>
+      
+      <!-- Tooltip -->
+      <span class="absolute right-full mr-3 px-3 py-1.5 rounded-xl bg-slate-900/95 text-cyan-300 text-xs font-bold border border-cyan-500/30 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 shadow-xl hidden sm:flex items-center gap-1.5">
+        <i class="fa-solid fa-angles-up text-cyan-400"></i>
+        <span>الصعود لأعلى الصفحة (UP)</span>
+      </span>
+    </button>
+  </div>
 
 </body>
 </html>
