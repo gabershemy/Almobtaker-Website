@@ -235,7 +235,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 w-5 text-center"></i><span>خدماتنا التقنية</span>
           </a>
           <a href="#portfolio" onclick="toggleMobileDrawer()" class="flex items-center gap-3 p-3 rounded-2xl text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 transition">
-            <i class="fa-solid fa-layer-group text-cyan-400 w-5 text-center"></i><span>سابقة الأعمال (38 مشروع)</span>
+            <i class="fa-solid fa-layer-group text-cyan-400 w-5 text-center"></i><span>سابقة الأعمال (<?= count($dbProjects) ?> مشروع)</span>
           </a>
           <a href="#team" onclick="toggleMobileDrawer()" class="flex items-center gap-3 p-3 rounded-2xl text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-300 transition">
             <i class="fa-solid fa-user-group text-cyan-400 w-5 text-center"></i><span>فريق العمل</span>
@@ -1140,7 +1140,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
 
     <!-- قسم سابقة الأعمال (PORTFOLIO) -->
-    <!-- قسم سابقة الأعمال (PORTFOLIO - جميع الـ 38 مشروع معروضة متتالية) -->
+    <!-- قسم سابقة الأعمال (PORTFOLIO - جميع الـ <?= count($dbProjects) ?> مشروع معروضة متتالية) -->
     <section id="portfolio" class="py-12 border-t border-cyan-500/20 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
@@ -1148,7 +1148,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
         <div class="text-center space-y-2">
           <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 text-xs font-bold"><i class="fa-solid fa-layer-group text-cyan-400"></i> سابقة أعمالنا</div>
           <h2 class="text-3xl sm:text-4xl font-black text-white">مشاريع ومنظومات برمجية تم تنفيذها بنجاح</h2>
-          <p class="text-slate-400 text-sm">أكثر من 38 منظومة متكاملة تخدم قطاعات الأعمال في مصر والخليج العربي</p>
+          <p class="text-slate-400 text-sm">أكثر من <?= count($dbProjects) ?> منظومة متكاملة تخدم قطاعات الأعمال في مصر والخليج العربي</p>
         </div>
 
         <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -3087,7 +3087,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <li></li>
             <li><a href="#about" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>من نحن</span></a></li>
             <li><a href="#services" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>خدماتنا البرمجية</span></a></li>
-            <li><a href="#portfolio" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>سابقة الأعمال (38 مشروع)</span></a></li>
+            <li><a href="#portfolio" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>سابقة الأعمال (<?= count($dbProjects) ?> مشروع)</span></a></li>
             <li><a href="#team" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>فريق العمل والخبراء</span></a></li>
             <li><a href="#faq" class="hover:text-cyan-300 transition flex items-center gap-1.5"><i class="fa-solid fa-chevron-left text-[9px] text-cyan-500"></i><span>الأسئلة الشائعة</span></a></li>
           </ul>
