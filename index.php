@@ -1146,1655 +1146,99 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
 
 
-    <!-- قسم سابقة الأعمال (PORTFOLIO) -->
-    <!-- قسم سابقة الأعمال (PORTFOLIO - جميع الـ <?= count($dbProjects) ?> مشروع معروضة متتالية) -->
-    <section id="portfolio" class="py-12 border-t border-cyan-500/20 relative">
+    <!-- قسم سابقة الأعمال (PORTFOLIO - سلايدر تفاعلي ذكي واحترافي يعرض 3 مشاريع ويتنقل تلقائياً) -->
+    <section id="portfolio" class="py-14 border-t border-cyan-500/20 relative overflow-hidden">
+      <!-- تأثيرات الإضاءة الخلفية النيون -->
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-[650px] h-[300px] bg-gradient-to-b from-cyan-500/10 via-sky-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-        <!-- العنوان -->
-        <div class="text-center space-y-2">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 text-xs font-bold"><i class="fa-solid fa-layer-group text-cyan-400"></i> سابقة أعمالنا</div>
-          <h2 class="text-3xl sm:text-4xl font-black text-white">مشاريع ومنظومات برمجية تم تنفيذها بنجاح</h2>
-          <p class="text-slate-400 text-sm">أكثر من <?= count($dbProjects) ?> منظومة متكاملة تخدم قطاعات الأعمال في مصر والخليج العربي</p>
+        <!-- العنوان الرئيسي -->
+        <div class="text-center space-y-3">
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 text-xs font-bold shadow-lg shadow-cyan-500/10">
+            <i class="fa-solid fa-layer-group text-cyan-400"></i> سابقة أعمالنا المتميزة
+          </div>
+          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white">مشاريع ومنظومات برمجية تم تنفيذها بنجاح</h2>
+          <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+            أكثر من <span class="text-cyan-400 font-bold"><?= count($dbProjects) ?></span> منظومة متكاملة تخدم قطاعات الأعمال في مصر والخليج العربي
+          </p>
         </div>
 
-        <div id="portfolioGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80" alt="منظومة المبتكر ERP السحابية المتكاملة للشركات" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة المبتكر ERP السحابية المتكاملة للشركات</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">نظام تخطيط موارد المؤسسات المتكامل، إدارة شجرة الحسابات العامة، مراكز التكلفة، الفروع المتعددة، المشتريات والمخازن، وإدارة الموظفين والرواتب.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل لدى 35+ شركة ومؤسسة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('almobtaker-erp')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+        <!-- فلاتر التصنيفات وشريط التحكم العلوي -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 pt-2">
+          <!-- فلاتر التصنيفات السريعة -->
+          <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-2 md:pb-0 scrollbar-none w-full md:w-auto" id="portfolioFilterButtons">
+            <button type="button" onclick="filterPortfolioSlider('all')" id="pf-pill-all" class="pf-pill active px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-md shadow-cyan-500/20 whitespace-nowrap transition-all duration-200 cursor-pointer">الكل (<?= count($dbProjects) ?>)</button>
+            <button type="button" onclick="filterPortfolioSlider('erp')" id="pf-pill-erp" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">أنظمة ERP</button>
+            <button type="button" onclick="filterPortfolioSlider('medical')" id="pf-pill-medical" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">حلول طبية</button>
+            <button type="button" onclick="filterPortfolioSlider('industrial')" id="pf-pill-industrial" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">تصنيع وإنتاج</button>
+            <button type="button" onclick="filterPortfolioSlider('ai')" id="pf-pill-ai" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">ذكاء اصطناعي</button>
+            <button type="button" onclick="filterPortfolioSlider('edtech')" id="pf-pill-edtech" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">تعليم وتوظيف</button>
+            <button type="button" onclick="filterPortfolioSlider('zatca')" id="pf-pill-zatca" class="pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">فوترة ZATCA</button>
           </div>
-  
 
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">ذكاء اصطناعي وواتساب</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=900&q=80" alt="منصة أتمتة الواتساب وروبوتات الـ AI للشركات (SaaS Multi-Tenant)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-robot text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة أتمتة الواتساب وروبوتات الـ AI للشركات (SaaS Multi-Tenant)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">منصة سحابية متعددة المستأجرين لبناء روبوتات خدمة عملاء مدعومة بالذكاء الاصطناعي، ترتبط بقواعد البيانات لجدولة المواعيد وإرسال الفواتير التلقائية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">+120,000 محادثة آلية شهرياً</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('saas-whatsapp-bot')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
+          <!-- عداد ونطاق المشاريع الحالية -->
+          <div class="flex items-center gap-3 self-end md:self-auto">
+            <span id="sliderCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
+              معروض 1 - 3 من <?= count($dbProjects) ?>
+            </span>
           </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">ZATCA وفوترة إلكترونية</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=900&q=80" alt="بوابة الربط والفوترة الإلكترونية السعودية (ZATCA Lens Hub)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-file-invoice text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">بوابة الربط والفوترة الإلكترونية السعودية (ZATCA Lens Hub)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إصدار الفواتير الضريبية والمبسطة المتوافقة مع متطلبات المرحلة الثانية لهيئة الزكاة والضريبة والجمارك مع التوقيع الرقمي و QR Code المشفر.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">ربط معتمد 100% بدون تأخير</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('lens-zatca')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة وتتبع تكاليف مزارع الدواجن والإنتاج الحيواني" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة وتتبع تكاليف مزارع الدواجن والإنتاج الحيواني</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع هرمي للمزارع والعنابر والدورات، حساب معامل FCR ونسب النفوق، تسعير تكلفة الكتكوت يومياً، ومحاكاة تكاليف الأعلاف والتغذية بالذكاء الاصطناعي.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل في 20+ مجمع داجني</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('poultry-erp')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة المستشفيات والمجمعات الطبية الكبرى (Hospital HIS)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة المستشفيات والمجمعات الطبية الكبرى (Hospital HIS)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">منظومة HIS متكاملة تشمل أقسام التنويم الداخلي، غرف العمليات، العناية المركزة، الاستقبال والطوارئ، مع الربط المباشر مع المعامل والأشعة.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة أكثر من 8 مستشفيات كبرى</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('hospital-system')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80" alt="منظومة السجلات الطبية الإلكترونية EMR للمراكز التخصصية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة السجلات الطبية الإلكترونية EMR للمراكز التخصصية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة ملفات المرضى الطبية التاريخية، تتبع الفحوصات والتحاليل، روشتات الأطباء الإلكترونية، ومتابعة التاريخ المرضي بدقة عالية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">أكثر من 250,000 ملف مريض إلكتروني</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('medical-centers-records')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=900&q=80" alt="منظومة عيادات ومراكز د. مينا التخصصية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة عيادات ومراكز د. مينا التخصصية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة الحجوزات الذكية، تتبع الكشوفات، حساب الإيرادات ونسب الأطباء والتمريض، وتنبيهات مواعيد المرضى عبر الرسائل القصيرة.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل بسلاسة يومياً</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('dr-mina-clinic')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=900&q=80" alt="منظومة عيادات ومراكز د. الدمرداش الطبية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة عيادات ومراكز د. الدمرداش الطبية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع التشخيصات، الأجهزة الطبية، الفحوصات الدورية للمرضى، وتنظيم غرف الكشف وأوقات الانتظار.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">خدمة أكثر من 50,000 مريض</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('dr-eldemery-clinic')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=900&q=80" alt="المنظومة الشاملة لإدارة العيادات والمراكز الطبية (Clinic Suite)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">المنظومة الشاملة لإدارة العيادات والمراكز الطبية (Clinic Suite)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">برنامج لإدارة العيادات الفردية والمجمعة، شاشات انتظار المرضى، الروشتة الذكية وقاموس الأدوية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل في 40+ عيادة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('clinic-suite')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&fit=crop&w=900&q=80" alt="نظام ERP المتكامل لإدارة وسلاسل الصيدليات" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام ERP المتكامل لإدارة وسلاسل الصيدليات</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع تواريخ الصلاحية للأدوية، التنبيه بالنواقص، تتبع المبيعات والمشتريات وخصومات شركات التأمين والربط مع قارئ الباركود.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة سلاسل صيدليات نشطة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('pharmacy-erp')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">طبي ومستشفيات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&fit=crop&w=900&q=80" alt="منظومة إدارة مستودعات ومخازن الأدوية والمستحضرات" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-hospital text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة إدارة مستودعات ومخازن الأدوية والمستحضرات</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة مخازن الأدوية بالجملة، تتبع أرقام التشغيلات (Batch Numbers)، التحويلات بين المخازن، وفواتير التوزيع للصيدليات.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تتبع مئات الآلاف من الأصناف الدوائية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('drugs-stores-app')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة وتتبع خطوط الإنتاج والتصنيع الصناعي" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة وتتبع خطوط الإنتاج والتصنيع الصناعي</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة أوامر الشغل والتصنيع، شجرة مكونات المنتج (BOM)، حساب الهالك والفاقد، وتتبع تكلفة المواد الخام والعمالة المباشرة وغير المباشرة.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تتبع مستمر لخطوط الإنتاج في المصانع</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('production-lines')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة وتوزيع خطوط الغاز والمحطات (Delta Gas)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة وتوزيع خطوط الغاز والمحطات (Delta Gas)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع شحنات الغاز، أوزان الصهاريج، خطوط التوزيع اليومية، حساب الأرصدة بالمحطات وتتبع الفواتير والتحصيلات.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة حركة النقل والتوزيع للغاز</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('delta-gas')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&fit=crop&w=900&q=80" alt="منظومة تطوير وإدارة المشروعات الصناعية والتكاليف" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة تطوير وإدارة المشروعات الصناعية والتكاليف</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تخطيط العمليات الصناعية، جدولة الصيانة الدورية للماكينات، مراقبة كفاءة المعدات OEE، ومحاسبة التكاليف المعيارية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تطبيق في كبرى المنشآت الصناعية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('industry-dev')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&fit=crop&w=900&q=80" alt="منظومة الزراعة الذكية والمستشعرات الزراعية (Agri-Sense)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة الزراعة الذكية والمستشعرات الزراعية (Agri-Sense)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">مراقبة رطوبة التربة ودرجات الحرارة لحظياً عبر مستشعرات IoT، التحكم التلقائي في شبكات الري، وتنبؤات الطقس والإنتاجية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة مزارع نموذجية حديثة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('agri-sense')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=900&q=80" alt="منظومة الفقي للتنمية والاستصلاح والإنتاج الزراعي" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة الفقي للتنمية والاستصلاح والإنتاج الزراعي</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة مساحات الأراضي، دورات المحاصيل الزراعية، تسميد ووقاية النبات، وتتبع تكاليف الحصاد والبيع للأسواق.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة مشاريع زراعية واسعة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('elfeki-agri')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة وتوكيد الجودة وضبط المعايير (Quality Control ISO)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة وتوكيد الجودة وضبط المعايير (Quality Control ISO)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تسجيل اختبارات الجودة وعينات الفحص المخبري، تسجيل حالات عدم المطابقة NCR، وإصدار شهادات المعايرة والجودة ISO.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تطبيق معايير ISO 9001</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('quality-system')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تعليم ومنصات EdTech</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=900&q=80" alt="منظومة المدارس الذكية المعززة بالذكاء الاصطناعي (AI School)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة المدارس الذكية المعززة بالذكاء الاصطناعي (AI School)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة الطلاب والمعلمين، الجداول المدرسية الذكية، الحضور بالبصمة، التحليل التلقائي لمستويات الطلاب، وتوليد الامتحانات بالـ AI.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">خدمة أكثر من 15 مدرسة ومؤسسة تعليمية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('ai-school-new')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تعليم ومنصات EdTech</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=900&q=80" alt="منصة الإدارة التعليمية المتطورة (EduAp Pro)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة الإدارة التعليمية المتطورة (EduAp Pro)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">منظومة شاملة لإدارة المصروفات المدرسية، النتائج والشهادات، بنك الأسئلة، والتواصل بين الإدارة وأولياء الأمور.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة عشرات الآلاف من الطلاب</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('eduap-pro')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تعليم ومنصات EdTech</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=900&q=80" alt="منصة حسام للتعليم الإلكتروني والامتحانات الرقمية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة حسام للتعليم الإلكتروني والامتحانات الرقمية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">بث الدروس المشفرة وحمايتها من التسجيل، الامتحانات التفاعلية ذات التقييم اللحظي، ولوحة متابعة درجات الطلاب وواجباتهم.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">+30,000 طالب مسجل</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('hossam-elearning')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تعليم ومنصات EdTech</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=900&q=80" alt="منصة الأستاذ محمد شحات التعليمية للثانوية العامة" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة الأستاذ محمد شحات التعليمية للثانوية العامة</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">منصة كورسات واختبارات تفاعلية، إرسال تقارير الدرجات لأولياء الأمور آلياً عبر واتساب، وبنك تدريبات شامل.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تفاعل يومي لأكثر من 10,000 طالب</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('mr-mohamed-shaat')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تعليم ومنصات EdTech</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة معاهد ومراكز اللغات والتدريب الدولي" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-graduation-cap text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة معاهد ومراكز اللغات والتدريب الدولي</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة قاعات ومستويات التدريب، تحديد المستوى التلقائي Placement Test، إصدار الشهادات المعتمدة، وتتبع الاشتراكات.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة مراكز لغات معتمدة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('language-center')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=900&q=80" alt="محرك إدارة عقود التقسيط والتحصيل المالي (Installment Engine)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">محرك إدارة عقود التقسيط والتحصيل المالي (Installment Engine)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">حساب الفوائد والجدولة الزمنية للأقساط، تتبع الضامنين والأوراق الثبوتية، إدارة المحصلين الميدانيين، وتنبيهات السداد التلقائية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة محافظ تمويلية ضخمة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('laravel-installement')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=900&q=80" alt="منظومة تقسيط ومبيعات المركبات والدراجات النارية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة تقسيط ومبيعات المركبات والدراجات النارية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة أرقام الشاسيه والموتور، إبرام عقود البيع بالتقسيط، تتبع الشيكات والكمبيالات، وحساب الأرباح الشهرية والسنوية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل في معارض كبرى</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('installement-motorcycle')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=900&q=80" alt="منظومة إدارة المحافظ التمويلية والأقساط الاستهلاكية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة إدارة المحافظ التمويلية والأقساط الاستهلاكية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع المستحقات، تقارير العملاء المتعثرين، تتبع التحصيلات اليومية للخزينة، وحساب الأرباح المحققة والمؤجلة.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة تمويلات تجارية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('instal-hossam')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=900&q=80" alt="نظام نقاط البيع والكاشير العربي المتوافق مع الفاتورة الإلكترونية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام نقاط البيع والكاشير العربي المتوافق مع الفاتورة الإلكترونية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">كاشير سريع فائق الاستجابة يدعم شاشات اللمس، قارئ الباركود، الموازين الإلكترونية، والطباعة الفورية للفواتير الضريبية المبسطة.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">يعمل في أكثر من 100 متجر ومنفذ بيع</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('pos-arabic')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=80" alt="منظومة عدلي للكاشير وإدارة المخزون والمبيعات السريعة" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة عدلي للكاشير وإدارة المخزون والمبيعات السريعة</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع حركة الأصناف بالمخازن، إشعارات انخفاض المخزون، جرد المخازن الفوري، وتسجيل الإيرادات والمصروفات اليومية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">مستخدم في مراكز التوزيع</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('adly-pos-inventory')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&fit=crop&w=900&q=80" alt="برنامج المحاسب الذكي - قيود يومية وحسابات ختامية" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">برنامج المحاسب الذكي - قيود يومية وحسابات ختامية</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">محاسبة القيد المزدوج، ميزان المراجعة، قائمة الدخل، الميزانية العمومية، إدارة الخزائن والبنوك وتسوية العهد.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة حسابات منشآت تجارية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('almohaseb')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">تمويل وتقسيط وكاشير</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=900&q=80" alt="برنامج إدارة المبيعات والمخازن المتطور (Sales Pro)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-coins text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">برنامج إدارة المبيعات والمخازن المتطور (Sales Pro)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">نظام مبيعات مكتبي قوي وسريع، معالجة فورية للمبيعات والمشتريات، إدارة حدود الائتمان للعملاء، وتقارير أرباح الأصناف.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">أداء مستقر وسريع جداً</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('sales-management-c')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&fit=crop&w=900&q=80" alt="منظومة تتبع المندوبين والمبيعات الميدانية (Field Sales ERP)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة تتبع المندوبين والمبيعات الميدانية (Field Sales ERP)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع خطوط سير المناديب عبر GPS، تسجيل فواتير البيع والتحصيل من المحلات لحظياً، ومزامنة البيانات الفورية مع السيرفر المركزي.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة أساطيل مناديب المبيعات</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('sales-new')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">صناعي وزراعي</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة أسطول النقل والشحن والخدمات اللوجستية (Orange Lines)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-industry text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة أسطول النقل والشحن والخدمات اللوجستية (Orange Lines)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">تتبع الشاحنات والسيارات، بوالص الشحن والتفريغ، تتبع مصروفات وصيانة المركبات، وإدارة خطوط النقل بين المحافظات.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">تتبع مئات الرحلات اليومية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('orange-lines')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">ذكاء اصطناعي وواتساب</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=900&q=80" alt="منصة الرؤية الذكية للتحليلات الإحصائية وتوقع المبيعات (Vision)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-robot text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة الرؤية الذكية للتحليلات الإحصائية وتوقع المبيعات (Vision)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">لوحات بيانية تفاعلية متقدمة لتحليل سلوك المستهلكين، كشف الأنماط الموسمية للمبيعات، والتنبؤ الدقيق بالإيرادات المستقبلية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">دعم اتخاذ القرار للإدارة العليا</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('vision-analytics')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=900&q=80" alt="نظام الفهد المتكامل لإدارة الأعمال والمبيعات" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام الفهد المتكامل لإدارة الأعمال والمبيعات</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة العملاء، عروض الأسعار، أوامر التوريد، الفواتير، ومتابعة التحصيلات المالية لشركات التجارة والتوريدات.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">منظومة إدارة مستقرة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('alfahd-new')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة التجارة والتوزيع (مؤسسة صالح طرفاية)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة التجارة والتوزيع (مؤسسة صالح طرفاية)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة المخازن المركزية، تتبع طلبيات الفروع، تسعير الجملة والتجزئة، وإصدار كشوفات حساب العملاء والموردين.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">مستخدم في شبكات التوزيع</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('saleh-tarfayah')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&fit=crop&w=900&q=80" alt="منظومة إدارة المشروعات والمقاولات (عاصم حجازي)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة إدارة المشروعات والمقاولات (عاصم حجازي)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة عقود المشروعات، مستخلصات المقاولين والمقاولين الباطن، تتبع نسب الإنجاز، وصرف المواد والمعدات في الموقع.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة مشروعات إنشائية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('assem-hegazy')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=900&q=80" alt="نظام إدارة الأعمال والتجارة (مؤسسة أسامة أبو خليفة)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نظام إدارة الأعمال والتجارة (مؤسسة أسامة أبو خليفة)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">نظام مالي وإداري مخصص لمتابعة المبيعات، حسابات العملاء، الخزينة، والمصروفات الإدارية والتشغيلية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة نشطة</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('osama-abokhalifa')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">أنظمة ERP وشركات</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&fit=crop&w=900&q=80" alt="منظومة إدارة التوزيع والتوكيلات التجارية (مؤسسة شيبة)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-building text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومة إدارة التوزيع والتوكيلات التجارية (مؤسسة شيبة)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">إدارة التوكيلات وحصص التوزيع، متابعة خطط البيع للمناديب، تتبع مديونيات التجار، ومحاسبة الأرباح الدورية.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة توزيع على نطاق واسع</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('shiba-distribution')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
-            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
-              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
-                <div class="flex items-center gap-1.5">
-                  <span class="w-2.5 h-2.5 rounded-full bg-rose-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
-                </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">ذكاء اصطناعي وواتساب</span>
-              </div>
-              <div class="relative h-44 overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=900&q=80" alt="منصة وبوابة التوظيف الرقمية ومطابقة الكفاءات (Job Portal)" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80'" />
-                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
-                <div class="absolute bottom-2.5 right-3 flex items-center gap-2">
-                  <div class="w-8 h-8 rounded-xl bg-[#08172c]/90 border border-cyan-500/40 flex items-center justify-center text-sm shadow-md">
-                    <i class="fa-solid fa-robot text-cyan-400"></i>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
-              <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منصة وبوابة التوظيف الرقمية ومطابقة الكفاءات (Job Portal)</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">بوابة توظيف متطورة للشركات والباحثين عن عمل، تصفية ومطابقة السير الذاتية آلياً، جدولة المقابلات واختبارات المتقدمين.</p>
-              </div>
-
-              <div class="space-y-3 pt-3 border-t border-cyan-500/15">
-                <div class="flex items-center justify-between gap-2 pt-1">
-                  <div class="flex items-center gap-1.5">
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">إدارة آلاف السير الذاتية</span>
-                  </div>
-                  <button onclick="openProjectDetailsModal('job-portal')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
-                    <span>المزيد والشاشات</span>
-                    <i class="fa-solid fa-arrow-left text-[10px]"></i>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-  
         </div>
-        <p id="portfolioEmpty" class="hidden text-center text-slate-400 py-8">لا توجد مشاريع تطابق البحث</p>
+
+        <!-- حاوية الـ Slider مع أزرار التنقل الجانبية الاحترافية -->
+        <div class="relative px-2 sm:px-14 group/slider" id="portfolioSliderContainer">
+
+          <!-- زر التنقل الأيمن (السابق) -->
+          <button type="button" id="sliderBtnPrev" onclick="portfolioSliderPrev()" 
+                  aria-label="المشاريع السابقة" 
+                  title="المشاريع السابقة"
+                  class="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-right text-base sm:text-xl"></i>
+          </button>
+
+          <!-- زر التنقل الأيسر (التالي) -->
+          <button type="button" id="sliderBtnNext" onclick="portfolioSliderNext()" 
+                  aria-label="المشاريع التالية" 
+                  title="المشاريع التالية"
+                  class="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-left text-base sm:text-xl"></i>
+          </button>
+
+          <!-- نافذة العرض المتحركة (Overflow Hidden Window) -->
+          <div class="overflow-hidden rounded-3xl py-2" id="portfolioTrackWindow">
+            <!-- مسار السلايدر المتحرك (Track) -->
+            <div id="portfolioTrack" class="flex transition-transform duration-700 ease-out gap-5" dir="ltr">
+              <!-- الكروت تُعرض ديناميكياً بواسطة JavaScript -->
+            </div>
+          </div>
+
+          <!-- رسالة عند عدم وجود نتائج -->
+          <p id="portfolioEmpty" class="hidden text-center text-slate-400 py-12">لا توجد مشاريع تطابق هذا التصنيف حالياً</p>
+
+        </div>
+
+        <!-- شريط التحكم السفلي ومؤشرات الصفحات والتنقل التلقائي -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-cyan-500/15">
+          <!-- زر تشغيل / إيقاف التبديل التلقائي ومؤشر الوقت -->
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="toggleSliderAutoplay()" id="sliderPlayPauseBtn" class="text-xs text-slate-300 hover:text-cyan-300 flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 bg-[#08172c]/80 transition-all hover:border-cyan-400 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-pause text-cyan-400" id="playPauseIcon"></i>
+              <span id="playPauseText" class="font-bold">إيقاف مؤقت</span>
+            </button>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>يتبدل تلقائياً كل 4.5 ثوانٍ</span>
+            </div>
+          </div>
+
+          <!-- نقاط التقسيم التفاعلية (Pagination Dots) -->
+          <div id="sliderDotsContainer" class="flex items-center gap-2 flex-wrap justify-center"></div>
+
+          <!-- عداد الموبايل السريع -->
+          <div class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-500/30 sm:hidden" id="sliderMobileCounter">
+            معروض 1 - 3
+          </div>
+        </div>
 
       </div>
     </section>
@@ -4499,31 +2943,74 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       }).join('');
     }
 
-    let currentFilter = 'all';
-    function filterProjects(cat) {
-      currentFilter = cat;
-      const q = (document.getElementById('portfolioSearch')?.value || '').trim().toLowerCase();
-      document.querySelectorAll('.pf-filter').forEach(b => {
-        b.className = 'pf-filter px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 transition';
+    /* ====================================================================
+       PORTFOLIO SLIDER ENGINE (Responsive 3-Items Slider with Autoplay)
+       ==================================================================== */
+    let currentPortfolioCategory = 'all';
+    let currentSlideIndex = 0;
+    let sliderAutoplayTimer = null;
+    let isSliderAutoplayActive = true;
+    let filteredPortfolioProjects = [];
+
+    // Helper: Determine visible cards count based on screen width
+    function getVisibleCardsCount() {
+      if (window.innerWidth >= 1024) return 3; // Desktop: 3 projects
+      if (window.innerWidth >= 640) return 2;  // Tablet: 2 projects
+      return 1; // Mobile: 1 project
+    }
+
+    // Update Slider Dimensions & Card Widths
+    function updateSliderDimensions() {
+      const track = document.getElementById('portfolioTrack');
+      if (!track) return;
+      const windowEl = document.getElementById('portfolioTrackWindow');
+      if (!windowEl) return;
+
+      const containerWidth = windowEl.offsetWidth;
+      const visible = getVisibleCardsCount();
+      const gap = 20; // gap-5 = 20px
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(260, (containerWidth - totalGaps) / visible);
+
+      const cards = track.querySelectorAll('.portfolio-slide-item');
+      cards.forEach(card => {
+        card.style.width = `${cardWidth}px`;
+        card.style.flexShrink = '0';
       });
-      const ab = document.getElementById('filter-' + cat);
-      if (ab) ab.className = 'pf-filter active px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/10 text-cyan-300 transition';
-      
-      const filtered = projects.filter(p => (cat === 'all' || p.category === cat) && (!q || (p.title && p.title.includes(q)) || (p.description && p.description.includes(q)) || (p.tech && p.tech.toLowerCase().includes(q))));
-      const grid = document.getElementById('portfolioGrid');
+
+      goToSlide(currentSlideIndex, false);
+    }
+
+    // Render Projects into the Slider Track
+    function renderPortfolioSlider(resetIndex = true) {
+      const track = document.getElementById('portfolioTrack');
       const empty = document.getElementById('portfolioEmpty');
-      if (!grid) return;
-      if (!filtered.length) { grid.innerHTML = ''; if (empty) empty.classList.remove('hidden'); return; }
+      if (!track) return;
+
+      const cat = currentPortfolioCategory;
+      filteredPortfolioProjects = projects.filter(p => (cat === 'all' || p.category === cat));
+
+      if (!filteredPortfolioProjects.length) {
+        track.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        renderSliderDots();
+        updateSliderCounters();
+        return;
+      }
       if (empty) empty.classList.add('hidden');
 
-      grid.innerHTML = filtered.map((p, idx) => {
-        const c = categoryColors[p.category] || 'text-cyan-300 bg-cyan-500/10 border-cyan-500/30';
+      if (resetIndex) {
+        currentSlideIndex = 0;
+      }
+
+      const fallbackImg = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80';
+
+      track.innerHTML = filteredPortfolioProjects.map((p) => {
         const ic = categoryIcons[p.category] || 'fa-code';
-        const fallbackImg = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80';
         const imgSrc = p.image || fallbackImg;
 
         return `
-          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
+          <div class="portfolio-slide-item glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl h-full select-none" dir="rtl">
             
             <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
               <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
@@ -4532,7 +3019,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
                   <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80"></span>
                   <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80"></span>
                 </div>
-                <span class="text-[10px] font-mono text-cyan-300/80">${p.categoryName || p.category}</span>
+                <span class="text-[10px] font-mono text-cyan-300/80 font-bold">${p.categoryName || p.category}</span>
               </div>
               <div class="relative h-44 overflow-hidden">
                 <img src="${imgSrc}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" onerror="this.src='${fallbackImg}'" />
@@ -4547,18 +3034,18 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
             <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
               <div class="space-y-2">
-                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">${p.title}</h3>
-                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed">${p.description}</p>
+                <h3 class="text-sm sm:text-base font-black text-white group-hover:text-cyan-300 transition-colors leading-snug line-clamp-1">${p.title}</h3>
+                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed min-h-[36px]">${p.description}</p>
               </div>
 
               <div class="space-y-3 pt-3 border-t border-cyan-500/15">
                 <div class="flex items-center justify-between gap-2 pt-1">
                   <div class="flex items-center gap-1.5">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 flex-shrink-0"></span>
-                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[120px]">${p.status}</span>
+                    <span class="text-[11px] text-emerald-300 font-bold truncate max-w-[125px]">${p.status}</span>
                   </div>
                   
-                  <button onclick="openProjectDetailsModal('${p.id}')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20">
+                  <button type="button" onclick="openProjectDetailsModal('${p.id}')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/15 hover:bg-cyan-500/30 text-cyan-300 font-black text-xs border border-cyan-400/40 flex items-center gap-1.5 transition shadow-sm shadow-cyan-500/20 active:scale-95 cursor-pointer">
                     <span>المزيد والشاشات</span>
                     <i class="fa-solid fa-arrow-left text-[10px]"></i>
                   </button>
@@ -4570,8 +3057,220 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
           </div>
         `;
       }).join('');
+
+      updateSliderDimensions();
+      renderSliderDots();
+      updateSliderCounters();
     }
 
+    // Go to a specific slide index
+    function goToSlide(index, animate = true) {
+      const track = document.getElementById('portfolioTrack');
+      if (!track || !filteredPortfolioProjects.length) return;
+
+      const visible = getVisibleCardsCount();
+      const maxIndex = Math.max(0, filteredPortfolioProjects.length - visible);
+
+      // Handle wrapping circularly
+      if (index > maxIndex) {
+        currentSlideIndex = 0;
+      } else if (index < 0) {
+        currentSlideIndex = maxIndex;
+      } else {
+        currentSlideIndex = index;
+      }
+
+      const windowEl = document.getElementById('portfolioTrackWindow');
+      if (!windowEl) return;
+      const containerWidth = windowEl.offsetWidth;
+      const gap = 20;
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(260, (containerWidth - totalGaps) / visible);
+
+      const shift = currentSlideIndex * (cardWidth + gap);
+
+      track.style.transition = animate ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+      track.style.transform = `translateX(-${shift}px)`;
+
+      updateActiveDot();
+      updateSliderCounters();
+    }
+
+    // Navigation: Next Projects
+    function portfolioSliderNext() {
+      const visible = getVisibleCardsCount();
+      const maxIndex = Math.max(0, filteredPortfolioProjects.length - visible);
+      if (currentSlideIndex >= maxIndex) {
+        goToSlide(0);
+      } else {
+        goToSlide(Math.min(currentSlideIndex + visible, maxIndex));
+      }
+    }
+
+    // Navigation: Previous Projects
+    function portfolioSliderPrev() {
+      const visible = getVisibleCardsCount();
+      const maxIndex = Math.max(0, filteredPortfolioProjects.length - visible);
+      if (currentSlideIndex <= 0) {
+        goToSlide(maxIndex);
+      } else {
+        goToSlide(Math.max(currentSlideIndex - visible, 0));
+      }
+    }
+
+    // Filter by Category
+    function filterPortfolioSlider(cat) {
+      currentPortfolioCategory = cat;
+
+      // Update Filter Pills UI
+      document.querySelectorAll('.pf-pill').forEach(b => {
+        b.className = 'pf-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer';
+      });
+      const activePill = document.getElementById('pf-pill-' + cat);
+      if (activePill) {
+        activePill.className = 'pf-pill active px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-md shadow-cyan-500/20 whitespace-nowrap transition-all duration-200 cursor-pointer';
+      }
+
+      renderPortfolioSlider(true);
+      startSliderAutoplay();
+    }
+
+    // Alias for backward compatibility
+    function filterProjects(cat) {
+      filterPortfolioSlider(cat);
+    }
+
+    // Render Pagination Dots
+    function renderSliderDots() {
+      const container = document.getElementById('sliderDotsContainer');
+      if (!container) return;
+
+      const visible = getVisibleCardsCount();
+      const total = filteredPortfolioProjects.length;
+      if (total <= visible) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const totalPages = Math.ceil(total / visible);
+      // For clean UI, if totalPages > 12, show condensed page dots
+      let dotsHtml = '';
+      const maxDotsToShow = Math.min(totalPages, 10);
+      for (let i = 0; i < maxDotsToShow; i++) {
+        const targetIndex = Math.min(i * visible, Math.max(0, total - visible));
+        dotsHtml += `
+          <button type="button" onclick="goToSlide(${targetIndex})" data-dot-page="${i}" aria-label="الصفحة ${i + 1}"
+                  class="slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer"></button>
+        `;
+      }
+      container.innerHTML = dotsHtml;
+      updateActiveDot();
+    }
+
+    // Update Active Dot
+    function updateActiveDot() {
+      const visible = getVisibleCardsCount();
+      const currentPage = Math.round(currentSlideIndex / visible);
+      document.querySelectorAll('.slider-dot').forEach((dot, idx) => {
+        if (idx === currentPage) {
+          dot.className = 'slider-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-cyan-400 shadow-[0_0_10px_rgba(0,240,255,0.8)] cursor-pointer';
+        } else {
+          dot.className = 'slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer';
+        }
+      });
+    }
+
+    // Update Counter Text
+    function updateSliderCounters() {
+      const badge = document.getElementById('sliderCounterBadge');
+      const mobileCounter = document.getElementById('sliderMobileCounter');
+      const total = filteredPortfolioProjects.length;
+      if (!total) {
+        if (badge) badge.textContent = 'لا توجد مشاريع';
+        if (mobileCounter) mobileCounter.textContent = '0 من 0';
+        return;
+      }
+
+      const visible = getVisibleCardsCount();
+      const start = currentSlideIndex + 1;
+      const end = Math.min(currentSlideIndex + visible, total);
+
+      const text = `معروض ${start} - ${end} من ${total}`;
+      if (badge) badge.textContent = text;
+      if (mobileCounter) mobileCounter.textContent = `${start} - ${end} من ${total}`;
+    }
+
+    // Autoplay Engine
+    function startSliderAutoplay() {
+      stopSliderAutoplay();
+      if (!isSliderAutoplayActive) return;
+      sliderAutoplayTimer = setInterval(() => {
+        portfolioSliderNext();
+      }, 4500);
+    }
+
+    function stopSliderAutoplay() {
+      if (sliderAutoplayTimer) {
+        clearInterval(sliderAutoplayTimer);
+        sliderAutoplayTimer = null;
+      }
+    }
+
+    function toggleSliderAutoplay() {
+      isSliderAutoplayActive = !isSliderAutoplayActive;
+      const icon = document.getElementById('playPauseIcon');
+      const text = document.getElementById('playPauseText');
+
+      if (isSliderAutoplayActive) {
+        startSliderAutoplay();
+        if (icon) icon.className = 'fa-solid fa-pause text-cyan-400';
+        if (text) text.textContent = 'إيقاف مؤقت';
+      } else {
+        stopSliderAutoplay();
+        if (icon) icon.className = 'fa-solid fa-play text-cyan-400';
+        if (text) text.textContent = 'تشغيل تلقائي';
+      }
+    }
+
+    // Attach Interactive Event Listeners (Swipe, Resize, Hover)
+    window.addEventListener('resize', () => {
+      clearTimeout(window.sliderResizeTimeout);
+      window.sliderResizeTimeout = setTimeout(() => {
+        updateSliderDimensions();
+      }, 150);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('portfolioSliderContainer');
+      if (container) {
+        // Pause on mouse hover, resume on mouse leave
+        container.addEventListener('mouseenter', stopSliderAutoplay);
+        container.addEventListener('mouseleave', () => {
+          if (isSliderAutoplayActive) startSliderAutoplay();
+        });
+
+        // Touch Swipe gestures for Mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+          stopSliderAutoplay();
+        }, { passive: true });
+
+        container.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchEndX - touchStartX;
+          if (Math.abs(diff) > 40) {
+            if (diff < 0) {
+              portfolioSliderNext(); // Swiped left
+            } else {
+              portfolioSliderPrev(); // Swiped right
+            }
+          }
+          if (isSliderAutoplayActive) startSliderAutoplay();
+        }, { passive: true });
+      }
+    });
     function openProjectDetailsModal(id) {
       const p = projects.find(item => item.id === id);
       if (!p) return;
@@ -4772,7 +3471,8 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
     // Startup
     renderServicesSection();
-    filterProjects('all');
+    filterPortfolioSlider('all');
+    startSliderAutoplay();
     renderGalleryGrid('all');
     renderTeamGrid();
 
