@@ -1,0 +1,1277 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل تصدر محركات البحث وسيو جوجل الشامل | المبتكر العربي mobtakeraraby.com</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #38bdf8;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --emerald: #10b981;
+      --amber: #f59e0b;
+      --rose: #f43f5e;
+      --dark-bg: #070d19;
+      --card-bg: #0f172a;
+      --card-border: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--dark-bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    
+    code, pre {
+      font-family: 'Fira Code', monospace;
+      direction: ltr;
+      text-align: left;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0b1120;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    /* Header */
+    .hero-header {
+      background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #070d19 70%);
+      border-bottom: 1px solid #1e293b;
+      padding: 60px 20px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-header::before {
+      content: '';
+      position: absolute;
+      top: -50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 250px;
+      background: radial-gradient(ellipse, rgba(14, 165, 233, 0.25), transparent 70%);
+      pointer-events: none;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(14, 165, 233, 0.15);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      color: var(--primary-light);
+      padding: 6px 18px;
+      border-radius: 9999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero-title {
+      font-size: 34px;
+      font-weight: 900;
+      color: #ffffff;
+      margin-bottom: 14px;
+      line-height: 1.3;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 800px;
+      margin: 0 auto 30px;
+    }
+
+    /* Quick stats */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid #1e293b;
+      backdrop-filter: blur(10px);
+      padding: 14px 22px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .stat-card i {
+      font-size: 22px;
+      color: var(--primary-light);
+    }
+
+    .stat-card div {
+      text-align: right;
+    }
+
+    .stat-card .val {
+      font-weight: 800;
+      color: #fff;
+      font-size: 15px;
+    }
+
+    .stat-card .lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    /* Container Layout */
+    .main-wrapper {
+      max-width: 1240px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 992px) {
+      .main-wrapper {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        display: none;
+      }
+    }
+
+    /* Sidebar Navigation */
+    .sidebar {
+      position: sticky;
+      top: 20px;
+      height: fit-content;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .sidebar h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.2s ease;
+    }
+
+    .nav-item a:hover {
+      color: #fff;
+      background: #1e293b;
+      transform: translateX(-4px);
+    }
+
+    .nav-item a.active {
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      color: #38bdf8;
+    }
+
+    /* Progress Widget */
+    .checklist-widget {
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid #1e293b;
+    }
+
+    .progress-bar-container {
+      width: 100%;
+      height: 8px;
+      background: #1e293b;
+      border-radius: 999px;
+      margin: 10px 0;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #10b981, #0ea5e9);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Main Content Sections */
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--primary);
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: var(--primary-light);
+      font-size: 20px;
+    }
+
+    .section-tag {
+      background: #1e293b;
+      color: var(--primary-light);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      font-weight: 700;
+    }
+
+    /* Google SERP Preview Simulator */
+    .google-preview-box {
+      background: #202124;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid #3c4043;
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      text-align: right;
+    }
+
+    .google-preview-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .google-preview-favicon {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 13px;
+      color: #08172c;
+    }
+
+    .google-preview-domain {
+      font-size: 13px;
+      color: #dadce0;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .google-preview-domain span.url-path {
+      font-size: 11px;
+      color: #9aa0a6;
+      direction: ltr;
+      text-align: right;
+    }
+
+    .google-preview-title {
+      color: #8ab4f8;
+      font-size: 20px;
+      line-height: 1.3;
+      margin-bottom: 6px;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 700;
+    }
+
+    .google-preview-title:hover {
+      text-decoration: underline;
+    }
+
+    .google-preview-desc {
+      color: #bdc1c6;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 12px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .google-preview-sitelinks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #3c4043;
+    }
+
+    @media (max-width: 600px) {
+      .google-preview-sitelinks {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sitelink-item a {
+      color: #8ab4f8;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      display: block;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    .sitelink-item a:hover {
+      text-decoration: underline;
+    }
+
+    .sitelink-item p {
+      font-size: 12px;
+      color: #9aa0a6;
+      margin-top: 2px;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    /* Code Blocks */
+    .code-container {
+      position: relative;
+      background: #030712;
+      border: 1px solid #1f2937;
+      border-radius: 12px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+
+    .code-header {
+      background: #111827;
+      padding: 8px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #1f2937;
+    }
+
+    .code-lang {
+      font-size: 12px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .copy-btn {
+      background: #1f2937;
+      border: 1px solid #374151;
+      color: #f3f4f6;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: #374151;
+      color: #38bdf8;
+      border-color: #38bdf8;
+    }
+
+    .copy-btn.copied {
+      background: #065f46;
+      color: #34d399;
+      border-color: #059669;
+    }
+
+    pre code {
+      display: block;
+      padding: 16px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #e2e8f0;
+      background: #030712;
+    }
+
+    /* Keyword Tags */
+    .keywords-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0;
+    }
+
+    .keyword-tag {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #e2e8f0;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .keyword-tag i {
+      color: var(--primary-light);
+      font-size: 11px;
+    }
+
+    .keyword-tag.highlight {
+      background: rgba(14, 165, 233, 0.15);
+      border-color: rgba(14, 165, 233, 0.4);
+      color: #38bdf8;
+    }
+
+    /* Steps List */
+    .steps-container {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin: 20px 0;
+    }
+
+    .step-item {
+      display: flex;
+      gap: 16px;
+      background: #131d31;
+      border: 1px solid #1e293b;
+      padding: 18px;
+      border-radius: 12px;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 15px;
+    }
+
+    .step-content h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .step-content p {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Checklist Table */
+    .checklist-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+      font-size: 14px;
+    }
+
+    .checklist-table th,
+    .checklist-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #1e293b;
+      text-align: right;
+    }
+
+    .checklist-table th {
+      background: #111c30;
+      color: #94a3b8;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .checklist-table tr:hover {
+      background: rgba(30, 41, 59, 0.4);
+    }
+
+    .priority-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .priority-high {
+      background: rgba(244, 63, 94, 0.2);
+      color: #fb7185;
+      border: 1px solid rgba(244, 63, 94, 0.4);
+    }
+
+    .priority-med {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fcd34d;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+    }
+
+    /* Custom Checkbox */
+    .task-checkbox {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Callout Note */
+    .callout {
+      background: rgba(14, 165, 233, 0.1);
+      border-right: 4px solid var(--primary-light);
+      padding: 16px 20px;
+      border-radius: 0 12px 12px 0;
+      margin: 18px 0;
+      font-size: 14px;
+    }
+
+    .callout strong {
+      color: #38bdf8;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* Toast Notification */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #10b981;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      z-index: 99999;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #toast.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast"><i class="fa-solid fa-circle-check"></i> تم نسخ الكود بنجاح إلى الحافظة!</div>
+
+  <!-- Header -->
+  <header class="hero-header">
+    <div class="badge-pill">
+      <i class="fa-solid fa-bolt"></i> الدليل التقني الاحترافي لمحركات البحث 2026
+    </div>
+    <h1 class="hero-title">
+      دليل تصدر نتائج بحث جوجل الشامل<br>
+      <span>لموقع المبتكر العربي (mobtakeraraby.com)</span>
+    </h1>
+    <p class="hero-subtitle">
+      الدليل العملي الهندسي الشامل لتهيئة السيو الداخلي (On-Page)، البيانات المنظمة (Schema.org JSON-LD)، ملفات الروبوت وخريطة الموقع، والربط الفوري مع Google Search Console لتصدر نتائج البحث في مصر والسعودية والخليج.
+    </p>
+
+    <!-- Stats row -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <i class="fa-solid fa-bullseye"></i>
+        <div>
+          <div class="val">استهداف عالي النية</div>
+          <div class="lbl">ERP، ZATCA، بوتات الذكاء الاصطناعي</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-earth-americas"></i>
+        <div>
+          <div class="val">سيو محلي وإقليمي</div>
+          <div class="lbl">السعودية (SA) ومصر (EG) والخليج</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-code"></i>
+        <div>
+          <div class="val">Schema.org متقدم</div>
+          <div class="lbl">Organization + FAQPage + App</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <i class="fa-solid fa-bolt-lightning"></i>
+        <div>
+          <div class="val">فهرسة سريعة</div>
+          <div class="lbl">أولوية زحف Google Search Console</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="main-wrapper">
+    
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <h4><i class="fa-solid fa-bars-staggered"></i> أقسام الدليل</h4>
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#serp-preview" class="active"><i class="fa-brands fa-google"></i> معاينة الظهور في جوجل</a></li>
+        <li class="nav-item"><a href="#keywords"><i class="fa-solid fa-key"></i> الكلمات المفتاحية والنية</a></li>
+        <li class="nav-item"><a href="#head-code"><i class="fa-solid fa-code"></i> كود الميتا والاستهداف</a></li>
+        <li class="nav-item"><a href="#schema"><i class="fa-solid fa-sitemap"></i> البيانات المنظمة Schema</a></li>
+        <li class="nav-item"><a href="#robots"><i class="fa-solid fa-robot"></i> ملف robots.txt</a></li>
+        <li class="nav-item"><a href="#sitemap"><i class="fa-solid fa-diagram-project"></i> خريطة الموقع Sitemap</a></li>
+        <li class="nav-item"><a href="#gsc-steps"><i class="fa-solid fa-magnifying-glass"></i> الربط مع Search Console</a></li>
+        <li class="nav-item"><a href="#checklist"><i class="fa-solid fa-list-check"></i> قائمة المهام التنفيذية</a></li>
+      </ul>
+
+      <!-- Progress Tracking Widget -->
+      <div class="checklist-widget">
+        <h4><i class="fa-solid fa-chart-pie"></i> نسبة اكتمال التنفيذ</h4>
+        <div class="progress-bar-container">
+          <div class="progress-bar-fill" id="progressBar"></div>
+        </div>
+        <p style="font-size: 12px; color: var(--text-muted); text-align: center;" id="progressText">0 من 7 مهام مكتملة (0%)</p>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+
+      <!-- 1. Live Google Search Result Preview -->
+      <section id="serp-preview" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-brands fa-google"></i> كيف سيظهر موقع "المبتكر العربي" في جوجل؟</h2>
+          <span class="section-tag">Google SERP Preview</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          المعاينة التفاعلية لشكل نتيجة البحث الغنية (Rich Snippet) لموقع <strong>mobtakeraraby.com</strong> بعد تطبيق وسوم الميتا وبيانات الـ Schema.org في هذا الدليل:
+        </p>
+
+        <div class="google-preview-box">
+          <div class="google-preview-header">
+            <div class="google-preview-favicon">M</div>
+            <div class="google-preview-domain">
+              <span>المبتكر العربي للبرمجيات والحلول الذكية</span>
+              <span class="url-path">https://mobtakeraraby.com</span>
+            </div>
+          </div>
+          <a class="google-preview-title">المبتكر العربي للبرمجيات | أنظمة ERP، ذكاء اصطناعي، برمجة تطبيقات ومواقع</a>
+          <p class="google-preview-desc">
+            شركة المبتكر العربي للبرمجيات والحلول الذكية: شريكك التقني لتطوير أنظمة ERP السحابية المعتمدة مع هيئة الزكاة ZATCA، بوتات الواتساب التفاعلية بالذكاء الاصطناعي، وتطوير تطبيقات الجوال والمواقع للشركات في مصر والسعودية والخليج.
+          </p>
+
+          <!-- Rich Sitelinks -->
+          <div class="google-preview-sitelinks">
+            <div class="sitelink-item">
+              <a>أنظمة ERP السحابية و ZATCA</a>
+              <p>حلول تخطيط الموارد والفوترة الإلكترونية وتشفير الفواتير بالسعودية ومصر.</p>
+            </div>
+            <div class="sitelink-item">
+              <a>شات بوت واتساب بالذكاء الاصطناعي</a>
+              <p>أتمتة خدمة العملاء والمبيعات والربط السحابي 24/7 عبر نماذج AI.</p>
+            </div>
+            <div class="sitelink-item">
+              <a>برمجة تطبيقات الجوال والمواقع</a>
+              <p>تطبيقات iOS و Android احترافية مع لوحات تحكم عصرية سريعة.</p>
+            </div>
+            <div class="sitelink-item">
+              <a>الأسئلة الشائعة والاستشارات</a>
+              <p>احصل على استشارة تقنية وعرض تجريبي (Demo) مباشر مع مهندسينا.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout">
+          <strong>💡 لماذا هذه النتيجة جذابة للعميل؟</strong>
+          لأنها تعطي انطباعاً رسمياً واحترافياً، وتستغل مساحة بصرية مضاعفة على شاشة الموبايل وجهاز الكمبيوتر مقارنة بالنتائج التقليدية المنافسة.
+        </div>
+      </section>
+
+      <!-- 2. Target Keywords & Search Intent -->
+      <section id="keywords" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-key"></i> الكلمات المفتاحية والنية البحثية (Keyword Strategy)</h2>
+          <span class="section-tag">استهداف تجاري</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          تم استهداف الكلمات ذات القيمة التجارية العالية (Commercial & Transactional Intent) التي يبحث عنها أصحاب الشركات والمدراء التنفيذيون في السعودية ومصر:
+        </p>
+
+        <h4 style="color: #fff; font-size: 15px; margin-top: 18px;"><i class="fa-solid fa-server" style="color: #38bdf8;"></i> 1. قطاع أنظمة ERP والفوترة الإلكترونية:</h4>
+        <div class="keywords-grid">
+          <span class="keyword-tag highlight"><i class="fa-solid fa-magnifying-glass"></i> نظام ERP سحابي</span>
+          <span class="keyword-tag highlight"><i class="fa-solid fa-magnifying-glass"></i> برنامج الفوترة الإلكترونية ZATCA المرحلة الثانية</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> برنامج إدارة المستودعات والمخازن</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> برنامج حسابات ومبيعات سحابي</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> ربط الفاتورة الإلكترونية هيئة الزكاة والضريبة</span>
+        </div>
+
+        <h4 style="color: #fff; font-size: 15px; margin-top: 18px;"><i class="fa-brands fa-whatsapp" style="color: #22c55e;"></i> 2. قطاع الذكاء الاصطناعي وبوتات الواتساب:</h4>
+        <div class="keywords-grid">
+          <span class="keyword-tag highlight"><i class="fa-solid fa-magnifying-glass"></i> شات بوت واتساب بالذكاء الاصطناعي</span>
+          <span class="keyword-tag highlight"><i class="fa-solid fa-magnifying-glass"></i> AI WhatsApp Bot للشركات</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> أتمتة خدمة العملاء عبر الواتساب</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> ربط الواتساب مع نظام ERP</span>
+        </div>
+
+        <h4 style="color: #fff; font-size: 15px; margin-top: 18px;"><i class="fa-solid fa-laptop-code" style="color: #818cf8;"></i> 3. قطاع تطوير المواقع وتطبيقات الموبايل:</h4>
+        <div class="keywords-grid">
+          <span class="keyword-tag highlight"><i class="fa-solid fa-magnifying-glass"></i> شركة برمجة تطبيقات في السعودية</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> تصميم مواقع شركات احترافية</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> برمجة متجر إلكتروني مخصص</span>
+          <span class="keyword-tag"><i class="fa-solid fa-magnifying-glass"></i> تطوير برمجيات مصانع وعيادات</span>
+        </div>
+      </section>
+
+      <!-- 3. Head Code & Meta Tags -->
+      <section id="head-code" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-code"></i> كود الميتا والاستهداف الجغرافي الجاهز</h2>
+          <span class="section-tag">داخل &lt;head&gt;</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          انسخ هذا الكود بالكامل وضعه مباشرة داخل وسم <code>&lt;head&gt;</code> في ملف <code>index.php</code> لموقع <code>mobtakeraraby.com</code>:
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang"><i class="fa-solid fa-file-code"></i> HTML / PHP (index.php)</span>
+            <button class="copy-btn" onclick="copySnippet('codeMeta')"><i class="fa-regular fa-copy"></i> نسخ الكود</button>
+          </div>
+          <pre><code id="codeMeta">&lt;!-- ========================================================================= --&gt;
+&lt;!-- تهيئة السيو المتقدم لموقع المبتكر العربي (mobtakeraraby.com) --&gt;
+&lt;!-- ========================================================================= --&gt;
+&lt;meta charset="UTF-8" /&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+&lt;title&gt;المبتكر العربي للبرمجيات والحلول الذكية | ERP، ذكاء اصطناعي، برمجة تطبيقات ومواقع&lt;/title&gt;
+
+&lt;!-- كود التحقق من Google Search Console (ضع الكود المعطى لك هنا) --&gt;
+&lt;meta name="google-site-verification" content="ضع_كود_التحقق_هنا" /&gt;
+
+&lt;!-- الوصف والكلمات المفتاحية --&gt;
+&lt;meta name="description" content="شركة المبتكر العربي للبرمجيات والحلول الذكية: شريكك التقني لتطوير أنظمة ERP السحابية المعتمدة مع هيئة الزكاة ZATCA، بوتات الواتساب التفاعلية بالذكاء الاصطناعي، وتطوير تطبيقات الجوال والمواقع للشركات في مصر والسعودية والخليج." /&gt;
+&lt;meta name="keywords" content="المبتكر العربي, شركة برمجيات, نظام ERP سحابي, ZATCA الفوترة الإلكترونية, شات بوت واتساب ذكاء اصطناعي, برمجة تطبيقات جوال, تصميم مواقع شركات, برنامج محاسبة سحابي" /&gt;
+&lt;link rel="canonical" href="https://mobtakeraraby.com/" /&gt;
+
+&lt;!-- وسوم الاستهداف الإقليمي والجغرافي (السعودية ومصر) --&gt;
+&lt;meta name="geo.region" content="SA;EG" /&gt;
+&lt;meta name="geo.placename" content="Saudi Arabia, Egypt, Riyadh, Mansoura" /&gt;
+&lt;link rel="alternate" hreflang="ar-SA" href="https://mobtakeraraby.com/" /&gt;
+&lt;link rel="alternate" hreflang="ar-EG" href="https://mobtakeraraby.com/" /&gt;
+&lt;link rel="alternate" hreflang="x-default" href="https://mobtakeraraby.com/" /&gt;
+
+&lt;!-- أوامر عناكب البحث Googlebot --&gt;
+&lt;meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" /&gt;
+&lt;meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" /&gt;
+
+&lt;!-- بطاقات المشاركة للسوشيال ميديا (Open Graph & Twitter) --&gt;
+&lt;meta property="og:type" content="website" /&gt;
+&lt;meta property="og:title" content="المبتكر العربي للبرمجيات والحلول الذكية | ERP & AI Solutions" /&gt;
+&lt;meta property="og:description" content="تطوير أنظمة ERP السحابية، الفوترة الإلكترونية ZATCA، بوتات الواتساب بالذكاء الاصطناعي وتطبيقات الجوال والمواقع." /&gt;
+&lt;meta property="og:url" content="https://mobtakeraraby.com/" /&gt;
+&lt;meta property="og:image" content="https://mobtakeraraby.com/logo.jpg" /&gt;
+&lt;meta property="og:locale" content="ar_AR" /&gt;
+&lt;meta property="og:site_name" content="المبتكر العربي" /&gt;
+
+&lt;meta name="twitter:card" content="summary_large_image" /&gt;
+&lt;meta name="twitter:title" content="المبتكر العربي للبرمجيات والحلول الذكية" /&gt;
+&lt;meta name="twitter:description" content="تطوير حلول ERP، الذكاء الاصطناعي وبوتات الواتساب والأنظمة السحابية." /&gt;
+&lt;meta name="twitter:image" content="https://mobtakeraraby.com/logo.jpg" /&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 4. Schema.org Structured Data -->
+      <section id="schema" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-sitemap"></i> البيانات المنظمة (Schema.org JSON-LD)</h2>
+          <span class="section-tag">Rich Results</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          هذا المخطط يجمع بين هوية الشركة (Organization)، نوع البرمجيات (SoftwareApplication)، وقسم الأسئلة الشائعة (FAQPage) لضمان ظهور الموقع بشكل موسع في جوجل:
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang"><i class="fa-solid fa-file-code"></i> JSON-LD Schema</span>
+            <button class="copy-btn" onclick="copySnippet('codeSchema')"><i class="fa-regular fa-copy"></i> نسخ الكود</button>
+          </div>
+          <pre><code id="codeSchema">&lt;script type="application/ld+json"&gt;
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://mobtakeraraby.com/#organization",
+      "name": "المبتكر العربي للبرمجيات والحلول الذكية",
+      "alternateName": "Almobtaker Alaraby Software & AI Solutions",
+      "url": "https://mobtakeraraby.com/",
+      "logo": "https://mobtakeraraby.com/logo.jpg",
+      "image": "https://mobtakeraraby.com/logo.jpg",
+      "description": "شركة رائدة في تطوير أنظمة ERP السحابية، حلول الذكاء الاصطناعي وبوتات الواتساب التفاعلية والربط المعتمد مع هيئة الزكاة والضريبة والجمارك ZATCA.",
+      "telephone": "+201013688446",
+      "email": "arabiccreative80@gmail.com",
+      "priceRange": "$$",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressCountry": "EG",
+          "addressRegion": "الدقهلية",
+          "addressLocality": "المنصورة"
+        },
+        {
+          "@type": "PostalAddress",
+          "addressCountry": "SA",
+          "addressRegion": "الرياض",
+          "addressLocality": "الرياض"
+        }
+      ],
+      "areaServed": [
+        {"@type": "Country", "name": "Saudi Arabia"},
+        {"@type": "Country", "name": "Egypt"},
+        {"@type": "Country", "name": "United Arab Emirates"},
+        {"@type": "Country", "name": "Kuwait"}
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://mobtakeraraby.com/#website",
+      "url": "https://mobtakeraraby.com/",
+      "name": "المبتكر العربي",
+      "publisher": {
+        "@id": "https://mobtakeraraby.com/#organization"
+      },
+      "inLanguage": "ar"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://mobtakeraraby.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "ما هي أنظمة ERP السحابية التي تطورها شركة المبتكر العربي؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نقدم حلول ERP سحابية شاملة تشمل: إدارة المبيعات، المستودعات، الحسابات العامة، والموارد البشرية مع الربط المعتمد للفوترة الإلكترونية لهيئة الزكاة والضريبة والجمارك (ZATCA) في السعودية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف يساعد شات بوت الواتساب بالذكاء الاصطناعي نشاطي التجاري؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يعمل البوت على الرد الفوري على استفسارات العملاء 24/7 وعرض المنتجات وتأكيد الطلبات وحجز المواعيد والربط التلقائي مع نظام الـ ERP لزيادة المبيعات وتقليل تكلفة خدمة العملاء."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "هل تدعم الأنظمة متطلبات الفاتورة الإلكترونية بالسعودية ومصر؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "نعم، متوافقة 100% مع معايير ZATCA المرحلة الثانية في السعودية (تشفير الفواتير وQR Code وختم التشفير) ومنظومة الضرائب المصرية."
+          }
+        }
+      ]
+    }
+  ]
+}
+&lt;/script&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 5. robots.txt -->
+      <section id="robots" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-robot"></i> ملف التوجيه المطور (robots.txt)</h2>
+          <span class="section-tag">Root File</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          قم بحفظ هذا المحتوى في ملف اسمه <code>robots.txt</code> في المجلد الرئيسي لموقع <code>mobtakeraraby.com</code>:
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang"><i class="fa-solid fa-file-lines"></i> robots.txt</span>
+            <button class="copy-btn" onclick="copySnippet('codeRobots')"><i class="fa-regular fa-copy"></i> نسخ الكود</button>
+          </div>
+          <pre><code id="codeRobots"># robots.txt for Almobtaker Alaraby Software &amp; AI (https://mobtakeraraby.com)
+# Optimized for Googlebot, Bingbot, and AI Search Engines
+
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /admin.html
+Disallow: /api/
+Disallow: /config.php
+Disallow: /bootstrap.php
+Disallow: /*.sqlite$
+Disallow: /*.sql$
+
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Allow: /#services
+Allow: /#portfolio
+Allow: /#about
+Allow: /#contact
+Allow: /uploads/
+Disallow: /admin/
+
+# Googlebot-Image
+User-agent: Googlebot-Image
+Allow: /uploads/
+Allow: /logo.jpg
+
+# Sitemap pointer
+Sitemap: https://mobtakeraraby.com/sitemap.xml</code></pre>
+        </div>
+      </section>
+
+      <!-- 6. XML Sitemap -->
+      <section id="sitemap" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-diagram-project"></i> خريطة الموقع (sitemap.xml)</h2>
+          <span class="section-tag">XML Sitemap</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          قم بحفظ هذا الملف باسم <code>sitemap.xml</code> في المجلد الرئيسي لموقعك لتسهيل وصول عناكب جوجل لكافة الأقسام والصور:
+        </p>
+
+        <div class="code-container">
+          <div class="code-header">
+            <span class="code-lang"><i class="fa-solid fa-code"></i> sitemap.xml</span>
+            <button class="copy-btn" onclick="copySnippet('codeSitemap')"><i class="fa-regular fa-copy"></i> نسخ الكود</button>
+          </div>
+          <pre><code id="codeSitemap">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"&gt;
+
+  &lt;!-- الصفحة الرئيسية --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://mobtakeraraby.com/&lt;/loc&gt;
+    &lt;lastmod&gt;2026-10-31&lt;/lastmod&gt;
+    &lt;changefreq&gt;daily&lt;/changefreq&gt;
+    &lt;priority&gt;1.0&lt;/priority&gt;
+    &lt;xhtml:link rel="alternate" hreflang="ar-SA" href="https://mobtakeraraby.com/" /&gt;
+    &lt;xhtml:link rel="alternate" hreflang="ar-EG" href="https://mobtakeraraby.com/" /&gt;
+    &lt;xhtml:link rel="alternate" hreflang="x-default" href="https://mobtakeraraby.com/" /&gt;
+    &lt;image:image&gt;
+      &lt;image:loc&gt;https://mobtakeraraby.com/logo.jpg&lt;/image:loc&gt;
+      &lt;image:title&gt;المبتكر العربي للبرمجيات والحلول الذكية&lt;/image:title&gt;
+      &lt;image:caption&gt;أنظمة ERP، ذكاء اصطناعي، وبوتات واتساب تفاعلية&lt;/image:caption&gt;
+    &lt;/image:image&gt;
+  &lt;/url&gt;
+
+  &lt;!-- قسم الخدمات --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://mobtakeraraby.com/#services&lt;/loc&gt;
+    &lt;lastmod&gt;2026-10-31&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.9&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- معرض المشاريع والأعمال --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://mobtakeraraby.com/#portfolio&lt;/loc&gt;
+    &lt;lastmod&gt;2026-10-31&lt;/lastmod&gt;
+    &lt;changefreq&gt;weekly&lt;/changefreq&gt;
+    &lt;priority&gt;0.85&lt;/priority&gt;
+  &lt;/url&gt;
+
+  &lt;!-- التواصل وطلب استشارة --&gt;
+  &lt;url&gt;
+    &lt;loc&gt;https://mobtakeraraby.com/#contact&lt;/loc&gt;
+    &lt;lastmod&gt;2026-10-31&lt;/lastmod&gt;
+    &lt;changefreq&gt;monthly&lt;/changefreq&gt;
+    &lt;priority&gt;0.8&lt;/priority&gt;
+  &lt;/url&gt;
+
+&lt;/urlset&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- 7. Google Search Console Steps -->
+      <section id="gsc-steps" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-magnifying-glass"></i> خطوات الربط مع Google Search Console</h2>
+          <span class="section-tag">خطوات مصورة</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          اتبع نفس الخطوات التي قمنا بها لموقع تيركو لإثبات الملكية وطلب الفهرسة الفورية:
+        </p>
+
+        <div class="steps-container">
+          <div class="step-item">
+            <div class="step-number">1</div>
+            <div class="step-content">
+              <h4>إنشاء الخاصية في Google Search Console</h4>
+              <p>ادخل إلى <a href="https://search.google.com/search-console" target="_blank" style="color: #38bdf8;">Google Search Console</a>، واختر <strong>«بادئة عنوان URL»</strong> (URL prefix) واكتب: <code>https://mobtakeraraby.com/</code> واضغط متابعة.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">2</div>
+            <div class="step-content">
+              <h4>اختيار طريقة «علامة HTML» وإثبات الملكية</h4>
+              <p>من قائمة طرق إثبات الملكية الأخرى، اختر <strong>«علامة HTML» (HTML Tag)</strong>، وانسخ الكود وضعه في وسم <code>&lt;head&gt;</code> بموقعك، ثم اضغط على زر <strong>تأكيد (Verify)</strong> وستظهر لك العلامة الخضراء فوراً.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">3</div>
+            <div class="step-content">
+              <h4>إرسال ملف خريطة الموقع (Submit Sitemap)</h4>
+              <p>من القائمة الجانبية ادخل إلى <strong>ملفات خرائط الموقع (Sitemaps)</strong>، واكتب في الخانة: <code>sitemap.xml</code> واضغط <strong>إرسال</strong> ليظهر لك إشعار نجاح الإرسال بالأخضر.</p>
+            </div>
+          </div>
+
+          <div class="step-item">
+            <div class="step-number">4</div>
+            <div class="step-content">
+              <h4>طلب الفهرسة الفورية (Request Indexing)</h4>
+              <p>من شريط البحث العلوي، افحص الرابط <code>https://mobtakeraraby.com/</code> ثم اضغط على رابط <strong>«طلب الفهرسة»</strong> ليتم إدراج الموقع في قائمة أولوية الزحف لجوجل والتحديث السريع.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. Interactive Checklist -->
+      <section id="checklist" class="section-card">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fa-solid fa-list-check"></i> قائمة المهام التنفيذية التفاعلية</h2>
+          <span class="section-tag">Interactive Checklist</span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 14px;">
+          قم بالتأشير على كل خطوة تنتهي منها ليتم حفظ تقدمك تلقائياً في المتصفح:
+        </p>
+
+        <table class="checklist-table">
+          <thead>
+            <tr>
+              <th style="width: 50px;">تم؟</th>
+              <th>المهمة التنفيذية</th>
+              <th>الأولوية</th>
+              <th>الملف المعني</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task1" onchange="updateProgress()"></td>
+              <td>تحديث وسوم الميتا والاستهداف الجغرافي</td>
+              <td><span class="priority-badge priority-high">قصوى</span></td>
+              <td><code>index.php &lt;head&gt;</code></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task2" onchange="updateProgress()"></td>
+              <td>إضافة أكواد Schema.org المنظمة (Organization + FAQ)</td>
+              <td><span class="priority-badge priority-high">قصوى</span></td>
+              <td><code>index.php &lt;script&gt;</code></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task3" onchange="updateProgress()"></td>
+              <td>إنشاء ورفع ملف <code>robots.txt</code> المطور</td>
+              <td><span class="priority-badge priority-med">مرتفعة</span></td>
+              <td><code>robots.txt</code></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task4" onchange="updateProgress()"></td>
+              <td>إنشاء ورفع ملف خريطة الموقع <code>sitemap.xml</code></td>
+              <td><span class="priority-badge priority-high">قصوى</span></td>
+              <td><code>sitemap.xml</code></td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task5" onchange="updateProgress()"></td>
+              <td>إثبات الملكية في Google Search Console عبر علامة HTML</td>
+              <td><span class="priority-badge priority-high">قصوى</span></td>
+              <td>GSC Dashboard</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task6" onchange="updateProgress()"></td>
+              <td>إرسال <code>sitemap.xml</code> في Search Console</td>
+              <td><span class="priority-badge priority-high">قصوى</span></td>
+              <td>GSC Sitemaps</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="task-checkbox" data-id="task7" onchange="updateProgress()"></td>
+              <td>فحص عنوان URL وطلب الفهرسة الفورية (Request Indexing)</td>
+              <td><span class="priority-badge priority-med">مرتفعة</span></td>
+              <td>GSC URL Inspection</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- JavaScript for Interactivity -->
+  <script>
+    // Copy Code Snippet Function
+    function copySnippet(elementId) {
+      const el = document.getElementById(elementId);
+      const text = el.innerText || el.textContent;
+      
+      navigator.clipboard.writeText(text).then(() => {
+        showToast();
+      }).catch(err => {
+        console.error('Failed to copy: ', err);
+      });
+    }
+
+    // Show Toast
+    function showToast() {
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    // Checklist and Progress Tracking
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll('.task-checkbox');
+      const total = checkboxes.length;
+      let checked = 0;
+
+      checkboxes.forEach(cb => {
+        const taskId = cb.getAttribute('data-id');
+        if (cb.checked) {
+          checked++;
+          localStorage.setItem('mobtaker_seo_' + taskId, 'true');
+        } else {
+          localStorage.removeItem('mobtaker_seo_' + taskId);
+        }
+      });
+
+      const percentage = Math.round((checked / total) * 100);
+      document.getElementById('progressBar').style.width = percentage + '%';
+      document.getElementById('progressText').innerText = `${checked} من ${total} مهام مكتملة (${percentage}%)`;
+    }
+
+    // Load saved checklist state on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      const checkboxes = document.querySelectorAll('.task-checkbox');
+      checkboxes.forEach(cb => {
+        const taskId = cb.getAttribute('data-id');
+        if (localStorage.getItem('mobtaker_seo_' + taskId) === 'true') {
+          cb.checked = true;
+        }
+      });
+      updateProgress();
+    });
+  </script>
+</body>
+</html>

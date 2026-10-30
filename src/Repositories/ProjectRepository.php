@@ -45,7 +45,8 @@ class ProjectRepository extends AbstractRepository
                     project_slug = ?, title = ?, category = ?, category_name = ?, 
                     tech = ?, description = ?, status = ?, image = ?, 
                     hero_image = ?, screenshots = ?, full_desc = ?, 
-                    features = ?, metrics = ?, order_num = ?
+                    features = ?, metrics = ?, order_num = ?,
+                    seo_title = ?, seo_desc = ?, seo_keywords = ?
                     WHERE id = ?";
                 $stmt = $this->getDb()->prepare($sql);
                 return $stmt->execute([
@@ -63,12 +64,15 @@ class ProjectRepository extends AbstractRepository
                     is_array($data['features'] ?? null) ? json_encode($data['features'], JSON_UNESCAPED_UNICODE) : ($data['features'] ?? '[]'),
                     is_array($data['metrics'] ?? null) ? json_encode($data['metrics'], JSON_UNESCAPED_UNICODE) : ($data['metrics'] ?? '[]'),
                     (int)($data['order_num'] ?? 0),
+                    $data['seo_title'] ?? null,
+                    $data['seo_desc'] ?? null,
+                    $data['seo_keywords'] ?? null,
                     $id
                 ]);
             } else {
                 $sql = "INSERT INTO {$this->table} 
-                    (project_slug, title, category, category_name, tech, description, status, image, hero_image, screenshots, full_desc, features, metrics, order_num)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (project_slug, title, category, category_name, tech, description, status, image, hero_image, screenshots, full_desc, features, metrics, order_num, seo_title, seo_desc, seo_keywords)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->getDb()->prepare($sql);
                 return $stmt->execute([
                     $data['project_slug'] ?? '',
@@ -84,7 +88,10 @@ class ProjectRepository extends AbstractRepository
                     $data['full_desc'] ?? ($data['description'] ?? ''),
                     is_array($data['features'] ?? null) ? json_encode($data['features'], JSON_UNESCAPED_UNICODE) : ($data['features'] ?? '[]'),
                     is_array($data['metrics'] ?? null) ? json_encode($data['metrics'], JSON_UNESCAPED_UNICODE) : ($data['metrics'] ?? '[]'),
-                    (int)($data['order_num'] ?? 0)
+                    (int)($data['order_num'] ?? 0),
+                    $data['seo_title'] ?? null,
+                    $data['seo_desc'] ?? null,
+                    $data['seo_keywords'] ?? null
                 ]);
             }
         } catch (\Exception $e) {

@@ -17,24 +17,58 @@ $address = getSetting('address', 'مصر - الدقهلية - المنصورة /
 $workHours = getSetting('work_hours', 'السبت - الخميس: 9:00 ص - 9:00 م');
 $heroTitle = getSetting('hero_title', 'المبتكر العربي للبرمجيات والحلول الذكية');
 $heroSubtitle = getSetting('hero_subtitle', 'شريكك التكنولوجي لتطوير أنظمة ERP السحابية، حلول الذكاء الاصطناعي، وتطبيقات الموبايل والويب.');
+
+// Initialize SEO Service & Schema.org JSON-LD
+$seoService = new \App\Services\SeoService();
+$siteUrl = 'https://mobtakeraraby.com';
+$schemaJsonLd = $seoService->generateSchemaOrg([
+    'site_url' => $siteUrl,
+    'phone' => $phone,
+    'email' => $email
+], $dbProjects, $dbServices, $dbFaqs);
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>المبتكر العربي للبرمجيات | Almobtaker Alaraby Software & AI Solutions</title>
-  <!-- SEO & Social Meta Tags -->
-  <meta name="description" content="المبتكر العربي للبرمجيات - شريكك التكنولوجي لتطوير أنظمة ERP السحابية، حلول الذكاء الاصطناعي، الفوترة الإلكترونية ZATCA، وتطبيقات الجوال والويب." />
-  <meta name="keywords" content="المبتكر العربي, برمجيات, ERP, Odoo, ZATCA, ذكاء اصطناعي, تطبيقات, مواقع, مصر, السعودية" />
-  <meta property="og:title" content="المبتكر العربي للبرمجيات | Almobtaker Alaraby Software & AI" />
-  <meta property="og:description" content="تطوير الأنظمة السحابية ERP، حلول الذكاء الاصطناعي، الفوترة الإلكترونية ZATCA، وتطبيقات الويب والموبايل." />
-  <meta property="og:image" content="./logo.jpg" />
+  <title><?= htmlspecialchars($siteTitle) ?></title>
+
+  <!-- SEO & Canonical Tags -->
+  <link rel="canonical" href="<?= $siteUrl ?>/" />
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="description" content="شركة المبتكر العربي للبرمجيات - شريكك التكنولوجي لتطوير أنظمة ERP السحابية المتكاملة، حلول الذكاء الاصطناعي وروبوتات الواتساب، منظومة الفاتورة الإلكترونية السعودية ZATCA، وتطبيقات الجوال والويب في مصر والسعودية والخليج." />
+  <meta name="keywords" content="المبتكر العربي للبرمجيات, برنامج ERP للشركات, الفاتورة الإلكترونية ZATCA, برامج طبية EMR, شات بوت واتساب ذكي, برمجة مواقع وتطبيقات, Odoo ERP, برمجيات السعودية, برمجيات مصر, شركات برمجة بالمنصورة والرياض" />
+  <meta name="author" content="المبتكر العربي للبرمجيات" />
+
+  <!-- Geo Targeting Meta Tags (Egypt & Saudi Arabia) -->
+  <meta name="geo.region" content="EG-DK;SA-01" />
+  <meta name="geo.placename" content="Mansoura, Egypt; Riyadh, Saudi Arabia" />
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="<?= $siteUrl ?>/" />
+  <meta property="og:site_name" content="المبتكر العربي للبرمجيات" />
+  <meta property="og:title" content="<?= htmlspecialchars($siteTitle) ?>" />
+  <meta property="og:description" content="تطوير الأنظمة السحابية ERP، حلول الذكاء الاصطناعي، الفوترة الإلكترونية ZATCA، وتطبيقات الويب والموبايل للشركات في مصر والسعودية." />
+  <meta property="og:image" content="<?= $siteUrl ?>/logo.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:locale" content="ar_AR" />
+
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="<?= htmlspecialchars($siteTitle) ?>" />
+  <meta name="twitter:description" content="شريكك التكنولوجي لتطوير أنظمة ERP، حلول الذكاء الاصطناعي، والفوترة الإلكترونية ZATCA في مصر والسعودية." />
+  <meta name="twitter:image" content="<?= $siteUrl ?>/logo.jpg" />
+
+  <!-- Structured Data (Schema.org JSON-LD) -->
+  <script type="application/ld+json">
+  <?= $schemaJsonLd ?>
+  </script>
+
   <meta name="theme-color" content="#08172c" />
   <link rel="icon" type="image/jpeg" href="./logo.jpg" />
-  <meta name="description-old" content="المبتكر العربي للبرمجيات - شريكك التكنولوجي لتطوير أنظمة ERP السحابية، حلول الذكاء الاصطناعي، الفوترة الإلكترونية ZATCA، وتطبيقات الجوال والويب." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -72,6 +106,13 @@ $heroSubtitle = getSetting('hero_subtitle', 'شريكك التكنولوجي ل�
     ::-webkit-scrollbar-track { background: #08172c; }
     ::-webkit-scrollbar-thumb { background: #163c6d; border-radius: 9999px; border: 1px solid rgba(0, 240, 255, 0.2); }
     ::-webkit-scrollbar-thumb:hover { background: #00f0ff; }
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6), 0 10px 25px -5px rgba(34, 197, 94, 0.5); }
+      50% { box-shadow: 0 0 0 14px rgba(34, 197, 94, 0), 0 15px 30px -5px rgba(34, 197, 94, 0.7); }
+    }
+    .floating-whatsapp {
+      animation: pulse-green 2.5s infinite;
+    }
   </style>
 </head>
 <body class="selection:bg-cyan-500 selection:text-slate-950 relative circuit-bg w-full max-w-full overflow-x-hidden">
@@ -4816,22 +4857,61 @@ $heroSubtitle = getSetting('hero_subtitle', 'شريكك التكنولوجي ل�
       const drawer = document.getElementById('mobileDrawer');
       if (drawer) drawer.classList.toggle('hidden');
     }
+
+    // Scroll To Top Button Visibility & Click Handler
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    if (scrollToTopBtn) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 350) {
+          scrollToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+          scrollToTopBtn.classList.add('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        } else {
+          scrollToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+          scrollToTopBtn.classList.remove('opacity-100', 'pointer-events-auto', 'translate-y-0');
+        }
+      }, { passive: true });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
 </script>
 
+  <!-- ================================================= -->
+  <!-- FLOATING ACTION BUTTONS (WHATSAPP & SCROLL TOP) -->
+  <!-- ================================================= -->
+  <div class="fixed bottom-5 left-5 z-50 flex items-center gap-3">
+    <?php
+      $waRaw = preg_replace('/[^0-9]/', '', $whatsapp);
+      if (strpos($waRaw, '01') === 0) {
+        $waRaw = '2' . $waRaw;
+      }
+      $waMsg = urlencode('مرحباً شركة المبتكر العربي، أود الاستفسار وطلب استشارة / عرض سعر لمشروعي البرمجي.');
+      $waUrl = "https://wa.me/{$waRaw}?text={$waMsg}";
+    ?>
+    <a href="<?= $waUrl ?>" target="_blank" rel="noopener noreferrer" 
+       aria-label="تواصل معنا عبر واتساب"
+       class="floating-whatsapp group relative w-13 h-13 sm:w-15 sm:h-15 w-[52px] h-[52px] sm:w-[60px] sm:h-[60px] rounded-full bg-gradient-to-tr from-emerald-600 via-green-500 to-emerald-400 hover:from-emerald-500 hover:to-green-400 text-white flex items-center justify-center text-2xl sm:text-3xl shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 border-2 border-white/20">
+      <i class="fa-brands fa-whatsapp drop-shadow"></i>
+      
+      <!-- Tooltip -->
+      <span class="absolute left-full ml-3 px-3 py-1.5 rounded-xl bg-slate-900/95 text-emerald-300 text-xs font-bold border border-emerald-500/30 whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-all duration-200 shadow-xl hidden sm:flex items-center gap-1.5">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span>تواصل واتساب فوري</span>
+      </span>
+    </a>
+  </div>
 
-
-
-
-    
-
-    
-    <!-- نافذة الشرح التفصيلي للمشروع وشاشاته Modal -->
-    
-  
-    <!-- LIGHTBOX MODAL -->
-    
-
-    
+  <!-- Scroll to Top Button (Bottom-Right) -->
+  <button id="scrollToTopBtn" onclick="scrollToTop()" 
+          aria-label="الرجوع لأعلى الصفحة" 
+          title="الرجوع لأعلى الصفحة"
+          class="fixed bottom-5 right-5 z-50 w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-[#0c223f]/90 hover:bg-cyan-500 text-cyan-300 hover:text-slate-950 border border-cyan-400/40 hover:border-cyan-300 flex items-center justify-center text-base sm:text-lg shadow-xl shadow-cyan-950/50 backdrop-blur-md opacity-0 pointer-events-none translate-y-4 transition-all duration-300 hover:scale-110 active:scale-95 group">
+    <i class="fa-solid fa-arrow-up group-hover:-translate-y-1 transition-transform duration-200"></i>
+  </button>
 
 </body>
 </html>

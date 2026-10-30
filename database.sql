@@ -35,7 +35,10 @@ CREATE TABLE IF NOT EXISTS `projects` (
   `full_desc` text DEFAULT NULL,
   `features` text DEFAULT NULL,
   `metrics` text DEFAULT NULL,
-  `order_num` int(11) DEFAULT 0
+  `order_num` int(11) DEFAULT 0,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `seo_desc` text DEFAULT NULL,
+  `seo_keywords` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `services` (
@@ -49,7 +52,11 @@ CREATE TABLE IF NOT EXISTS `services` (
   `image` text DEFAULT NULL,
   `points` text DEFAULT NULL,
   `tech` text DEFAULT NULL,
-  `order_num` int(11) DEFAULT 0
+  `order_num` int(11) DEFAULT 0,
+  `service_slug` varchar(100) DEFAULT NULL,
+  `seo_title` varchar(255) DEFAULT NULL,
+  `seo_desc` text DEFAULT NULL,
+  `seo_keywords` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS `gallery` (

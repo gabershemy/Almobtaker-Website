@@ -1,9 +1,505 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://almobtaker-alaraby.com/</loc>
-    <lastmod>2026-08-27</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://mobtakeraraby.com/</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mobtakeraraby.com/logo.jpg</image:loc>
+      <image:title>شركة المبتكر العربي للبرمجيات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#services</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#portfolio</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#about</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#team</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.75</priority>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#contact</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-almobtaker-erp</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة المبتكر ERP السحابية المتكاملة للشركات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-saas-whatsapp-bot</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة أتمتة الواتساب وروبوتات الـ AI للشركات (SaaS Multi-Tenant)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-lens-zatca</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>بوابة الربط والفوترة الإلكترونية السعودية (ZATCA Lens Hub)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-poultry-erp</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1586771107445-d3ca888129ff?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة وتتبع تكاليف مزارع الدواجن والإنتاج الحيواني</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-hospital-system</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة المستشفيات والمجمعات الطبية الكبرى (Hospital HIS)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-medical-centers-records</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة السجلات الطبية الإلكترونية EMR للمراكز التخصصية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-dr-mina-clinic</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة عيادات ومراكز د. مينا التخصصية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-dr-eldemery-clinic</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة عيادات ومراكز د. الدمرداش الطبية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-clinic-suite</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>المنظومة الشاملة لإدارة العيادات والمراكز الطبية (Clinic Suite)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-pharmacy-erp</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1587854692152-cbe660dbde88?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام ERP المتكامل لإدارة وسلاسل الصيدليات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-drugs-stores-app</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1471864190281-a93a3070b6de?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة إدارة مستودعات ومخازن الأدوية والمستحضرات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-production-lines</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة وتتبع خطوط الإنتاج والتصنيع الصناعي</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-delta-gas</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة وتوزيع خطوط الغاز والمحطات (Delta Gas)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-industry-dev</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1581092335397-9583fe92d232?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة تطوير وإدارة المشروعات الصناعية والتكاليف</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-agri-sense</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة الزراعة الذكية والمستشعرات الزراعية (Agri-Sense)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-elfeki-agri</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة الفقي للتنمية والاستصلاح والإنتاج الزراعي</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-quality-system</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة وتوكيد الجودة وضبط المعايير (Quality Control ISO)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-ai-school-new</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة المدارس الذكية المعززة بالذكاء الاصطناعي (AI School)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-eduap-pro</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة الإدارة التعليمية المتطورة (EduAp Pro)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-hossam-elearning</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة حسام للتعليم الإلكتروني والامتحانات الرقمية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-mr-mohamed-shaat</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة الأستاذ محمد شحات التعليمية للثانوية العامة</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-language-center</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة معاهد ومراكز اللغات والتدريب الدولي</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-laravel-installement</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>محرك إدارة عقود التقسيط والتحصيل المالي (Installment Engine)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-installement-motorcycle</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة تقسيط ومبيعات المركبات والدراجات النارية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-instal-hossam</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة إدارة المحافظ التمويلية والأقساط الاستهلاكية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-pos-arabic</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام نقاط البيع والكاشير العربي المتوافق مع الفاتورة الإلكترونية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-adly-pos-inventory</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة عدلي للكاشير وإدارة المخزون والمبيعات السريعة</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-almohaseb</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1450133064473-71024230f91b?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>برنامج المحاسب الذكي - قيود يومية وحسابات ختامية</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-sales-management-c</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>برنامج إدارة المبيعات والمخازن المتطور (Sales Pro)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-sales-new</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1556740758-90de374c12ad?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة تتبع المندوبين والمبيعات الميدانية (Field Sales ERP)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-orange-lines</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة أسطول النقل والشحن والخدمات اللوجستية (Orange Lines)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-vision-analytics</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة الرؤية الذكية للتحليلات الإحصائية وتوقع المبيعات (Vision)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-alfahd-new</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام الفهد المتكامل لإدارة الأعمال والمبيعات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-saleh-tarfayah</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1587293852726-70cdb56c2866?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة التجارة والتوزيع (مؤسسة صالح طرفاية)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-assem-hegazy</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1541888946425-d0fbb186c5f7?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة إدارة المشروعات والمقاولات (عاصم حجازي)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-osama-abokhalifa</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>نظام إدارة الأعمال والتجارة (مؤسسة أسامة أبو خليفة)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-shiba-distribution</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1580674684081-7617fbf3d745?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منظومة إدارة التوزيع والتوكيلات التجارية (مؤسسة شيبة)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#project-job-portal</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&amp;fit=crop&amp;w=900&amp;q=80</image:loc>
+      <image:title>منصة وبوابة التوظيف الرقمية ومطابقة الكفاءات (Job Portal)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-تطوير-تطبيقات-الويب-والموبايل-والذكاء-الاصطناعي</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>تطوير تطبيقات الويب والموبايل والذكاء الاصطناعي</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-منظومات-erp-السحابية-المخصصة-للشركات-والمصانع</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>منظومات ERP السحابية المخصصة للشركات والمصانع</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-حلول-الذكاء-الاصطناعي-وروبوتات-الواتساب-الذكية-saas</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>حلول الذكاء الاصطناعي وروبوتات الواتساب الذكية SaaS</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-نقاط-البيع-السريعة-والفوترة-الإلكترونية-zatca</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>نقاط البيع السريعة والفوترة الإلكترونية ZATCA</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-الأمن-السيبراني-واختبار-الاختراق-وحماية-البيانات</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>الأمن السيبراني واختبار الاختراق وحماية البيانات</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-الاستضافة-السحابية-وإدارة-الخوادم-cloud-devops</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>الاستضافة السحابية وإدارة الخوادم (Cloud &amp; DevOps)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-تصميم-واجهات-وتجربة-المستخدم-الاحترافية-ui-ux-design</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>تصميم واجهات وتجربة المستخدم الاحترافية (UI/UX Design)</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://mobtakeraraby.com/#service-تخصيص-وتنفيذ-منظومة-odoo-erp-المتكاملة</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&amp;fit=crop&amp;w=1000&amp;q=80</image:loc>
+      <image:title>تخصيص وتنفيذ منظومة Odoo ERP المتكاملة</image:title>
+    </image:image>
   </url>
 </urlset>

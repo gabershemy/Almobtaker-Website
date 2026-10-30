@@ -26,7 +26,8 @@ class ServiceRepository extends AbstractRepository
                 $sql = "UPDATE {$this->table} SET 
                     title = ?, tag = ?, icon = ?, color_class = ?, 
                     short_desc = ?, desc = ?, image = ?, points = ?, 
-                    tech = ?, order_num = ?
+                    tech = ?, order_num = ?, service_slug = ?,
+                    seo_title = ?, seo_desc = ?, seo_keywords = ?
                     WHERE id = ?";
                 $stmt = $this->getDb()->prepare($sql);
                 return $stmt->execute([
@@ -40,12 +41,16 @@ class ServiceRepository extends AbstractRepository
                     is_array($data['points'] ?? null) ? json_encode($data['points'], JSON_UNESCAPED_UNICODE) : ($data['points'] ?? '[]'),
                     is_array($data['tech'] ?? null) ? json_encode($data['tech'], JSON_UNESCAPED_UNICODE) : ($data['tech'] ?? '[]'),
                     (int)($data['order_num'] ?? 0),
+                    $data['service_slug'] ?? null,
+                    $data['seo_title'] ?? null,
+                    $data['seo_desc'] ?? null,
+                    $data['seo_keywords'] ?? null,
                     $id
                 ]);
             } else {
                 $sql = "INSERT INTO {$this->table} 
-                    (title, tag, icon, color_class, short_desc, desc, image, points, tech, order_num)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    (title, tag, icon, color_class, short_desc, desc, image, points, tech, order_num, service_slug, seo_title, seo_desc, seo_keywords)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
                 $stmt = $this->getDb()->prepare($sql);
                 return $stmt->execute([
                     $data['title'] ?? '',
@@ -57,7 +62,11 @@ class ServiceRepository extends AbstractRepository
                     $data['image'] ?? '',
                     is_array($data['points'] ?? null) ? json_encode($data['points'], JSON_UNESCAPED_UNICODE) : ($data['points'] ?? '[]'),
                     is_array($data['tech'] ?? null) ? json_encode($data['tech'], JSON_UNESCAPED_UNICODE) : ($data['tech'] ?? '[]'),
-                    (int)($data['order_num'] ?? 0)
+                    (int)($data['order_num'] ?? 0),
+                    $data['service_slug'] ?? null,
+                    $data['seo_title'] ?? null,
+                    $data['seo_desc'] ?? null,
+                    $data['seo_keywords'] ?? null
                 ]);
             }
         } catch (\Exception $e) {

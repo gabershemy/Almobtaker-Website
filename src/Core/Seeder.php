@@ -19,6 +19,7 @@ class Seeder
     public static function ensureInitialized(PDO $pdo): void
     {
         self::createTables($pdo);
+        self::autoMigrate($pdo);
 
         $stmt = $pdo->query("SELECT COUNT(*) as count FROM admins");
         $adminCount = (int)($stmt->fetch()['count'] ?? 0);
@@ -67,7 +68,10 @@ class Seeder
             full_desc TEXT,
             features TEXT,
             metrics TEXT,
-            order_num INTEGER DEFAULT 0
+            order_num INTEGER DEFAULT 0,
+            seo_title TEXT,
+            seo_desc TEXT,
+            seo_keywords TEXT
         )");
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS services (
@@ -81,7 +85,11 @@ class Seeder
             image TEXT,
             points TEXT,
             tech TEXT,
-            order_num INTEGER DEFAULT 0
+            order_num INTEGER DEFAULT 0,
+            service_slug TEXT,
+            seo_title TEXT,
+            seo_desc TEXT,
+            seo_keywords TEXT
         )");
 
         $pdo->exec("CREATE TABLE IF NOT EXISTS gallery (
@@ -123,6 +131,72 @@ class Seeder
             is_read INTEGER DEFAULT 0,
             created_at DATETIME DEFAULT CURRENT_TIMESTAMP
         )");
+    }
+
+    /**
+     * Auto-migrate existing database schema (Adds SEO fields if missing)
+     *
+     * @param PDO $pdo
+     * @return void
+     */
+    public static function autoMigrate(PDO $pdo): void
+    {
+        try {
+            $driver = Config::get('db_driver', 'sqlite');
+
+            // 1. Check projects columns
+            $projectCols = [];
+            if ($driver === 'sqlite') {
+                $stmt = $pdo->query("PRAGMA table_info(projects)");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $projectCols[] = strtolower($r['name']);
+                }
+            } else {
+                $stmt = $pdo->query("SHOW COLUMNS FROM projects");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $projectCols[] = strtolower($r['Field']);
+                }
+            }
+
+            if (!in_array('seo_title', $projectCols, true)) {
+                $pdo->exec("ALTER TABLE projects ADD COLUMN seo_title TEXT DEFAULT NULL");
+            }
+            if (!in_array('seo_desc', $projectCols, true)) {
+                $pdo->exec("ALTER TABLE projects ADD COLUMN seo_desc TEXT DEFAULT NULL");
+            }
+            if (!in_array('seo_keywords', $projectCols, true)) {
+                $pdo->exec("ALTER TABLE projects ADD COLUMN seo_keywords TEXT DEFAULT NULL");
+            }
+
+            // 2. Check services columns
+            $serviceCols = [];
+            if ($driver === 'sqlite') {
+                $stmt = $pdo->query("PRAGMA table_info(services)");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $serviceCols[] = strtolower($r['name']);
+                }
+            } else {
+                $stmt = $pdo->query("SHOW COLUMNS FROM services");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $serviceCols[] = strtolower($r['Field']);
+                }
+            }
+
+            if (!in_array('service_slug', $serviceCols, true)) {
+                $pdo->exec("ALTER TABLE services ADD COLUMN service_slug TEXT DEFAULT NULL");
+            }
+            if (!in_array('seo_title', $serviceCols, true)) {
+                $pdo->exec("ALTER TABLE services ADD COLUMN seo_title TEXT DEFAULT NULL");
+            }
+            if (!in_array('seo_desc', $serviceCols, true)) {
+                $pdo->exec("ALTER TABLE services ADD COLUMN seo_desc TEXT DEFAULT NULL");
+            }
+            if (!in_array('seo_keywords', $serviceCols, true)) {
+                $pdo->exec("ALTER TABLE services ADD COLUMN seo_keywords TEXT DEFAULT NULL");
+            }
+        } catch (\Exception $e) {
+            error_log("Seeder::autoMigrate Warning: " . $e->getMessage());
+        }
     }
 
     /**

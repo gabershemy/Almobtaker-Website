@@ -55,6 +55,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['action']) || $_POST
     }
     $full_desc = trim($_POST['full_desc'] ?? $description);
 
+    // Automated SEO Generation & Handling
+    $project_slug = trim($_POST['project_slug'] ?? '');
+    $seo_title = trim($_POST['seo_title'] ?? '');
+    $seo_desc = trim($_POST['seo_desc'] ?? '');
+    $seo_keywords = trim($_POST['seo_keywords'] ?? '');
+
+    $seoService = new \App\Services\SeoService();
+    $autoSeo = $seoService->generateProjectSeo([
+        'title' => $title,
+        'category' => $category,
+        'category_name' => $category_name,
+        'description' => $description,
+        'tech' => $tech,
+        'project_slug' => $project_slug
+    ]);
+
+    if (empty($project_slug)) {
+        $project_slug = !empty($existing['project_slug']) ? $existing['project_slug'] : $autoSeo['project_slug'];
+    }
+    if (empty($seo_title)) {
+        $seo_title = $autoSeo['seo_title'];
+    }
+    if (empty($seo_desc)) {
+        $seo_desc = $autoSeo['seo_desc'];
+    }
+    if (empty($seo_keywords)) {
+        $seo_keywords = $autoSeo['seo_keywords'];
+    }
+
     if (!empty($title)) {
         $saved = $projectRepo->save([
             'id' => $id,
@@ -66,11 +95,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['action']) || $_POST
             'status' => $status,
             'image' => $image,
             'hero_image' => $hero_image,
-            'full_desc' => $full_desc
+            'full_desc' => $full_desc,
+            'project_slug' => $project_slug,
+            'seo_title' => $seo_title,
+            'seo_desc' => $seo_desc,
+            'seo_keywords' => $seo_keywords
         ]);
 
         if ($saved) {
-            $msg = $id > 0 ? 'تم تحديث بيانات المشروع وحفظ الصورة بنجاح!' : 'تمت إضافة المشروع الجديد وحفظ الصورة بنجاح!';
+            // Auto update sitemap
+            try {
+                $serviceRepo = new \App\Repositories\ServiceRepository();
+                $sitemapXml = $seoService->generateSitemap($projectRepo->getAll(), $serviceRepo->getAll());
+                @file_put_contents(dirname(__DIR__) . '/sitemap.xml', $sitemapXml);
+            } catch (\Exception $e) {
+                // Ignore sitemap write error
+            }
+
+            $msg = $id > 0 ? 'تم تحديث بيانات المشروع وتوليد إعدادات الـ SEO بنجاح!' : 'تمت إضافة المشروع الجديد وتوليد إعدادات الـ SEO تلقائياً!';
             if ($id > 0) {
                 $editProject = $projectRepo->findById($id);
             }
@@ -181,6 +223,39 @@ renderAdminHeader('سابقة الأعمال', 'projects');
       <div>
         <label class="block text-xs font-bold text-slate-300 mb-1">الشرح التفصيلي والمميزات</label>
         <textarea name="full_desc" rows="3" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 outline-none"><?= htmlspecialchars($editProject['full_desc'] ?? '') ?></textarea>
+      </div>
+
+      <!-- SEO Optimization Box (Auto-Generated & Editable) -->
+      <div class="p-4 rounded-2xl bg-cyan-950/30 border border-cyan-500/30 space-y-3">
+        <div class="flex items-center justify-between">
+          <h4 class="text-xs font-black text-cyan-300 flex items-center gap-2">
+            <i class="fa-solid fa-magnifying-glass-chart text-cyan-400"></i>
+            <span>إعدادات تحسين محركات البحث (SEO) والظهور في جوجل (تولد تلقائياً)</span>
+          </h4>
+          <span class="text-[10px] bg-cyan-500/10 text-cyan-300 px-2.5 py-1 rounded-full border border-cyan-500/30">Google SERP Ready</span>
+        </div>
+        <p class="text-[11px] text-slate-400">إذا تركت هذه الحقول فارغة، سيقوم النظام بتوليدها تلقائياً بأفضل معايير السيو والكلمات المفتاحية لمصر والسعودية والخليج.</p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">مسار الرابط النظيف (Slug)</label>
+            <input type="text" name="project_slug" value="<?= htmlspecialchars($editProject['project_slug'] ?? '') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-400 outline-none dir-ltr font-mono" placeholder="almobtaker-erp-system">
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 mb-1">عنوان الميتا (Meta Title)</label>
+            <input type="text" name="seo_title" value="<?= htmlspecialchars($editProject['seo_title'] ?? '') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-400 outline-none" placeholder="عنوان يظهر في نتائج بحث جوجل (50-60 حرف)">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 mb-1">وصف الميتا لمحركات البحث (Meta Description)</label>
+          <textarea name="seo_desc" rows="2" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-400 outline-none" placeholder="وصف جذاب ومشجع على النقر يظهر في جوجل (140-160 حرف)"><?= htmlspecialchars($editProject['seo_desc'] ?? '') ?></textarea>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-bold text-slate-300 mb-1">الكلمات المفتاحية (Meta Keywords مفصولة بفواصل)</label>
+          <input type="text" name="seo_keywords" value="<?= htmlspecialchars($editProject['seo_keywords'] ?? '') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-3 py-2 text-xs text-white focus:border-cyan-400 outline-none" placeholder="برامج ERP, الفاتورة الإلكترونية, برمجيات مصر, برمجيات السعودية">
+        </div>
       </div>
 
       <div class="flex items-center gap-3 pt-2">

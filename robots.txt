@@ -3,5 +3,7 @@ User-agent: *
 Allow: /
 Disallow: /admin.html
 Disallow: /admin/
+Disallow: /api/
+Disallow: /check_db.php
 
-Sitemap: https://almobtaker-alaraby.com/sitemap.xml
+Sitemap: https://mobtakeraraby.com/sitemap.xml
