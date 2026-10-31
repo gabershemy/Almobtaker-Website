@@ -48,6 +48,11 @@ class Auth implements AuthInterface
         $hash = $admin['password_hash'] ?? $admin['password'] ?? '';
 
         if ($admin && !empty($hash) && password_verify($password, $hash)) {
+            // Check if user is active
+            if (isset($admin['status']) && (int)$admin['status'] === 0) {
+                return false;
+            }
+
             // Prevent Session Fixation attack
             session_regenerate_id(true);
 
@@ -55,6 +60,9 @@ class Auth implements AuthInterface
             $_SESSION['admin_id']        = $admin['id'];
             $_SESSION['admin_username']  = $admin['username'];
             $_SESSION['admin_name']      = $admin['full_name'] ?? 'إدارة المبتكر العربي';
+            $_SESSION['admin_email']     = $admin['email'] ?? 'gabershemy@gmail.com';
+            $_SESSION['admin_role']      = $admin['role'] ?? 'super_admin';
+            $_SESSION['admin_permissions']= $admin['permissions'] ?? '["all"]';
             $_SESSION['admin_login_at']  = time();
 
             // Refresh CSRF token for the new privileged session
@@ -105,10 +113,34 @@ class Auth implements AuthInterface
         Security::startSession();
 
         return [
-            'id'        => $_SESSION['admin_id'] ?? 0,
-            'username'  => $_SESSION['admin_username'] ?? 'admin',
-            'full_name' => $_SESSION['admin_name'] ?? 'إدارة المبتكر العربي'
+            'id'          => $_SESSION['admin_id'] ?? 0,
+            'username'    => $_SESSION['admin_username'] ?? 'admin',
+            'full_name'   => $_SESSION['admin_name'] ?? 'إدارة المبتكر العربي',
+            'email'       => $_SESSION['admin_email'] ?? 'gabershemy@gmail.com',
+            'role'        => $_SESSION['admin_role'] ?? 'super_admin',
+            'permissions' => $_SESSION['admin_permissions'] ?? '["all"]'
         ];
+    }
+
+    /**
+     * Check if current user has permission for a specific module
+     *
+     * @param string $module Module key (e.g., 'projects', 'services', 'messages', 'settings', 'users')
+     * @return bool
+     */
+    public function hasPermission(string $module): bool
+    {
+        $user = $this->getUser();
+        if (($user['role'] ?? '') === 'super_admin') {
+            return true;
+        }
+
+        $perms = json_decode($user['permissions'] ?? '[]', true);
+        if (!is_array($perms)) {
+            return false;
+        }
+
+        return in_array('all', $perms) || in_array($module, $perms);
     }
 
     /**

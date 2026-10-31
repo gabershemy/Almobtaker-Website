@@ -12,6 +12,7 @@ function renderAdminHeader($pageTitle, $activeMenu = 'dashboard') {
     $teamCount = $pdo->query("SELECT COUNT(*) as c FROM team")->fetch()['c'] ?? 0;
     $faqsCount = $pdo->query("SELECT COUNT(*) as c FROM faqs")->fetch()['c'] ?? 0;
     $galleryCount = $pdo->query("SELECT COUNT(*) as c FROM gallery")->fetch()['c'] ?? 0;
+    $usersCount = $pdo->query("SELECT COUNT(*) as c FROM admins")->fetch()['c'] ?? 1;
 ?>
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
@@ -86,10 +87,26 @@ function renderAdminHeader($pageTitle, $activeMenu = 'dashboard') {
         <a href="settings.php" class="flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl transition <?= $activeMenu === 'settings' ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' : 'text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300' ?>">
           <i class="fa-solid fa-sliders text-cyan-400"></i><span>إعدادات وبيانات الموقع</span>
         </a>
+        <a href="users.php" class="flex items-center justify-between px-3.5 py-2.5 rounded-xl transition <?= $activeMenu === 'users' ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' : 'text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300' ?>">
+          <div class="flex items-center gap-2.5"><i class="fa-solid fa-user-shield text-cyan-400"></i><span>المستخدمين والصلاحيات</span></div>
+          <span class="text-[11px] text-slate-400 font-mono">(<?= $usersCount ?>)</span>
+        </a>
       </nav>
     </div>
 
     <div class="pt-4 border-t border-cyan-500/20 space-y-2 text-xs">
+      <!-- بطاقة حساب المدير الحالي -->
+      <a href="users.php?tab=profile" class="flex items-center gap-3 p-2.5 rounded-2xl bg-cyan-950/40 border border-cyan-500/20 hover:border-cyan-400 transition group text-right">
+        <div class="w-8 h-8 rounded-xl bg-cyan-500/20 border border-cyan-500/40 flex items-center justify-center text-cyan-300 font-bold shrink-0">
+          <i class="fa-solid fa-user-shield text-xs"></i>
+        </div>
+        <div class="truncate flex-1">
+          <p class="text-xs font-bold text-white truncate"><?= htmlspecialchars($admin['full_name'] ?? 'المدير') ?></p>
+          <p class="text-[10px] text-cyan-400 truncate font-mono">@<?= htmlspecialchars($admin['username'] ?? 'admin') ?></p>
+        </div>
+        <i class="fa-solid fa-gear text-slate-400 group-hover:text-cyan-300 text-xs"></i>
+      </a>
+
       <a href="../index.php" target="_blank" class="flex items-center gap-2 text-cyan-400 hover:underline p-2">
         <i class="fa-solid fa-arrow-up-right-from-square"></i><span>عرض الموقع المباشر</span>
       </a>
