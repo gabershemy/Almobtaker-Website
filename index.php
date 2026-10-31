@@ -644,18 +644,82 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
 
 
-    <!-- قسم فريق العمل (TEAM) -->
-    <section id="team" class="py-10 border-t border-cyan-500/20 relative">
+    <!-- قسم فريق العمل (TEAM - سلايدر تفاعلي ذكي واحترافي لخبراء الشركة) -->
+    <section id="team" class="py-14 border-t border-cyan-500/20 relative overflow-hidden">
+      <!-- إضاءة خلفية نيون -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[250px] bg-gradient-to-b from-cyan-500/10 via-sky-500/5 to-transparent blur-3xl pointer-events-none -z-10"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
 
-        <!-- العنوان -->
+        <!-- العنوان الرئيسي -->
         <div class="text-center space-y-2">
-          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 text-xs font-bold"><i class="fa-solid fa-user-group text-cyan-400"></i> فريق العمل</div>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-950/80 text-cyan-300 border border-cyan-500/30 text-xs font-bold shadow-lg shadow-cyan-500/10">
+            <i class="fa-solid fa-user-group text-cyan-400"></i> فريق العمل والخبراء
+          </div>
           <h2 class="text-3xl sm:text-4xl font-black text-white">خبراؤنا في خدمتك</h2>
+          <p class="text-slate-400 text-sm">نخبة متميزة من مهندسي البرمجيات ومصممي تجربة المستخدم وإدارة المشروعات</p>
         </div>
 
-        <!-- الشبكة -->
-        <div id="teamGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+        <!-- عداد الأعضاء السريع -->
+        <div class="flex items-center justify-between gap-4 pt-1">
+          <div class="flex items-center gap-2 text-xs text-slate-400">
+            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+            <span class="font-bold text-white">كوادر متخصصة</span>
+          </div>
+          <span id="teamCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
+            معروض 1 - 4 من 12
+          </span>
+        </div>
+
+        <!-- حاوية سلايدر فريق العمل مع أزرار التنقل الجانبية الاحترافية -->
+        <div class="relative px-2 sm:px-14 group/team-slider" id="teamSliderContainer">
+
+          <!-- زر التنقل الأيمن (السابق) -->
+          <button type="button" id="teamSliderBtnPrev" onclick="teamSliderPrev()" 
+                  aria-label="الخبراء السابقون" 
+                  title="الخبراء السابقون"
+                  class="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-13 sm:h-13 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-right text-base sm:text-lg"></i>
+          </button>
+
+          <!-- زر التنقل الأيسر (التالي) -->
+          <button type="button" id="teamSliderBtnNext" onclick="teamSliderNext()" 
+                  aria-label="الخبراء التاليون" 
+                  title="الخبراء التاليون"
+                  class="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-13 sm:h-13 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-left text-base sm:text-lg"></i>
+          </button>
+
+          <!-- نافذة العرض المتحركة (Window) -->
+          <div class="overflow-hidden rounded-3xl py-2" id="teamTrackWindow">
+            <div id="teamTrack" class="flex transition-transform duration-700 ease-out gap-5" dir="ltr">
+              <!-- كروت فريق العمل تُعرض ديناميكياً بواسطة JavaScript -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- شريط التحكم السفلي ومؤشرات الصفحات والتنقل التلقائي -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-cyan-500/15">
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="toggleTeamAutoplay()" id="teamPlayPauseBtn" class="text-xs text-slate-300 hover:text-cyan-300 flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 bg-[#08172c]/80 transition-all hover:border-cyan-400 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-pause text-cyan-400" id="teamPlayPauseIcon"></i>
+              <span id="teamPlayPauseText" class="font-bold">إيقاف مؤقت</span>
+            </button>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>تبديل تلقائي كل 4 ثوانٍ</span>
+            </div>
+          </div>
+
+          <!-- نقاط التقسيم التفاعلية -->
+          <div id="teamDotsContainer" class="flex items-center gap-2 flex-wrap justify-center"></div>
+
+          <!-- عداد الموبايل -->
+          <div class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-500/30 sm:hidden" id="teamMobileCounter">
+            معروض 1 - 2
+          </div>
+        </div>
 
       </div>
     </section>
@@ -2258,18 +2322,18 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     ];
 
     const defaultTeam = [
-      { name: 'د. جابر الشيمي', role: 'Co-Founder & CEO', icon: 'fa-solid fa-user-tie' },
-      { name: 'م. حسام مجدي', role: 'Front-End Developer', icon: 'fa-solid fa-code' },
-      { name: 'د. آية ماهر غراب', role: 'Social Team Manager', icon: 'fa-solid fa-bullhorn' },
-      { name: 'م. ندى ياقوت شاهين', role: 'Front-End Developer', icon: 'fa-solid fa-laptop-code' },
-      { name: 'م. رُقيّة محمد شريط', role: 'UI/UX Designer', icon: 'fa-solid fa-pen-nib' },
-      { name: 'م. سارة محمود البدري', role: 'UI/UX Designer', icon: 'fa-solid fa-pen-nib' },
-      { name: 'م. روفيده محمد البشلاوي', role: 'Front-End Developer', icon: 'fa-solid fa-code' },
-      { name: 'م. ندى صبحي أبو زيد', role: 'Front-End Developer', icon: 'fa-solid fa-code' },
-      { name: 'أحمد جابر الشيمي', role: 'Social Media Team', icon: 'fa-brands fa-facebook' },
-      { name: 'م. عمرو خالد عيسى', role: 'Backend Software Engineer', icon: 'fa-solid fa-server' },
-      { name: 'م. مصطفى العيسوي', role: 'Flutter Developer', icon: 'fa-solid fa-mobile-screen' },
-      { name: 'شمس صبحي الشيمي', role: 'Marketing Team', icon: 'fa-solid fa-chart-pie' }
+      { name: 'د. جابر الشيمي', role: 'Co-Founder & CEO', icon: 'fa-solid fa-user-tie', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. حسام مجدي', role: 'Front-End Developer', icon: 'fa-solid fa-code', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'د. آية ماهر غراب', role: 'Social Team Manager', icon: 'fa-solid fa-bullhorn', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. ندى ياقوت شاهين', role: 'Front-End Developer', icon: 'fa-solid fa-laptop-code', image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. رُقيّة محمد شريط', role: 'UI/UX Designer', icon: 'fa-solid fa-pen-nib', image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. سارة محمود البدري', role: 'UI/UX Designer', icon: 'fa-solid fa-pen-nib', image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. روفيده محمد البشلاوي', role: 'Front-End Developer', icon: 'fa-solid fa-code', image: 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. ندى صبحي أبو زيد', role: 'Front-End Developer', icon: 'fa-solid fa-code', image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'أحمد جابر الشيمي', role: 'Social Media Team', icon: 'fa-brands fa-facebook', image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. عمرو خالد عيسى', role: 'Backend Software Engineer', icon: 'fa-solid fa-server', image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'م. مصطفى العيسوي', role: 'Flutter Developer', icon: 'fa-solid fa-mobile-screen', image: 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&h=400&q=80' },
+      { name: 'شمس صبحي الشيمي', role: 'Marketing Team', icon: 'fa-solid fa-chart-pie', image: 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&h=400&q=80' }
     ];
 
     
@@ -2573,7 +2637,8 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     document.addEventListener('DOMContentLoaded', () => {
       const container = document.getElementById('servicesSliderContainer');
       if (container) {
-        container.addEventListener('mouseenter', stopServicesAutoplay);
+        // continuous autoplay
+        // container.addEventListener('mouseenter', stopServicesAutoplay);
         container.addEventListener('mouseleave', () => {
           if (isServicesAutoplayActive) startServicesAutoplay();
         });
@@ -2900,7 +2965,8 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       const container = document.getElementById('portfolioSliderContainer');
       if (container) {
         // Pause on mouse hover, resume on mouse leave
-        container.addEventListener('mouseenter', stopSliderAutoplay);
+        // continuous autoplay
+        // container.addEventListener('mouseenter', stopSliderAutoplay);
         container.addEventListener('mouseleave', () => {
           if (isSliderAutoplayActive) startSliderAutoplay();
         });
@@ -3090,22 +3156,220 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
     
 
-    function renderTeamGrid() {
-      const grid = document.getElementById('teamGrid');
-      if (!grid) return;
-      grid.innerHTML = teamData.map(t => `
-        <div class="glass-card rounded-2xl p-5 border border-cyan-500/20 flex flex-col items-center text-center gap-3">
-          <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-2xl">
-            <i class="${t.icon || 'fa-solid fa-user'}"></i>
-          </div>
-          <div>
-            <p class="text-sm font-black text-white leading-snug">${t.name}</p>
-            <p class="text-xs text-cyan-400 mt-1">${t.role}</p>
-          </div>
-        </div>
-      `).join('');
+    /* ====================================================================
+       TEAM SLIDER ENGINE (Responsive 4-Items Slider with Autoplay)
+       ==================================================================== */
+    let currentTeamSlideIndex = 0;
+    let teamAutoplayTimer = null;
+    let isTeamAutoplayActive = true;
+
+    function getVisibleTeamCount() {
+      if (window.innerWidth >= 1024) return 4; // Desktop: 4 team members
+      if (window.innerWidth >= 640) return 3;  // Tablet: 3 team members
+      return 2; // Mobile: 2 team members
     }
 
+    function updateTeamSliderDimensions() {
+      const track = document.getElementById('teamTrack');
+      if (!track) return;
+      const windowEl = document.getElementById('teamTrackWindow');
+      if (!windowEl) return;
+
+      const containerWidth = windowEl.offsetWidth;
+      const visible = getVisibleTeamCount();
+      const gap = 20;
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(140, (containerWidth - totalGaps) / visible);
+
+      const cards = track.querySelectorAll('.team-slide-item');
+      cards.forEach(card => {
+        card.style.width = `${cardWidth}px`;
+        card.style.flexShrink = '0';
+      });
+
+      goToTeamSlide(currentTeamSlideIndex, false);
+    }
+
+    function renderTeamSlider() {
+      const track = document.getElementById('teamTrack');
+      if (!track) return;
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+
+      track.innerHTML = data.map(t => {
+        const iconClass = (t.icon && t.icon.includes('fa-')) ? (t.icon.includes('fa-solid') || t.icon.includes('fa-brands') ? t.icon : 'fa-solid ' + t.icon) : 'fa-solid fa-user';
+        const imgUrl = t.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80';
+
+        return `
+          <div class="team-slide-item glass-card glass-card-hover rounded-3xl p-5 border border-cyan-500/25 flex flex-col items-center text-center justify-between gap-4 transition-all duration-300 group shadow-xl h-full select-none" dir="rtl">
+            <div class="relative">
+              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-cyan-500/40 p-0.5 bg-gradient-to-tr from-cyan-500/30 to-blue-500/20 shadow-lg shadow-cyan-500/10 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300">
+                <img src="${imgUrl}" alt="${t.name}" class="w-full h-full object-cover rounded-xl group-hover:scale-108 transition-transform duration-300" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80'" />
+              </div>
+              <div class="absolute -bottom-2 -left-2 w-7 h-7 rounded-lg bg-[#08172c] border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xs shadow-md">
+                <i class="${iconClass}"></i>
+              </div>
+            </div>
+
+            <div class="space-y-1 w-full">
+              <p class="text-xs sm:text-sm font-black text-white group-hover:text-cyan-300 transition-colors leading-snug truncate">${t.name}</p>
+              <p class="text-[10px] sm:text-xs text-cyan-400 font-bold truncate">${t.role}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      updateTeamSliderDimensions();
+      renderTeamDots();
+      updateTeamCounters();
+    }
+
+    function renderTeamGrid() {
+      renderTeamSlider();
+    }
+
+    function goToTeamSlide(index, animate = true) {
+      const track = document.getElementById('teamTrack');
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      if (!track || !data.length) return;
+
+      const visible = getVisibleTeamCount();
+      const maxIndex = Math.max(0, data.length - visible);
+
+      if (index > maxIndex) {
+        currentTeamSlideIndex = 0;
+      } else if (index < 0) {
+        currentTeamSlideIndex = maxIndex;
+      } else {
+        currentTeamSlideIndex = index;
+      }
+
+      const windowEl = document.getElementById('teamTrackWindow');
+      if (!windowEl) return;
+      const containerWidth = windowEl.offsetWidth;
+      const gap = 20;
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(140, (containerWidth - totalGaps) / visible);
+
+      const shift = currentTeamSlideIndex * (cardWidth + gap);
+
+      track.style.transition = animate ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+      track.style.transform = `translateX(-${shift}px)`;
+
+      updateActiveTeamDot();
+      updateTeamCounters();
+    }
+
+    function teamSliderNext() {
+      const visible = getVisibleTeamCount();
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      const maxIndex = Math.max(0, data.length - visible);
+      if (currentTeamSlideIndex >= maxIndex) {
+        goToTeamSlide(0);
+      } else {
+        goToTeamSlide(Math.min(currentTeamSlideIndex + visible, maxIndex));
+      }
+    }
+
+    function teamSliderPrev() {
+      const visible = getVisibleTeamCount();
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      const maxIndex = Math.max(0, data.length - visible);
+      if (currentTeamSlideIndex <= 0) {
+        goToTeamSlide(maxIndex);
+      } else {
+        goToTeamSlide(Math.max(currentTeamSlideIndex - visible, 0));
+      }
+    }
+
+    function renderTeamDots() {
+      const container = document.getElementById('teamDotsContainer');
+      if (!container) return;
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      const visible = getVisibleTeamCount();
+      const total = data.length;
+      if (total <= visible) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const totalPages = Math.ceil(total / visible);
+      let dotsHtml = '';
+      for (let i = 0; i < totalPages; i++) {
+        const targetIndex = Math.min(i * visible, Math.max(0, total - visible));
+        dotsHtml += `
+          <button type="button" onclick="goToTeamSlide(${targetIndex})" data-team-dot="${i}" aria-label="صفحة الخبراء ${i + 1}"
+                  class="team-slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer"></button>
+        `;
+      }
+      container.innerHTML = dotsHtml;
+      updateActiveTeamDot();
+    }
+
+    function updateActiveTeamDot() {
+      const visible = getVisibleTeamCount();
+      const currentPage = Math.round(currentTeamSlideIndex / visible);
+      document.querySelectorAll('.team-slider-dot').forEach((dot, idx) => {
+        if (idx === currentPage) {
+          dot.className = 'team-slider-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-cyan-400 shadow-[0_0_10px_rgba(0,240,255,0.8)] cursor-pointer';
+        } else {
+          dot.className = 'team-slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer';
+        }
+      });
+    }
+
+    function updateTeamCounters() {
+      const badge = document.getElementById('teamCounterBadge');
+      const mobileCounter = document.getElementById('teamMobileCounter');
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      const total = data.length;
+      if (!total) return;
+
+      const visible = getVisibleTeamCount();
+      const start = currentTeamSlideIndex + 1;
+      const end = Math.min(currentTeamSlideIndex + visible, total);
+
+      const text = `معروض ${start} - ${end} من ${total}`;
+      if (badge) badge.textContent = text;
+      if (mobileCounter) mobileCounter.textContent = `${start} - ${end} من ${total}`;
+    }
+
+    function startTeamAutoplay() {
+      stopTeamAutoplay();
+      if (!isTeamAutoplayActive) return;
+      teamAutoplayTimer = setInterval(() => {
+        teamSliderNext();
+      }, 4000);
+    }
+
+    function stopTeamAutoplay() {
+      if (teamAutoplayTimer) {
+        clearInterval(teamAutoplayTimer);
+        teamAutoplayTimer = null;
+      }
+    }
+
+    function toggleTeamAutoplay() {
+      isTeamAutoplayActive = !isTeamAutoplayActive;
+      const icon = document.getElementById('teamPlayPauseIcon');
+      const text = document.getElementById('teamPlayPauseText');
+
+      if (isTeamAutoplayActive) {
+        startTeamAutoplay();
+        if (icon) icon.className = 'fa-solid fa-pause text-cyan-400';
+        if (text) text.textContent = 'إيقاف مؤقت';
+      } else {
+        stopTeamAutoplay();
+        if (icon) icon.className = 'fa-solid fa-play text-cyan-400';
+        if (text) text.textContent = 'تشغيل تلقائي';
+      }
+    }
+
+    window.addEventListener('resize', () => {
+      clearTimeout(window.teamResizeTimeout);
+      window.teamResizeTimeout = setTimeout(() => {
+        updateTeamSliderDimensions();
+      }, 150);
+    });
     window.addEventListener('storage', (e) => {
       if (e.key === 'almobtaker_projects') {
         projects = JSON.parse(e.newValue || '[]');
@@ -3126,12 +3390,17 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       }
     });
 
-    // Startup
-    renderServicesSection();
+    // Startup - Initialize and run all 3 sliders automatically
+    renderServicesSlider();
+    startServicesAutoplay();
+
     filterPortfolioSlider('all');
     startSliderAutoplay();
+
+    renderTeamSlider();
+    startTeamAutoplay();
+
     renderGalleryGrid('all');
-    renderTeamGrid();
 
     function toggleFaq(btn) {
       const ans = btn.nextElementSibling;

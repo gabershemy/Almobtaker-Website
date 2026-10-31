@@ -26,15 +26,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && (!isset($_POST['action']) || $_POST
     $name = trim($_POST['name'] ?? '');
     $role = trim($_POST['role'] ?? '');
     $icon = trim($_POST['icon'] ?? 'fa-solid fa-user');
+    $image = trim($_POST['image'] ?? '');
+
+    // Handle Image Upload if provided
+    if (!empty($_FILES['image_file']['name']) && $_FILES['image_file']['error'] === UPLOAD_ERR_OK) {
+        $allowed = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+        $ext = strtolower(pathinfo($_FILES['image_file']['name'], PATHINFO_EXTENSION));
+        if (in_array($ext, $allowed)) {
+            $uploadDir = __DIR__ . '/../uploads/team/';
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0755, true);
+            }
+            $filename = 'team_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+            if (move_uploaded_file($_FILES['image_file']['tmp_name'], $uploadDir . $filename)) {
+                $image = 'uploads/team/' . $filename;
+            }
+        }
+    }
 
     if (!empty($name) && !empty($role)) {
         if ($id > 0) {
-            $stmt = $pdo->prepare("UPDATE team SET name=?, role=?, icon=? WHERE id=?");
-            $stmt->execute([$name, $role, $icon, $id]);
+            $stmt = $pdo->prepare("UPDATE team SET name=?, role=?, icon=?, image=? WHERE id=?");
+            $stmt->execute([$name, $role, $icon, $image, $id]);
             $msg = 'تم تحديث بيانات العضو بنجاح';
         } else {
-            $stmt = $pdo->prepare("INSERT INTO team (name, role, icon) VALUES (?, ?, ?)");
-            $stmt->execute([$name, $role, $icon]);
+            $stmt = $pdo->prepare("INSERT INTO team (name, role, icon, image) VALUES (?, ?, ?, ?)");
+            $stmt->execute([$name, $role, $icon, $image]);
             $msg = 'تمت إضافة العضو الجديد بنجاح';
         }
     } else {
@@ -81,7 +98,7 @@ renderAdminHeader('فريق العمل', 'team');
       <i class="fa-solid fa-pen-to-square text-cyan-400"></i>
       <span><?= $editMember ? 'تعديل عضو: ' . htmlspecialchars($editMember['name']) : 'إضافة عضو جديد' ?></span>
     </h3>
-    <form method="POST" class="space-y-4">
+    <form method="POST" enctype="multipart/form-data" class="space-y-4">
       <input type="hidden" name="csrf_token" value="<?= getCsrfToken() ?>">
       <input type="hidden" name="member_id" value="<?= $editMember['id'] ?? 0 ?>">
       
@@ -96,9 +113,20 @@ renderAdminHeader('فريق العمل', 'team');
         </div>
       </div>
 
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">رابط صورة العضو (URL)</label>
+          <input type="text" name="image" value="<?= htmlspecialchars($editMember['image'] ?? '') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 outline-none dir-ltr font-mono" placeholder="https://... أو مسار الصورة">
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1">أو رفع صورة من الجهاز</label>
+          <input type="file" name="image_file" accept="image/*" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2 text-xs text-slate-300 focus:border-cyan-400 outline-none file:mr-2 file:py-1 file:px-3 file:rounded-lg file:border-0 file:text-xs file:bg-cyan-500/20 file:text-cyan-300">
+        </div>
+      </div>
+
       <div>
-        <label class="block text-xs font-bold text-slate-300 mb-1">الأيقونة (FontAwesome class)</label>
-        <input type="text" name="icon" value="<?= htmlspecialchars($editMember['icon'] ?? 'fa-solid fa-user') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 outline-none dir-ltr font-mono" placeholder="fa-solid fa-code">
+        <label class="block text-xs font-bold text-slate-300 mb-1">الأيقونة الاحتياطية (FontAwesome class)</label>
+        <input type="text" name="icon" value="<?= htmlspecialchars($editMember['icon'] ?? 'fa-solid fa-user') ?>" class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2.5 text-sm text-white focus:border-cyan-400 outline-none dir-ltr font-mono" placeholder="fa-solid fa-user-tie">
       </div>
 
       <div class="flex items-center gap-3 pt-2">
@@ -115,8 +143,14 @@ renderAdminHeader('فريق العمل', 'team');
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
     <?php foreach ($team as $m): ?>
       <div class="glass-panel rounded-2xl p-5 border border-cyan-500/20 flex flex-col items-center text-center justify-between gap-3">
-        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-2xl">
-          <i class="<?= htmlspecialchars($m['icon'] ?: 'fa-solid fa-user') ?>"></i>
+        <div class="relative">
+          <?php if (!empty($m['image'])): ?>
+            <img src="<?= htmlspecialchars($m['image']) ?>" alt="<?= htmlspecialchars($m['name']) ?>" class="w-16 h-16 rounded-2xl object-cover border-2 border-cyan-500/40 shadow-lg shadow-cyan-500/20">
+          <?php else: ?>
+            <div class="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-2xl">
+              <i class="<?= htmlspecialchars($m['icon'] ?: 'fa-solid fa-user') ?>"></i>
+            </div>
+          <?php endif; ?>
         </div>
         <div>
           <p class="text-sm font-black text-white leading-snug"><?= htmlspecialchars($m['name']) ?></p>

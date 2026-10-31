@@ -110,6 +110,7 @@ class Seeder
             name TEXT,
             role TEXT,
             icon TEXT,
+            image TEXT,
             order_num INTEGER DEFAULT 0
         )");
 
@@ -194,6 +195,23 @@ class Seeder
             if (!in_array('seo_keywords', $serviceCols, true)) {
                 $pdo->exec("ALTER TABLE services ADD COLUMN seo_keywords TEXT DEFAULT NULL");
             }
+
+            // 3. Check team columns
+            $teamCols = [];
+            if ($driver === 'sqlite') {
+                $stmt = $pdo->query("PRAGMA table_info(team)");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $teamCols[] = strtolower($r['name']);
+                }
+            } else {
+                $stmt = $pdo->query("SHOW COLUMNS FROM team");
+                while ($r = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $teamCols[] = strtolower($r['Field']);
+                }
+            }
+            if (!in_array('image', $teamCols, true)) {
+                $pdo->exec("ALTER TABLE team ADD COLUMN image TEXT DEFAULT NULL");
+            }
         } catch (\Exception $e) {
             error_log("Seeder::autoMigrate Warning: " . $e->getMessage());
         }
@@ -240,20 +258,20 @@ class Seeder
 
         // 3. Team
         $team = [
-            ['د. جابر الشيمي', 'Co-Founder & CEO', 'fa-user-tie', 1],
-            ['م. حسام مجدي', 'Front-End Developer', 'fa-code', 2],
-            ['د. آية ماهر غراب', 'Social Team Manager', 'fa-bullhorn', 3],
-            ['م. ندى ياقوت شاهين', 'Front-End Developer', 'fa-laptop-code', 4],
-            ['م. رُقيّة محمد شريط', 'UI/UX Designer', 'fa-pen-nib', 5],
-            ['م. سارة محمود البدري', 'UI/UX Designer', 'fa-pen-nib', 6],
-            ['م. روفيده محمد البشلاوي', 'Front-End Developer', 'fa-code', 7],
-            ['م. ندى صبحي أبو زيد', 'Front-End Developer', 'fa-code', 8],
-            ['أحمد جابر الشيمي', 'Social Media Team', 'fa-brands fa-facebook', 9],
-            ['م. عمرو خالد عيسى', 'Backend Software Engineer', 'fa-server', 10],
-            ['م. مصطفى العيسوي', 'Flutter Developer', 'fa-mobile-screen', 11],
-            ['شمس صبحي الشيمي', 'Marketing Team', 'fa-chart-pie', 12]
+            ['د. جابر الشيمي', 'Co-Founder & CEO', 'fa-solid fa-user-tie', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80', 1],
+            ['م. حسام مجدي', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80', 2],
+            ['د. آية ماهر غراب', 'Social Team Manager', 'fa-solid fa-bullhorn', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80', 3],
+            ['م. ندى ياقوت شاهين', 'Front-End Developer', 'fa-solid fa-laptop-code', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80', 4],
+            ['م. رُقيّة محمد شريط', 'UI/UX Designer', 'fa-solid fa-pen-nib', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80', 5],
+            ['م. سارة محمود البدري', 'UI/UX Designer', 'fa-solid fa-pen-nib', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&h=400&q=80', 6],
+            ['م. روفيده محمد البشلاوي', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&h=400&q=80', 7],
+            ['م. ندى صبحي أبو زيد', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&h=400&q=80', 8],
+            ['أحمد جابر الشيمي', 'Social Media Team', 'fa-brands fa-facebook', 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80', 9],
+            ['م. عمرو خالد عيسى', 'Backend Software Engineer', 'fa-solid fa-server', 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=400&q=80', 10],
+            ['م. مصطفى العيسوي', 'Flutter Developer', 'fa-solid fa-mobile-screen', 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&h=400&q=80', 11],
+            ['شمس صبحي الشيمي', 'Marketing Team', 'fa-solid fa-chart-pie', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&h=400&q=80', 12]
         ];
-        $stmtTeam = $pdo->prepare("INSERT INTO team (name, role, icon, order_num) VALUES (?, ?, ?, ?)");
+        $stmtTeam = $pdo->prepare("INSERT INTO team (name, role, icon, image, order_num) VALUES (?, ?, ?, ?, ?)");
         foreach ($team as $t) {
             $stmtTeam->execute($t);
         }
