@@ -1,9 +1,33 @@
-# robots.txt for Almobtaker Alaraby Software
+# =========================================================================
+# Robots.txt for Almobtaker Alaraby Software & AI (https://mobtakeraraby.com)
+# Optimized for Googlebot, Bingbot, and AI Search Crawlers
+# =========================================================================
+
 User-agent: *
 Allow: /
-Disallow: /admin.html
 Disallow: /admin/
+Disallow: /admin.html
 Disallow: /api/
-Disallow: /check_db.php
+Disallow: /database.*
+Disallow: /config.php
+Disallow: /bootstrap.php
 
+# Googlebot Full Access
+User-agent: Googlebot
+Allow: /
+Allow: /#services
+Allow: /#portfolio
+Allow: /#about
+Allow: /#contact
+Allow: /uploads/
+Disallow: /admin/
+Disallow: /admin.html
+
+# Googlebot-Image - Allow crawling of project logos & screenshots
+User-agent: Googlebot-Image
+Allow: /uploads/
+Allow: /logo.jpg
+Allow: /assets/
+
+# Google Search Console Sitemap Pointer
 Sitemap: https://mobtakeraraby.com/sitemap.xml

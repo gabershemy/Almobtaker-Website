@@ -35,16 +35,26 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title><?= htmlspecialchars($siteTitle) ?></title>
 
+  <!-- Google Search Console Verification -->
+  <meta name="google-site-verification" content="Bs-4lJ8yW_Pvtr_vw18c_NeiO6CSSwNODn4MzVrRdOw" />
+
   <!-- SEO & Canonical Tags -->
   <link rel="canonical" href="<?= $siteUrl ?>/" />
-  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="description" content="شركة المبتكر العربي للبرمجيات - شريكك التكنولوجي لتطوير أنظمة ERP السحابية المتكاملة، حلول الذكاء الاصطناعي وروبوتات الواتساب، منظومة الفاتورة الإلكترونية السعودية ZATCA، وتطبيقات الجوال والويب في مصر والسعودية والخليج." />
-  <meta name="keywords" content="المبتكر العربي للبرمجيات, برنامج ERP للشركات, الفاتورة الإلكترونية ZATCA, برامج طبية EMR, شات بوت واتساب ذكي, برمجة مواقع وتطبيقات, Odoo ERP, برمجيات السعودية, برمجيات مصر, شركات برمجة بالمنصورة والرياض" />
+  <meta name="description" content="المبتكر العربي للبرمجيات والحلول الذكية: شريكك لتطوير أنظمة ERP السحابية المتوافقة مع هيئة الزكاة ZATCA، بوتات الواتساب التفاعلية بالذكاء الاصطناعي، وتطوير التطبيقات والمواقع في السعودية ومصر والخليج." />
+  <meta name="keywords" content="المبتكر العربي, شركة برمجيات, نظام ERP سحابي, ZATCA الفوترة الإلكترونية, شات بوت واتساب ذكاء اصطناعي, برمجة تطبيقات جوال, تصميم مواقع شركات, برنامج محاسبة سحابي, حلول ذكاء اصطناعي للأعمال, برمجيات دمنهور, برمجيات الرياض" />
   <meta name="author" content="المبتكر العربي للبرمجيات" />
 
-  <!-- Geo Targeting Meta Tags (Egypt & Saudi Arabia) -->
-  <meta name="geo.region" content="EG-DK;SA-01" />
-  <meta name="geo.placename" content="Mansoura, Egypt; Riyadh, Saudi Arabia" />
+  <!-- وسوم الاستهداف الإقليمي والجغرافي (Local & Regional SEO) -->
+  <meta name="geo.region" content="SA;EG" />
+  <meta name="geo.placename" content="Saudi Arabia, Egypt, Damanhour, Riyadh, Cairo" />
+  <link rel="alternate" hreflang="ar-SA" href="<?= $siteUrl ?>/" />
+  <link rel="alternate" hreflang="ar-EG" href="<?= $siteUrl ?>/" />
+  <link rel="alternate" hreflang="ar" href="<?= $siteUrl ?>/" />
+  <link rel="alternate" hreflang="x-default" href="<?= $siteUrl ?>/" />
+
+  <!-- أوامر عناكب البحث Googlebot -->
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -988,6 +998,75 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       </div>
     </section>
 
+    <!-- SECTION: Topical Authority & Engineering Standards (SEO EEAT Pillars) -->
+    <section class="py-16 bg-[#08172c]/80 border-t border-cyan-500/10 text-right relative overflow-hidden" id="authority-pillars">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-3">
+          <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+            <i class="fa-solid fa-award text-cyan-400"></i> ركائز الخبرة والموثوقية الهندسية (EEAT Authority)
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">معاييرنا الهندسية في بناء الأنظمة السحابية والذكاء الاصطناعي</h2>
+          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
+            نلتزم بأعلى المقاييس العالمية في هندسة البرمجيات المؤسسية، والتوافق القانوني والضريبي، والتكامل الذكي لخدمة شركائنا في مصر والسعودية والخليج العربي.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          
+          <!-- Pillar 1: ZATCA Phase 2 -->
+          <div class="glass-card rounded-3xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl">
+              <i class="fa-solid fa-file-invoice-dollar"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">منظومة الفوترة الإلكترونية ZATCA (المرحلة الثانية)</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              تطوير أنظمة فوترة سحابية معتمدة ومتوافقة بالكامل مع متطلبات هيئة الزكاة والضريبة والجمارك بالمملكة العربية السعودية، تدعم التشفير الرقمي الآمن (Cryptographic Stamp)، وتوليد رمز الاستجابة السريع المشفر (Cryptographic QR Code)، والتكامل اللحظي عبر بروتوكولات API الرسمية للفواتير الضريبية المبسطة والتجارية.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">ZATCA Phase 2</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">UBL 2.1 XML</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20">تشفير رقمي</span>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Cloud ERP Architecture -->
+          <div class="glass-card rounded-3xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl">
+              <i class="fa-solid fa-network-wired"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">معمارية أنظمة ERP السحابية وتكامل الأقسام</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              بناء وتخصيص منظومات تخطيط موارد المؤسسات المتكاملة التي تدير شجرة الحسابات العامة المتوافقة مع المعايير الدولية (IFRS)، وإدارة المستودعات الذكية بسياسات التقييم المالي (FIFO و LIFO)، ودورات المشتريات والمبيعات ومراكز التكلفة، وربط البنوك والتقارير المالية التحليلية لدعم اتخاذ القرار في بيئات العمل المعقدة.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">Multi-Tenant Cloud ERP</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">FIFO / LIFO</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20">شجرة الحسابات</span>
+            </div>
+          </div>
+
+          <!-- Pillar 3: AI WhatsApp Automation -->
+          <div class="glass-card rounded-3xl p-6 border border-cyan-500/20 hover:border-cyan-400/40 transition-all duration-300 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-xl">
+              <i class="fa-brands fa-whatsapp"></i>
+            </div>
+            <h3 class="text-lg font-black text-white">حلول الذكاء الاصطناعي وبوتات الواتساب الرسمية</h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              أتمتة خدمة العملاء والمبيعات عبر التكامل الرسمي مع Meta WhatsApp Cloud API وربطها بنماذج الذكاء الاصطناعي التوليدي (LLMs) لمعالجة اللغة الطبيعية باللغة العربية بلهجات متعددة، ومزامنة الاستفسارات مع قواعد بيانات الـ ERP والمتجر لتتبع الشحنات، إصدار الفواتير الفورية، وتوليد العملاء المحتملين (Lead Generation) آلياً 24/7.
+            </p>
+            <div class="flex flex-wrap gap-2 pt-2">
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">WhatsApp Cloud API</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 font-mono">AI Conversational Agents</span>
+              <span class="text-[10px] px-2.5 py-1 rounded-lg bg-cyan-950/60 text-cyan-300 border border-cyan-500/20">أتمتة مبيعات</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
   </main>
 
 
@@ -1074,6 +1153,31 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <a href="mailto:<?= htmlspecialchars($email) ?>" class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 transition"><i class="fa-solid fa-envelope"></i></a>
             <a href="admin/index.php" class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-500/20 transition" title="لوحة التحكم"><i class="fa-solid fa-lock"></i></a>
           </div>
+        </div>
+      </div>
+
+      <!-- شريط المدن والمناطق المستهدفة (Regional SEO Anchors) -->
+      <div class="border-t border-cyan-500/10 pt-6 text-right space-y-2">
+        <p class="text-[11px] font-bold text-slate-300 flex items-center gap-2">
+          <i class="fa-solid fa-map-location-dot text-cyan-400"></i>
+          <span>تغطية خدماتنا البرمجية والاستشارية في الوطن العربي:</span>
+        </p>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] text-slate-400 leading-relaxed">
+          <a href="#services" class="hover:text-cyan-300 transition">حلول برمجية وأنظمة ERP في الرياض</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">برمجة تطبيقات في جدة</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">تصميم مواقع في الدمام والخبر</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">الفوترة الإلكترونية ZATCA السعودية</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">أنظمة إدارة شركات في القاهرة والجيزة</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">برامج محاسبية ومستودعات في دمنهور والبحيرة</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">تطوير برمجيات بالمنصورة والإسكندرية</a>
+          <span class="text-cyan-500/40">•</span>
+          <a href="#services" class="hover:text-cyan-300 transition">حلول الذكاء الاصطناعي وبوتات الواتساب في الإمارات والخليج العربي</a>
         </div>
       </div>
 
