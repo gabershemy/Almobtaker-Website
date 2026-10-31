@@ -71,6 +71,7 @@ class DeployWebhookController extends Controller
 
         $commands = [
             "cd \"{$baseDir}\"",
+            "(git checkout -- database/database.sqlite database.sqlite 2>&1 || true)",
             "git pull origin main 2>&1",
             "php artisan migrate --force 2>&1",
             "php artisan optimize:clear 2>&1"

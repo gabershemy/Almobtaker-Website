@@ -118,6 +118,7 @@ if (!$lockHandle || !flock($lockHandle, LOCK_EX | LOCK_NB)) {
 // 8. Execute Deployment Commands (< 3 seconds execution)
 $commands = [
     "cd \"{$baseDir}\"",
+    "(git checkout -- database/database.sqlite database.sqlite 2>&1 || true)",
     "git pull origin main 2>&1",
     "php artisan migrate --force 2>&1",
     "php artisan optimize:clear 2>&1"
