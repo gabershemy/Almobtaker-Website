@@ -19,11 +19,11 @@ Route::post('/api/inquiries', [HomeController::class, 'submitInquiry'])
 Route::match(['post', 'get'], '/api/contact.php', [HomeController::class, 'submitInquiry'])
     ->middleware('throttle:10,1');
 
-// GitHub Auto-Deploy Webhook Endpoint
-Route::match(['post', 'get'], '/deploy-webhook', function () {
+// Hardened GitHub Auto-Deploy Webhook Endpoint (POST Only + Rate-limited)
+Route::post('/deploy-webhook', function () {
     require_once base_path('deploy-webhook.php');
-})->name('deploy.webhook');
+})->middleware('throttle:6,1')->name('deploy.webhook');
 
-Route::match(['post', 'get'], '/api/deploy-webhook', function () {
+Route::post('/api/deploy-webhook', function () {
     require_once base_path('deploy-webhook.php');
-});
+})->middleware('throttle:6,1');
