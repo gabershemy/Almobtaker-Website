@@ -12,6 +12,21 @@ CREATE TABLE IF NOT EXISTS `settings` (
   `key_value` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `settings` (`key_name`, `key_value`) VALUES
+('site_title', 'المبتكر العربي للبرمجيات | Almobtaker Alaraby Software & AI Solutions'),
+('phone', '+201013688446'),
+('whatsapp', '01013688446'),
+('email', 'arabiccreative80@gmail.com'),
+('address', 'دمنهور - مصر'),
+('work_hours', 'السبت - الخميس: 9:00 ص - 9:00 م'),
+('hero_title', 'المبتكر العربي للبرمجيات والحلول الذكية'),
+('hero_subtitle', 'شريكك التكنولوجي لتطوير أنظمة ERP السحابية، حلول الذكاء الاصطناعي، تطبيقات الموبايل والويب، والربط والفوترة الإلكترونية ZATCA.'),
+('hero_p1', 'نحن شركة المبتكر العربي للبرمجيات، متخصصة في تطوير الحلول التقنية المتقدمة، نقدم خدمات متكاملة تشمل برمجة تطبيقات الويب وسطح المكتب، تصميم الواجهات المتجاوبة، الأمن السيبراني، والدعم الفني المستمر.'),
+('about_p1', 'تأسست شركة المبتكر العربي للبرمجيات عام 2006، وتُعد من الشركات الرائدة في العالم العربي في مجال تطوير البرمجيات والحلول التقنية المتكاملة.'),
+('about_p2', 'نقدم خدمات متكاملة تشمل: تصميم وتطوير مواقع الويب، تطبيقات الهواتف الذكية، الأنظمة الإدارية ERP، الذكاء الاصطناعي، وتحليل البيانات، مع التزام تام بأعلى معايير الأمان والجودة.'),
+('about_p3', 'بفضل خبرتنا الممتدة لأكثر من 18 عامًا، نجحنا في تنفيذ أكثر من 65 منظومة متقدمة لمؤسسات ومصانع وشركات كبرى محلياً وإقليمياً.')
+ON DUPLICATE KEY UPDATE `key_value` = VALUES(`key_value`);
+
 CREATE TABLE IF NOT EXISTS `admins` (
   `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(50) NOT NULL UNIQUE,

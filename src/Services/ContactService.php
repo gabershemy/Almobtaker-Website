@@ -79,6 +79,31 @@ class ContactService
         ]);
 
         if ($saved) {
+            // 6. Send instant email notification to admin
+            try {
+                $adminEmail = function_exists('getSetting') ? getSetting('email', 'arabiccreative80@gmail.com') : 'arabiccreative80@gmail.com';
+                $subject = "طلب دراسة مشروع جديد من: " . $name . " | المبتكر العربي";
+                
+                $body = "<h2>وصلك طلب دراسة مشروع جديد عبر موقع المبتكر العربي للبرمجيات</h2>";
+                $body .= "<p><strong>الاسم الكريم:</strong> " . htmlspecialchars($name) . "</p>";
+                $body .= "<p><strong>رقم الهاتف / واتساب:</strong> " . htmlspecialchars($phone) . "</p>";
+                $body .= "<p><strong>البريد الإلكتروني للعميل:</strong> " . htmlspecialchars($email ?: 'غير مدخل') . "</p>";
+                $body .= "<p><strong>نوع الخدمة أو المنظومة:</strong> " . htmlspecialchars($serviceType) . "</p>";
+                $body .= "<p><strong>تفاصيل الفكرة أو المتطلبات:</strong><br>" . nl2br(htmlspecialchars($message)) . "</p>";
+                $body .= "<hr><p><small>تاريخ وتوقيت الإرسال: " . date('Y-m-d H:i:s') . "</small></p>";
+
+                $headers  = "MIME-Version: 1.0\r\n";
+                $headers .= "Content-type: text/html; charset=UTF-8\r\n";
+                $headers .= "From: Almobtaker Website <noreply@mobtakeraraby.com>\r\n";
+                if (!empty($email)) {
+                    $headers .= "Reply-To: " . $email . "\r\n";
+                }
+
+                @mail($adminEmail, "=?UTF-8?B?" . base64_encode($subject) . "?=", $body, $headers);
+            } catch (\Throwable $e) {
+                error_log("Failed to send contact notification email: " . $e->getMessage());
+            }
+
             return [
                 'success' => true,
                 'message' => 'تم استلام طلبك بنجاح! سيتواصل معك فريقنا الهندسي في أقرب وقت.',
