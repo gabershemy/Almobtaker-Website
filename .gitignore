@@ -11,10 +11,6 @@
 /storage/framework/cache/*
 /storage/framework/sessions/*
 /storage/framework/views/*
-admin_legacy_backup/
-api_legacy_backup/
-src_legacy_backup/
-index_legacy_backup.php
 *.mobtakeraraby.com/
 *.saydleyat.com/
 cgi-bin/
@@ -22,4 +18,3 @@ cgi-bin/
 error_log
 .DS_Store
 Thumbs.db
-almobtaker-website.zip
