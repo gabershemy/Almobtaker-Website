@@ -235,15 +235,25 @@ class SeoService
             'email' => $email,
             'address' => [
                 '@type' => 'PostalAddress',
-                'addressLocality' => 'المنصورة / الرياض',
-                'addressRegion' => 'الدقهلية / منطقة الرياض',
+                'addressLocality' => 'دمنهور / الرياض / القاهرة',
+                'addressRegion' => 'البحيرة / منطقة الرياض',
                 'addressCountry' => ['EG', 'SA']
             ],
-            'geo' => [
-                '@type' => 'GeoCoordinates',
-                'latitude' => '31.0409',
-                'longitude' => '31.3785'
+            'areaServed' => [
+                ['@type' => 'Country', 'name' => 'Saudi Arabia'],
+                ['@type' => 'Country', 'name' => 'Egypt'],
+                ['@type' => 'Country', 'name' => 'United Arab Emirates'],
+                ['@type' => 'Country', 'name' => 'Kuwait']
             ],
+            'knowsAbout' => [
+                'Cloud ERP Systems',
+                'ZATCA E-Invoicing Integration',
+                'Artificial Intelligence WhatsApp Bots',
+                'Mobile App Development',
+                'Custom Web Software',
+                'Database Architecture'
+            ],
+            'priceRange' => '$$',
             'openingHoursSpecification' => [
                 '@type' => 'OpeningHoursSpecification',
                 'dayOfWeek' => ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
@@ -251,7 +261,7 @@ class SeoService
                 'closes' => '21:00'
             ],
             'sameAs' => [
-                'https://www.facebook.com/almobtaker.alaraby',
+                'https://www.facebook.com/AlmobtakerAlaraby',
                 'https://wa.me/201013688446'
             ]
         ];

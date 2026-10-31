@@ -4,9 +4,12 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://mobtakeraraby.com/</loc>
-    <lastmod>2026-10-30</lastmod>
+    <lastmod>2026-10-31</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar-SA" href="https://mobtakeraraby.com/" />
+    <xhtml:link rel="alternate" hreflang="ar-EG" href="https://mobtakeraraby.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://mobtakeraraby.com/" />
     <image:image>
       <image:loc>https://mobtakeraraby.com/logo.jpg</image:loc>
       <image:title>شركة المبتكر العربي للبرمجيات</image:title>
