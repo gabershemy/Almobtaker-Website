@@ -1,7 +1,9 @@
 <?php
-// ─────────────────────────────────────────────────────────────────────────────
-// GitHub Auto-Deploy Webhook for Almobtaker Website (Laravel & Filament)
-// ─────────────────────────────────────────────────────────────────────────────
+/**
+ * GitHub Auto-Deploy Webhook for Almobtaker Website (Laravel 13 & Filament v5)
+ * Secure timing-attack resistant deployment endpoint.
+ */
+
 header('Content-Type: application/json; charset=utf-8');
 
 $secret = 'TERKO_DEPLOY_SECRET_2026';
@@ -9,16 +11,19 @@ $providedSecret = $_GET['secret'] ?? ($_POST['secret'] ?? null);
 
 if (!$providedSecret) {
     $rawInput = file_get_contents('php://input');
-    $input = json_decode($rawInput, true);
-    $providedSecret = $input['secret'] ?? null;
+    if ($rawInput) {
+        $input = json_decode($rawInput, true);
+        $providedSecret = $input['secret'] ?? null;
+    }
 }
 
-if ($providedSecret !== $secret) {
+// Security: Timing attack safe string comparison
+if (!$providedSecret || !hash_equals($secret, (string) $providedSecret)) {
     http_response_code(403);
     echo json_encode([
         'status' => 'error',
         'message' => 'Unauthorized: Invalid deploy secret'
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
     exit;
 }
 
@@ -30,4 +35,4 @@ echo json_encode([
     'message' => 'Deployed successfully',
     'output' => $output,
     'timestamp' => date('c'),
-]);
+], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);

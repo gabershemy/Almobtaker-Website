@@ -32,8 +32,12 @@ class User extends Authenticatable implements FilamentUser
         ];
     }
 
+    /**
+     * Determine if the user can access the Filament admin panel.
+     * Enforces Role-Based Access Control (RBAC).
+     */
     public function canAccessPanel(Panel $panel): bool
     {
-        return true;
+        return $this->hasRole(['super_admin', 'admin']) || $this->roles()->exists();
     }
 }
