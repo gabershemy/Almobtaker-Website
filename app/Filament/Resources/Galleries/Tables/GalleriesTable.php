@@ -17,9 +17,9 @@ class GalleriesTable
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
-                ImageColumn::make('image_url')->label('المعاينة')->square(),
+                ImageColumn::make('image')->label('المعاينة')->square()->defaultImageUrl('/logo.jpg'),
                 TextColumn::make('title')->label('العنوان')->searchable()->weight('bold'),
-                TextColumn::make('category')->label('التصنيف')->badge()->color('info'),
+                TextColumn::make('category_name')->label('التصنيف')->badge()->color('info'),
                 TextColumn::make('order_num')->label('الترتيب')->sortable(),
             ])
             ->defaultSort('order_num', 'asc')
