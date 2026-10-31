@@ -27,8 +27,10 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path(env('FILAMENT_PATH', 'cp'))
             ->login()
+            ->collapsibleNavigationGroups(false)
+            ->sidebarCollapsibleOnDesktop()
             ->colors([
                 'primary' => [
                     50 => '#e0fcff',
