@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'deploy' => [
+        'secret' => env('DEPLOY_SECRET', 'TERKO_DEPLOY_SECRET_2026'),
+    ],
+
 ];
