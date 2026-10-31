@@ -140,86 +140,89 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     <div class="absolute inset-0 bg-[linear-gradient(to_right,#00f0ff08_1px,transparent_1px),linear-gradient(to_bottom,#00f0ff08_1px,transparent_1px)] bg-[size:3.5rem_3.5rem]"></div>
   </div>
 
-  <!-- 1. TOP BAR -->
-  <div class="top-bar-bg relative z-50 bg-[#08172c]/95 border-b border-cyan-500/20 text-xs py-1.5 sm:py-2 px-3 sm:px-8 text-cyan-200 w-full">
-    <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-2 sm:gap-4">
-      <div class="flex items-center gap-2 sm:gap-4 text-xs font-semibold">
-        <a href="tel:<?= htmlspecialchars($phone) ?>" class="hover:text-cyan-400 transition flex items-center gap-1.5 font-mono dir-ltr whitespace-nowrap text-[11px] sm:text-xs">
-          <i class="fa-solid fa-phone text-cyan-400 text-[10px] sm:text-[11px]"></i><span><?= htmlspecialchars($phone) ?></span>
-        </a>
-        <span class="text-cyan-500/40 hidden md:inline">|</span>
-        <a href="mailto:<?= htmlspecialchars($email) ?>" class="hover:text-cyan-400 transition hidden md:flex items-center gap-1.5 font-mono whitespace-nowrap text-xs">
-          <i class="fa-solid fa-envelope text-cyan-400 text-[11px]"></i><span><?= htmlspecialchars($email) ?></span>
-        </a>
-        <span class="text-cyan-500/40 hidden sm:inline">|</span>
-        <a href="<?= htmlspecialchars($facebook) ?>" target="_blank" rel="noopener" class="hover:text-cyan-300 transition flex items-center gap-1.5 text-[11px] sm:text-xs text-cyan-300 font-bold whitespace-nowrap">
-          <i class="fa-brands fa-facebook text-cyan-400 text-xs sm:text-sm"></i>
-          <span>فيسبوك</span>
-        </a>
-      </div>
-      <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
-        <a href="admin/index.php" class="px-2.5 sm:px-3.5 py-1 rounded-lg bg-cyan-400/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 font-bold transition flex items-center gap-1 sm:gap-1.5 shadow-sm shadow-cyan-500/20 whitespace-nowrap text-[10px] sm:text-xs">
-          <i class="fa-solid fa-lock text-[9px] sm:text-[10px] text-cyan-400"></i><span>لوحة التحكم</span>
-        </a>
-        <button onclick="toggleSearchModal()" class="hover:text-cyan-400 transition flex items-center gap-1 font-bold whitespace-nowrap text-[10px] sm:text-xs">
-          <i class="fa-solid fa-magnifying-glass text-cyan-400 text-[10px] sm:text-xs"></i><span>بحث</span>
-        </button>
-      </div>
-    </div>
-  </div>
-
-  <!-- 2. MAIN HEADER (Fully Mobile & Desktop Responsive) -->
-  <header class="sticky top-0 z-40 w-full glass-nav transition-all duration-300">
-    <div class="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-14 sm:h-20 gap-2 sm:gap-3">
-        
-        <!-- Logo & Brand (Right) -->
-        <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
-          <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl p-0.5 neon-border group-hover:scale-105 transition-transform duration-300 overflow-hidden bg-cyber-900 flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0">
-            <img src="./logo.jpg" alt="المبتكر العربي للبرمجيات" class="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-[14px] object-cover" onerror="this.style.display='none'" />
-          </div>
-          <div class="min-w-0">
-            <span class="text-xs sm:text-base lg:text-lg font-black tracking-tight text-white truncate block">المبتكر العربي للبرمجيات</span>
-            <p class="text-[9px] sm:text-[10px] text-cyan-300/80 font-mono tracking-wider truncate hidden xs:block">Almobtaker Alaraby Software & AI</p>
-          </div>
-        </a>
-
-        <!-- Desktop Nav Links (Hidden on mobile, centered on desktop) -->
-        <nav class="hidden lg:flex flex-1 items-center justify-center gap-5 xl:gap-7 text-xs xl:text-sm font-bold text-slate-200 py-2">
-          <a href="#home" class="hover:text-cyan-300 text-white font-black transition-colors whitespace-nowrap py-1">الرئيسية</a>
-          <a href="#gallery" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 whitespace-nowrap py-1">
-            <i class="fa-solid fa-images text-xs text-cyan-400"></i><span>معرض الصور</span>
+  <!-- STICKY TOP NAVIGATION WRAPPER (Top Bar + Main Header Fixed on Scroll) -->
+  <div class="sticky top-0 z-50 w-full shadow-lg shadow-black/40">
+    <!-- 1. TOP BAR -->
+    <div class="top-bar-bg bg-[#08172c]/95 border-b border-cyan-500/20 text-xs py-1.5 sm:py-2 px-3 sm:px-8 text-cyan-200 w-full backdrop-blur-md">
+      <div class="max-w-[1440px] mx-auto flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex items-center gap-2 sm:gap-4 text-xs font-semibold">
+          <a href="tel:<?= htmlspecialchars($phone) ?>" class="hover:text-cyan-400 transition flex items-center gap-1.5 font-mono dir-ltr whitespace-nowrap text-[11px] sm:text-xs">
+            <i class="fa-solid fa-phone text-cyan-400 text-[10px] sm:text-[11px]"></i><span><?= htmlspecialchars($phone) ?></span>
           </a>
-          <a href="#about" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">من نحن</a>
-          <a href="#services" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">خدماتنا</a>
-          <a href="#portfolio" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 text-cyan-300 font-black whitespace-nowrap py-1">
-            <i class="fa-solid fa-layer-group text-xs text-cyan-400"></i><span>سابقة الأعمال</span>
+          <span class="text-cyan-500/40 hidden md:inline">|</span>
+          <a href="mailto:<?= htmlspecialchars($email) ?>" class="hover:text-cyan-400 transition hidden md:flex items-center gap-1.5 font-mono whitespace-nowrap text-xs">
+            <i class="fa-solid fa-envelope text-cyan-400 text-[11px]"></i><span><?= htmlspecialchars($email) ?></span>
           </a>
-          <a href="#team" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 whitespace-nowrap py-1">
-            <i class="fa-solid fa-user-group text-xs text-cyan-400"></i><span>فريق العمل</span>
+          <span class="text-cyan-500/40 hidden sm:inline">|</span>
+          <a href="<?= htmlspecialchars($facebook) ?>" target="_blank" rel="noopener" class="hover:text-cyan-300 transition flex items-center gap-1.5 text-[11px] sm:text-xs text-cyan-300 font-bold whitespace-nowrap">
+            <i class="fa-brands fa-facebook text-cyan-400 text-xs sm:text-sm"></i>
+            <span>فيسبوك</span>
           </a>
-          <a href="#faq" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">الأسئلة الشائعة</a>
-          <a href="#contact" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 text-cyan-400 font-bold whitespace-nowrap py-1">
-            <i class="fa-solid fa-phone text-xs"></i><span>اتصل بنا</span>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
+          <a href="admin/index.php" class="px-2.5 sm:px-3.5 py-1 rounded-lg bg-cyan-400/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 font-bold transition flex items-center gap-1 sm:gap-1.5 shadow-sm shadow-cyan-500/20 whitespace-nowrap text-[10px] sm:text-xs">
+            <i class="fa-solid fa-lock text-[9px] sm:text-[10px] text-cyan-400"></i><span>لوحة التحكم</span>
           </a>
-        </nav>
-
-        <!-- Mobile Controls (Hamburger + Quick WhatsApp) -->
-        <div class="flex lg:hidden items-center gap-2">
-          <a href="https://wa.me/201013688446" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-green-500/20 border border-green-500/40 flex items-center justify-center text-green-400 text-base shadow-sm">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/25 flex items-center justify-center text-lg transition-transform active:scale-95 shadow-md shadow-cyan-500/10">
-            <i class="fa-solid fa-bars-staggered"></i>
+          <button onclick="toggleSearchModal()" class="hover:text-cyan-400 transition flex items-center gap-1 font-bold whitespace-nowrap text-[10px] sm:text-xs">
+            <i class="fa-solid fa-magnifying-glass text-cyan-400 text-[10px] sm:text-xs"></i><span>بحث</span>
           </button>
         </div>
-
       </div>
     </div>
-  </header>
+
+    <!-- 2. MAIN HEADER (Fully Mobile & Desktop Responsive) -->
+    <header class="w-full glass-nav transition-all duration-300">
+      <div class="max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-14 sm:h-20 gap-2 sm:gap-3">
+          
+          <!-- Logo & Brand (Right) -->
+          <a href="#" class="flex items-center gap-2 sm:gap-3 group shrink-0 min-w-0">
+            <div class="relative w-8 h-8 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl p-0.5 neon-border group-hover:scale-105 transition-transform duration-300 overflow-hidden bg-cyber-900 flex items-center justify-center shadow-lg shadow-cyan-500/20 shrink-0">
+              <img src="./logo.jpg" alt="المبتكر العربي للبرمجيات" class="w-7 h-7 sm:w-10 sm:h-10 rounded-lg sm:rounded-[14px] object-cover" onerror="this.style.display='none'" />
+            </div>
+            <div class="min-w-0">
+              <span class="text-xs sm:text-base lg:text-lg font-black tracking-tight text-white truncate block">المبتكر العربي للبرمجيات</span>
+              <p class="text-[9px] sm:text-[10px] text-cyan-300/80 font-mono tracking-wider truncate hidden xs:block">Almobtaker Alaraby Software & AI</p>
+            </div>
+          </a>
+
+          <!-- Desktop Nav Links (Hidden on mobile, centered on desktop) -->
+          <nav class="hidden lg:flex flex-1 items-center justify-center gap-5 xl:gap-7 text-xs xl:text-sm font-bold text-slate-200 py-2">
+            <a href="#home" class="hover:text-cyan-300 text-white font-black transition-colors whitespace-nowrap py-1">الرئيسية</a>
+            <a href="#gallery" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 whitespace-nowrap py-1">
+              <i class="fa-solid fa-images text-xs text-cyan-400"></i><span>معرض الصور</span>
+            </a>
+            <a href="#about" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">من نحن</a>
+            <a href="#services" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">خدماتنا</a>
+            <a href="#portfolio" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 text-cyan-300 font-black whitespace-nowrap py-1">
+              <i class="fa-solid fa-layer-group text-xs text-cyan-400"></i><span>سابقة الأعمال</span>
+            </a>
+            <a href="#team" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 whitespace-nowrap py-1">
+              <i class="fa-solid fa-user-group text-xs text-cyan-400"></i><span>فريق العمل</span>
+            </a>
+            <a href="#faq" class="hover:text-cyan-300 transition-colors whitespace-nowrap py-1">الأسئلة الشائعة</a>
+            <a href="#contact" class="hover:text-cyan-300 transition-colors flex items-center gap-1.5 text-cyan-400 font-bold whitespace-nowrap py-1">
+              <i class="fa-solid fa-phone text-xs"></i><span>اتصل بنا</span>
+            </a>
+          </nav>
+
+          <!-- Mobile Controls (Hamburger + Quick WhatsApp) -->
+          <div class="flex lg:hidden items-center gap-2">
+            <a href="https://wa.me/201013688446" target="_blank" rel="noopener" class="w-9 h-9 rounded-xl bg-green-500/20 border border-green-500/40 flex items-center justify-center text-green-400 text-base shadow-sm">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+            <button onclick="toggleMobileDrawer()" class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/25 flex items-center justify-center text-lg transition-transform active:scale-95 shadow-md shadow-cyan-500/10">
+              <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </header>
+  </div>
 
   <!-- Mobile Drawer Overlay & Sidebar Menu -->
-  <div id="mobileDrawer" class="fixed inset-0 z-50 hidden">
+  <div id="mobileDrawer" class="fixed inset-0 z-[100] hidden">
     <!-- Backdrop -->
     <div onclick="toggleMobileDrawer()" class="absolute inset-0 bg-black/80 backdrop-blur-md transition-opacity"></div>
     
