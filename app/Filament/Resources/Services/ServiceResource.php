@@ -19,8 +19,9 @@ class ServiceResource extends Resource
     protected static ?string $model = Service::class;
 
     protected static ?string $modelLabel = 'خدمة';
-    protected static ?string $pluralModelLabel = 'الخدمات البرمجية';
-    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?string $pluralModelLabel = 'الخدمات';
+    protected static ?string $navigationLabel = 'الخدمات';
+    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى';
     protected static ?int $navigationSort = 2;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedWrenchScrewdriver;

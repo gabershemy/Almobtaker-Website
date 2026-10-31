@@ -13,16 +13,10 @@ class SettingForm
     {
         return $schema
             ->components([
-                Section::make('تعديل إعدادات وبيانات الموقع')
+                Section::make('إعدادات وبيانات الموقع')
                     ->schema([
-                        TextInput::make('key_name')
-                            ->label('مفتاح الإعداد (Key)')
-                            ->disabled()
-                            ->required(),
-                        Textarea::make('key_value')
-                            ->label('القيمة النصية للإعداد')
-                            ->rows(4)
-                            ->required(),
+                        TextInput::make('key_name')->label('اسم الإعداد / المفتاح')->disabled(),
+                        Textarea::make('key_value')->label('قيمة الإعداد')->rows(4)->required(),
                     ]),
             ]);
     }

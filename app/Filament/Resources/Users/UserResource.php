@@ -19,11 +19,12 @@ class UserResource extends Resource
     protected static ?string $model = User::class;
 
     protected static ?string $modelLabel = 'مستخدم';
-    protected static ?string $pluralModelLabel = 'المستخدمين والصلاحيات';
-    protected static string|\UnitEnum|null $navigationGroup = 'الإعدادات والصلاحيات';
+    protected static ?string $pluralModelLabel = 'المستخدمين';
+    protected static ?string $navigationLabel = 'إدارة المستخدمين';
+    protected static string|\UnitEnum|null $navigationGroup = 'المستخدمين والصلاحيات';
     protected static ?int $navigationSort = 1;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserCircle;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUsers;
 
     public static function form(Schema $schema): Schema
     {

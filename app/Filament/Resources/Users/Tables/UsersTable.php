@@ -16,10 +16,10 @@ class UsersTable
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
-                TextColumn::make('name')->label('اسم المستخدم')->searchable()->weight('bold'),
-                TextColumn::make('email')->label('البريد الإلكتروني')->searchable()->fontFamily('mono'),
-                TextColumn::make('roles.name')->label('الأدوار والرتب')->badge()->color('info'),
-                TextColumn::make('created_at')->label('تاريخ التسجيل')->dateTime('d/m/Y')->sortable(),
+                TextColumn::make('name')->label('الاسم')->searchable()->weight('bold'),
+                TextColumn::make('email')->label('البريد الإلكتروني')->searchable(),
+                TextColumn::make('roles.name')->label('الأدوار والصلاحيات')->badge()->color('primary'),
+                TextColumn::make('created_at')->label('تاريخ الإنشاء')->dateTime()->sortable(),
             ])
             ->recordActions([
                 EditAction::make(),

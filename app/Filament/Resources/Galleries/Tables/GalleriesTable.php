@@ -17,10 +17,9 @@ class GalleriesTable
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
-                ImageColumn::make('image')->label('الشاشة')->circular(),
-                TextColumn::make('title')->label('عنوان الشاشة')->searchable()->weight('bold'),
-                TextColumn::make('category_name')->label('القسم')->badge(),
-                TextColumn::make('tech')->label('التقنيات')->limit(25),
+                ImageColumn::make('image_url')->label('المعاينة')->square(),
+                TextColumn::make('title')->label('العنوان')->searchable()->weight('bold'),
+                TextColumn::make('category')->label('التصنيف')->badge()->color('info'),
                 TextColumn::make('order_num')->label('الترتيب')->sortable(),
             ])
             ->defaultSort('order_num', 'asc')

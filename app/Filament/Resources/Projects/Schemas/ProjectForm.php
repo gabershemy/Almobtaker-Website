@@ -2,9 +2,7 @@
 
 namespace App\Filament\Resources\Projects\Schemas;
 
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
@@ -40,22 +38,7 @@ class ProjectForm
                                     'fintech' => 'تمويل وتقسيط وكاشير',
                                     'ai' => 'ذكاء اصطناعي وواتساب',
                                     'zatca' => 'ZATCA وفوترة إلكترونية',
-                                ])
-                                ->reactive()
-                                ->afterStateUpdated(function ($state, callable $set) {
-                                    $map = [
-                                        'erp' => 'أنظمة ERP وشركات',
-                                        'medical' => 'طبي ومستشفيات',
-                                        'industrial' => 'صناعي وزراعي',
-                                        'edtech' => 'تعليم ومنصات EdTech',
-                                        'fintech' => 'تمويل وتقسيط وكاشير',
-                                        'ai' => 'ذكاء اصطناعي وواتساب',
-                                        'zatca' => 'ZATCA وفوترة إلكترونية',
-                                    ];
-                                    if (isset($map[$state])) {
-                                        $set('category_name', $map[$state]);
-                                    }
-                                }),
+                                ]),
                             TextInput::make('category_name')
                                 ->label('اسم التصنيف بالعربية')
                                 ->required(),

@@ -3556,8 +3556,12 @@ function renderTeamGrid() {
       const formData = new FormData(form);
 
       try {
-        const res = await fetch('api/contact.php', {
+        const res = await fetch('/api/inquiries', {
           method: 'POST',
+          headers: {
+            'X-CSRF-TOKEN': '{{ csrf_token() }}',
+            'Accept': 'application/json'
+          },
           body: formData
         });
         const data = await res.json();

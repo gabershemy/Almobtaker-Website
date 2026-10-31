@@ -20,7 +20,8 @@ class FaqResource extends Resource
 
     protected static ?string $modelLabel = 'سؤال شائع';
     protected static ?string $pluralModelLabel = 'الأسئلة الشائعة';
-    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?string $navigationLabel = 'الأسئلة الشائعة';
+    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى';
     protected static ?int $navigationSort = 5;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQuestionMarkCircle;

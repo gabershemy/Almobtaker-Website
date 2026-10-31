@@ -19,23 +19,28 @@ class InquiriesTable
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
                 TextColumn::make('name')->label('اسم العميل')->searchable()->weight('bold'),
-                TextColumn::make('phone')->label('الهاتف / واتساب')->searchable()->fontFamily('mono')->copyable(),
-                TextColumn::make('email')->label('البريد الإلكتروني')->searchable()->fontFamily('mono'),
-                TextColumn::make('service_type')->label('نوع الخدمة')->badge()->color('info'),
+                TextColumn::make('phone')->label('الهاتف')->searchable(),
+                TextColumn::make('service_type')->label('الخدمة')->badge()->color('info'),
+                TextColumn::make('message')->label('الرسالة')->limit(50),
                 IconColumn::make('is_read')
                     ->label('مقروءة')
-                    ->boolean(),
-                TextColumn::make('created_at')->label('تاريخ الإرسال')->dateTime('d/m/Y h:i A')->sortable(),
+                    ->boolean()
+                    ->trueIcon('heroicon-o-check-circle')
+                    ->falseIcon('heroicon-o-clock')
+                    ->trueColor('success')
+                    ->falseColor('danger'),
+                TextColumn::make('created_at')->label('تاريخ الإرسال')->dateTime()->sortable(),
             ])
-            ->defaultSort('id', 'desc')
+            ->defaultSort('created_at', 'desc')
             ->filters([
                 TernaryFilter::make('is_read')
                     ->label('حالة القراءة')
-                    ->trueLabel('مقروءة فقط')
-                    ->falseLabel('غير مقروءة (جديدة)'),
+                    ->placeholder('الكل')
+                    ->trueLabel('تمت القراءة')
+                    ->falseLabel('جديدة غير مقروءة'),
             ])
             ->recordActions([
-                EditAction::make()->label('عرض / تعديل'),
+                EditAction::make(),
                 DeleteAction::make(),
             ])
             ->toolbarActions([

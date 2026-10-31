@@ -19,8 +19,9 @@ class TeamResource extends Resource
     protected static ?string $model = Team::class;
 
     protected static ?string $modelLabel = 'عضو فريق';
-    protected static ?string $pluralModelLabel = 'فريق العمل والخبراء';
-    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?string $pluralModelLabel = 'فريق العمل';
+    protected static ?string $navigationLabel = 'فريق العمل';
+    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى';
     protected static ?int $navigationSort = 4;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;

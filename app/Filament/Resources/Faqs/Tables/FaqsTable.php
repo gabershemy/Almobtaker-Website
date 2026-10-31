@@ -17,8 +17,7 @@ class FaqsTable
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
                 TextColumn::make('question')->label('السؤال')->searchable()->weight('bold')->wrap(),
-                TextColumn::make('category')->label('التصنيف')->badge()->color('info'),
-                TextColumn::make('answer')->label('الإجابة')->limit(60),
+                TextColumn::make('category')->label('التصنيف')->badge()->color('secondary'),
                 TextColumn::make('order_num')->label('الترتيب')->sortable(),
             ])
             ->defaultSort('order_num', 'asc')

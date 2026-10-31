@@ -16,10 +16,9 @@ class ServicesTable
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
-                TextColumn::make('title')->label('عنوان الخدمة')->searchable()->weight('bold'),
-                TextColumn::make('tag')->label('الوسم')->badge()->color('info'),
-                TextColumn::make('icon')->label('أيقونة الخدمة')->fontFamily('mono'),
-                TextColumn::make('short_desc')->label('وصف سريع')->limit(40),
+                TextColumn::make('title')->label('عنوان الخدمة')->searchable()->sortable()->weight('bold'),
+                TextColumn::make('tag')->label('الوسم')->badge()->color('warning'),
+                TextColumn::make('tech')->label('التقنيات')->limit(30),
                 TextColumn::make('order_num')->label('الترتيب')->sortable(),
             ])
             ->defaultSort('order_num', 'asc')

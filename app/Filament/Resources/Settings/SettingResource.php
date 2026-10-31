@@ -20,10 +20,11 @@ class SettingResource extends Resource
 
     protected static ?string $modelLabel = 'إعداد';
     protected static ?string $pluralModelLabel = 'إعدادات وبيانات الموقع';
-    protected static string|\UnitEnum|null $navigationGroup = 'الإعدادات والصلاحيات';
-    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationLabel = 'إعدادات وبيانات الموقع';
+    protected static string|\UnitEnum|null $navigationGroup = 'الإعدادات العامة';
+    protected static ?int $navigationSort = 1;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedAdjustmentsHorizontal;
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedCog6Tooth;
 
     public static function form(Schema $schema): Schema
     {

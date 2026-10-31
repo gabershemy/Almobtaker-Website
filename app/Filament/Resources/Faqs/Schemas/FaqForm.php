@@ -14,14 +14,14 @@ class FaqForm
     {
         return $schema
             ->components([
-                Section::make('السؤال الشائع والإجابة')
+                Section::make('السؤال والإجابة الشائعة')
                     ->schema([
-                        TextInput::make('question')->label('نص السؤال')->required(),
+                        TextInput::make('question')->label('السؤال')->required(),
+                        Textarea::make('answer')->label('الإجابة الشافية والتفصيلية')->required()->rows(4),
                         Grid::make(2)->schema([
-                            TextInput::make('category')->label('التصنيف')->default('عام'),
+                            TextInput::make('category')->label('التصنيف')->placeholder('عام, فني, تعاقدات'),
                             TextInput::make('order_num')->label('ترتيب الظهور')->numeric()->default(0),
                         ]),
-                        Textarea::make('answer')->label('الإجابة النموذجية التفصيلية')->rows(4)->required(),
                     ]),
             ]);
     }

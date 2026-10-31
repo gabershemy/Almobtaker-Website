@@ -15,21 +15,30 @@ class UserForm
     {
         return $schema
             ->components([
-                Section::make('بيانات الحساب والصلاحيات')
+                Section::make('بيانات المستخدم والحساب')
                     ->schema([
                         Grid::make(2)->schema([
-                            TextInput::make('name')->label('الاسم الكامل')->required(),
-                            TextInput::make('email')->label('البريد الإلكتروني')->email()->required()->unique(ignoreRecord: true),
+                            TextInput::make('name')
+                                ->label('اسم المستخدم')
+                                ->required()
+                                ->maxLength(255),
+                            TextInput::make('email')
+                                ->label('البريد الإلكتروني')
+                                ->email()
+                                ->required()
+                                ->unique(ignoreRecord: true)
+                                ->maxLength(255),
                         ]),
                         Grid::make(2)->schema([
                             TextInput::make('password')
                                 ->label('كلمة المرور')
                                 ->password()
-                                ->dehydrateStateUsing(fn ($state) => !empty($state) ? Hash::make($state) : null)
+                                ->dehydrateStateUsing(fn ($state) => filled($state) ? Hash::make($state) : null)
                                 ->dehydrated(fn ($state) => filled($state))
-                                ->required(fn (string $context): bool => $context === 'create'),
+                                ->required(fn (string $context): bool => $context === 'create')
+                                ->maxLength(255),
                             Select::make('roles')
-                                ->label('الأدوار والرتب (الصلاحيات)')
+                                ->label('الأدوار والصلاحيات (Role)')
                                 ->relationship('roles', 'name')
                                 ->multiple()
                                 ->preload()

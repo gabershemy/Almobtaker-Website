@@ -17,10 +17,10 @@ class TeamsTable
         return $table
             ->columns([
                 TextColumn::make('id')->sortable()->label('#'),
-                ImageColumn::make('image')->label('الصورة')->circular()->defaultImageUrl(fn () => '/logo.jpg'),
-                TextColumn::make('name')->label('اسم العضو')->searchable()->weight('bold'),
-                TextColumn::make('role')->label('المسمى الوظيفي')->badge()->color('info'),
-                TextColumn::make('icon')->label('فئة الأيقونة')->fontFamily('mono'),
+                ImageColumn::make('image_url')->label('الصورة')->circular()->defaultImageUrl('/logo.jpg'),
+                TextColumn::make('name')->label('الاسم')->searchable()->weight('bold'),
+                TextColumn::make('role')->label('المسمى الوظيفي')->badge()->color('primary'),
+                TextColumn::make('specialty')->label('التخصص')->color('gray'),
                 TextColumn::make('order_num')->label('الترتيب')->sortable(),
             ])
             ->defaultSort('order_num', 'asc')

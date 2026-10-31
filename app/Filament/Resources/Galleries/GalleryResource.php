@@ -18,9 +18,10 @@ class GalleryResource extends Resource
 {
     protected static ?string $model = Gallery::class;
 
-    protected static ?string $modelLabel = 'شاشة معرض';
-    protected static ?string $pluralModelLabel = 'معرض الصور والشاشات';
-    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?string $modelLabel = 'صورة';
+    protected static ?string $pluralModelLabel = 'معرض الصور';
+    protected static ?string $navigationLabel = 'معرض الصور';
+    protected static string|\UnitEnum|null $navigationGroup = 'إدارة المحتوى';
     protected static ?int $navigationSort = 3;
 
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedPhoto;
