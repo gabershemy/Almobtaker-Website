@@ -3,7 +3,6 @@
 namespace App\Filament\Resources\Teams\Schemas;
 
 use Filament\Forms\Components\TextInput;
-use Filament\Schemas\Components\Grid;
 use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 
@@ -13,17 +12,39 @@ class TeamForm
     {
         return $schema
             ->components([
-                Section::make('بيانات عضو الفريق')
+                Section::make('بيانات عضو الفريق والخبراء')
+                    ->description('إدارة أعضاء الفريق والكفاءات التقنية')
+                    ->icon('heroicon-o-user-group')
+                    ->columns(2)
+                    ->columnSpanFull()
                     ->schema([
-                        Grid::make(2)->schema([
-                            TextInput::make('name')->label('الاسم الكامل')->required(),
-                            TextInput::make('role')->label('المسمى الوظيفي / الدور')->required(),
-                        ]),
-                        Grid::make(2)->schema([
-                            TextInput::make('icon')->label('فئة الأيقونة FontAwesome')->placeholder('مثال: fa-solid fa-code'),
-                            TextInput::make('order_num')->label('ترتيب الظهور')->numeric()->default(0),
-                        ]),
-                        TextInput::make('image')->label('رابط الصورة الحقيقية')->placeholder('/uploads/... أو رابط صورة'),
+                        TextInput::make('name')
+                            ->label('الاسم الكامل')
+                            ->required()
+                            ->columnSpan(1)
+                            ->placeholder('مثال: د. جابر الشيمي'),
+
+                        TextInput::make('role')
+                            ->label('المسمى الوظيفي / الدور التقني')
+                            ->required()
+                            ->columnSpan(1)
+                            ->placeholder('مثال: المؤسس والمدير التنفيذي • مهندس برمجيات أول'),
+
+                        TextInput::make('icon')
+                            ->label('رمز الأيقونة (FontAwesome)')
+                            ->columnSpan(1)
+                            ->placeholder('مثال: fa-solid fa-code'),
+
+                        TextInput::make('order_num')
+                            ->label('ترتيب الظهور')
+                            ->numeric()
+                            ->default(0)
+                            ->columnSpan(1),
+
+                        TextInput::make('image')
+                            ->label('رابط الصورة الشخصية')
+                            ->columnSpanFull()
+                            ->placeholder('https://... أو /uploads/...'),
                     ]),
             ]);
     }

@@ -32,35 +32,11 @@ class AdminPanelProvider extends PanelProvider
             ->collapsibleNavigationGroups(false)
             ->sidebarCollapsibleOnDesktop()
             ->colors([
-                'primary' => [
-                    50 => '#e0fcff',
-                    100 => '#bbf8ff',
-                    200 => '#7ff2ff',
-                    300 => '#38e9ff',
-                    400 => '#00d2ff',
-                    500 => '#00f0ff',
-                    600 => '#00b8d4',
-                    700 => '#0097a7',
-                    800 => '#00796b',
-                    900 => '#004d40',
-                    950 => '#00251a',
-                ],
-                'gray' => [
-                    50 => '#f0f4f8',
-                    100 => '#d9e2ec',
-                    200 => '#bcccdc',
-                    300 => '#9fb3c8',
-                    400 => '#829ab1',
-                    500 => '#627d98',
-                    600 => '#334e68',
-                    700 => '#1e3356',
-                    800 => '#101d36',
-                    900 => '#0b1329',
-                    950 => '#060b14',
-                ],
+                'primary' => Color::Cyan,
+                'gray' => Color::Slate,
             ])
             ->font('Cairo')
-            ->defaultThemeMode(ThemeMode::Dark)
+            ->defaultThemeMode(ThemeMode::Light)
             ->brandName('المبتكر العربي للبرمجيات')
             ->brandLogo(asset('logo.jpg'))
             ->brandLogoHeight('2.6rem')

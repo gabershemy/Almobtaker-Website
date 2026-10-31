@@ -13,10 +13,23 @@ class SettingForm
     {
         return $schema
             ->components([
-                Section::make('إعدادات وبيانات الموقع')
+                Section::make('إعدادات وبيانات الموقع العامة')
+                    ->description('تعديل أرقام الهواتف، العناوين، ونصوص الهوية')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->columns(1)
+                    ->columnSpanFull()
                     ->schema([
-                        TextInput::make('key_name')->label('اسم الإعداد / المفتاح')->disabled(),
-                        Textarea::make('key_value')->label('قيمة الإعداد')->rows(4)->required(),
+                        TextInput::make('key_name')
+                            ->label('اسم الإعداد أو المفتاح البرمجي')
+                            ->disabled()
+                            ->columnSpanFull(),
+
+                        Textarea::make('key_value')
+                            ->label('قيمة الإعداد الحالية')
+                            ->rows(5)
+                            ->required()
+                            ->columnSpanFull()
+                            ->placeholder('اكتب القيمة الجديدة هنا...'),
                     ]),
             ]);
     }
