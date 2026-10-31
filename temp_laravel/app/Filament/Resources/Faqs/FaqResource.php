@@ -18,7 +18,12 @@ class FaqResource extends Resource
 {
     protected static ?string $model = Faq::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $modelLabel = 'سؤال شائع';
+    protected static ?string $pluralModelLabel = 'الأسئلة الشائعة';
+    protected static ?string $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?int $navigationSort = 5;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedQuestionMarkCircle;
 
     public static function form(Schema $schema): Schema
     {
@@ -32,9 +37,7 @@ class FaqResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

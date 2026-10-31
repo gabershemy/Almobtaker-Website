@@ -18,7 +18,12 @@ class TeamResource extends Resource
 {
     protected static ?string $model = Team::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $modelLabel = 'عضو فريق';
+    protected static ?string $pluralModelLabel = 'فريق العمل والخبراء';
+    protected static ?string $navigationGroup = 'إدارة المحتوى والمشاريع';
+    protected static ?int $navigationSort = 4;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedUserGroup;
 
     public static function form(Schema $schema): Schema
     {
@@ -32,9 +37,7 @@ class TeamResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

@@ -18,7 +18,23 @@ class InquiryResource extends Resource
 {
     protected static ?string $model = Inquiry::class;
 
-    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+    protected static ?string $modelLabel = 'طلب / رسالة';
+    protected static ?string $pluralModelLabel = 'صندوق الرسائل والطلبات';
+    protected static ?string $navigationGroup = 'التواصل والعملاء';
+    protected static ?int $navigationSort = 1;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedEnvelope;
+
+    public static function getNavigationBadge(): ?string
+    {
+        $unread = static::getModel()::where('is_read', false)->count();
+        return $unread > 0 ? (string) $unread : null;
+    }
+
+    public static function getNavigationBadgeColor(): ?string
+    {
+        return 'danger';
+    }
 
     public static function form(Schema $schema): Schema
     {
@@ -32,9 +48,7 @@ class InquiryResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
