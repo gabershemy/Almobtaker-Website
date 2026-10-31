@@ -33,6 +33,10 @@ CREATE TABLE IF NOT EXISTS `admins` (
   `username` varchar(50) NOT NULL UNIQUE,
   `password_hash` varchar(255) NOT NULL,
   `full_name` varchar(100) NOT NULL,
+  `email` varchar(150) DEFAULT 'gabershemy@gmail.com',
+  `role` varchar(50) DEFAULT 'super_admin',
+  `status` tinyint(1) DEFAULT 1,
+  `permissions` text DEFAULT NULL,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
