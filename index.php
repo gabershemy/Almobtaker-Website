@@ -446,9 +446,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     
     
     
-    <!-- قسم خدماتنا التقنية (SERVICES) - الواجهة التفاعلية الفاخرة -->
-    <!-- قسم خدماتنا التقنية (SERVICES) - العرض التفاعلي الفخم -->
-    <!-- قسم خدماتنا التقنية (SERVICES - جميع الخدمات معروضة متتالية) -->
+    <!-- قسم خدماتنا التقنية (SERVICES - سلايدر تفاعلي ذكي واحترافي) -->
     <section id="services" class="py-16 border-t border-cyan-500/20 relative overflow-hidden bg-gradient-to-b from-[#08172c] via-[#071324] to-[#08172c]">
       
       <div class="absolute top-10 right-10 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -470,672 +468,73 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
           </p>
         </div>
 
-        <!-- جميع الخدمات الـ 8 معروضة في شبكة كروت متتالية -->
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch" id="servicesCardsGrid">
+        <!-- أزرار التصنيفات والعداد -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-2">
+          <!-- فلاتر سريعة للخدمات -->
+          <div class="flex items-center gap-2 overflow-x-auto max-w-full pb-2 sm:pb-0 scrollbar-none w-full sm:w-auto" id="servicesFilterButtons">
+            <button type="button" onclick="filterServicesSlider('all')" id="srv-pill-all" class="srv-pill active px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-md shadow-cyan-500/20 whitespace-nowrap transition-all duration-200 cursor-pointer">جميع الخدمات</button>
+            <button type="button" onclick="filterServicesSlider('erp')" id="srv-pill-erp" class="srv-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">أنظمة ERP وسحابية</button>
+            <button type="button" onclick="filterServicesSlider('ai')" id="srv-pill-ai" class="srv-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">ذكاء اصطناعي وتطبيقات</button>
+            <button type="button" onclick="filterServicesSlider('zatca')" id="srv-pill-zatca" class="srv-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">كاشير وZATCA</button>
+            <button type="button" onclick="filterServicesSlider('edtech')" id="srv-pill-edtech" class="srv-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer">تصميم UI/UX</button>
+          </div>
 
-        <!-- خدمة 1: تطوير تطبيقات الويب والموبايل والذكاء الاصطناعي -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-brands fa-react text-xs"></i>
-                <span>⚡ تطبيقات سحابية وهجينة</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-brands fa-react"></i>
-              </div>
-            </div>
+          <!-- شارة العداد اللحظي -->
+          <div class="flex items-center gap-3 self-end sm:self-auto">
+            <span id="servicesCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
+              معروض 1 - 2
+            </span>
+          </div>
+        </div>
 
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">تطوير تطبيقات الويب والموبايل والذكاء الاصطناعي</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">نقوم بتطوير منصات وتطبيقات الويب والموبايل المخصصة بأحدث التقنيات العالمية (React, Next.js, Flutter)، مع ربط فوري لنماذج الذكاء الاصطناعي التوليدي LLM وبوابات الدفع الإلكتروني، لتقديم تجربة مستخدم استثنائية وسريعة جداً.</p>
-            </div>
+        <!-- حاوية سلايدر الخدمات مع أزرار التنقل الجانبية الاحترافية -->
+        <div class="relative px-2 sm:px-14 group/srv-slider" id="servicesSliderContainer">
 
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="تطوير تطبيقات الويب والموبايل والذكاء الاصطناعي" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">بناء تطبيقات ويب وهواتف ذكية فائقة السرعة مع دمج الـ AI وبوابات الدفع الإلكتروني</span>
-              </div>
-            </div>
+          <!-- زر التنقل الأيمن (السابق) -->
+          <button type="button" id="srvSliderBtnPrev" onclick="servicesSliderPrev()" 
+                  aria-label="الخدمات السابقة" 
+                  title="الخدمات السابقة"
+                  class="absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-right text-base sm:text-xl"></i>
+          </button>
 
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تطبيقات الويب التفاعلية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">منصات سحابية فائقة السرعة بـ Next.js و React و Vue.js</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تطبيقات الهواتف الذكية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تطبيقات أصلية موحدة لنظامي iOS و Android باستخدام Flutter</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">واجهات برمجية REST & GraphQL</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">APIs محمية وسريعة لمعالجة آلاف الطلبات المتزامنة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">دمج الذكاء الاصطناعي وأتمتة العمليات</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">ربط خدمات OpenAI و Gemini والتعرف على الصور والبيانات</p>
-                    </div>
-                  </div>
-                
-              </div>
+          <!-- زر التنقل الأيسر (التالي) -->
+          <button type="button" id="srvSliderBtnNext" onclick="servicesSliderNext()" 
+                  aria-label="الخدمات التالية" 
+                  title="الخدمات التالية"
+                  class="absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 w-11 h-11 sm:w-14 sm:h-14 rounded-2xl bg-[#08172c]/95 hover:bg-cyan-500 hover:text-slate-950 text-cyan-300 border border-cyan-500/40 backdrop-blur-md shadow-[0_4px_25px_rgba(0,0,0,0.85)] hover:shadow-[0_0_25px_rgba(0,240,255,0.7)] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-90 cursor-pointer">
+            <i class="fa-solid fa-chevron-left text-base sm:text-xl"></i>
+          </button>
+
+          <!-- نافذة العرض المتحركة للخدمات -->
+          <div class="overflow-hidden rounded-3xl py-2" id="servicesTrackWindow">
+            <div id="servicesTrack" class="flex transition-transform duration-700 ease-out gap-6" dir="ltr">
+              <!-- كروت الخدمات تُعرض ديناميكياً بواسطة JavaScript -->
             </div>
           </div>
 
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B7%D9%88%D9%8A%D8%B1%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D9%8A%D8%A8%20%D9%88%D8%A7%D9%84%D9%85%D9%88%D8%A8%D8%A7%D9%8A%D9%84%20%D9%88%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
+          <p id="servicesEmpty" class="hidden text-center text-slate-400 py-12">لا توجد خدمات تطابق هذا التصنيف حالياً</p>
 
         </div>
-  
 
-        <!-- خدمة 2: منظومات ERP السحابية المخصصة للشركات والمصانع -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-building-user text-xs"></i>
-                <span>🏢 إدارة مركزية موحدة</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-building-user"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">منظومات ERP السحابية المخصصة للشركات والمصانع</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تصميم وبناء منظومات ERP مخصصة بالكامل تناسب طبيعة دورة عمل شركتك وهيكلك المالي، مع تغطية شاملة لشجرة الحسابات العامة، مراكز التكلفة، الفروع والمخازن المتعددة، والرقابة على المشتريات والمبيعات.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80" alt="منظومات ERP السحابية المخصصة للشركات والمصانع" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">تخطيط موارد المؤسسات، الحسابات العامة، المخازن المتعددة، وإدارة الـ HR</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">شجرة الحسابات والقيود الآلية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">توليد تلقائي للقيود المحاسبية ومتابعة الميزانيات ومراكز التكلفة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">المخازن والمشتريات والمبيعات</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تتبع حركة المخزون بالجرد المستمر وإشعارات النواقص والباركود</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">إدارة شؤون الموظفين والرواتب</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">حساب مسيرات الرواتب، العهد، الإجازات، والجزاءات التلقائية</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تقارير الأرباح واللوحات البيانية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تحليلات مالية فورية وقوائم الدخل والتدفقات النقدية اللحظية</p>
-                    </div>
-                  </div>
-                
-              </div>
+        <!-- شريط التحكم السفلي ومؤشرات الصفحات والتنقل التلقائي للخدمات -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-cyan-500/15">
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="toggleServicesAutoplay()" id="srvPlayPauseBtn" class="text-xs text-slate-300 hover:text-cyan-300 flex items-center gap-2 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 bg-[#08172c]/80 transition-all hover:border-cyan-400 shadow-sm cursor-pointer">
+              <i class="fa-solid fa-pause text-cyan-400" id="srvPlayPauseIcon"></i>
+              <span id="srvPlayPauseText" class="font-bold">إيقاف مؤقت</span>
+            </button>
+            <div class="flex items-center gap-1.5 text-xs text-slate-400">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              <span>تبديل تلقائي كل 5 ثوانٍ</span>
             </div>
           </div>
 
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A7%D8%AA%20ERP%20%D8%A7%D9%84%D8%B3%D8%AD%D8%A7%D8%A8%D9%8A%D8%A9%20%D8%A7%D9%84%D9%85%D8%AE%D8%B5%D8%B5%D8%A9%20%D9%84%D9%84%D8%B4%D8%B1%D9%83%D8%A7%D8%AA%20%D9%88%D8%A7%D9%84%D9%85%D8%B5%D8%A7%D9%86%D8%B9" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
+          <div id="servicesDotsContainer" class="flex items-center gap-2 flex-wrap justify-center"></div>
+
+          <div class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3 py-1 rounded-lg border border-cyan-500/30 sm:hidden" id="servicesMobileCounter">
+            معروض 1 - 2
           </div>
-
-        </div>
-  
-
-        <!-- خدمة 3: حلول الذكاء الاصطناعي وروبوتات الواتساب الذكية SaaS -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-robot text-xs"></i>
-                <span>🤖 ذكاء اصطناعي وأتمتة WhatsApp</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-robot"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">حلول الذكاء الاصطناعي وروبوتات الواتساب الذكية SaaS</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">نبني منصات وروبوتات ذكاء اصطناعي على تطبيق WhatsApp مرتبطة رسمياً بـ WhatsApp Cloud API، تستطيع الرد الآلي والفهم الدقيق لاحتياجات العملاء باللغة العربية والإنجليزية، وتتبع الطلبات وإصدار الفواتير الفورية.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80" alt="حلول الذكاء الاصطناعي وروبوتات الواتساب الذكية SaaS" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">روبوتات خدمة عملاء تعمل 24/7 وترتبط بقواعد بيانات شركتك لإرسال الفواتير وجدولة المواعيد</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">ربط رسمي مع WhatsApp Cloud API</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">قنوات موثقة آمنة ترسل آلاف الإشعارات دون حظر للأرقام</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">روبوتات خدمة العملاء بالـ LLM</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">إجابة فورية ذكية على استفسارات المنتجات وحجز المواعيد</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">فواتير وإشعارات تلقائية للعملاء</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">إرسال الفواتير وملفات PDF وتأكيد الشحن فورياً عبر الواتساب</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">لوحة قيادة مركزية للمحادثات</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">متابعة كافة محادثات الفريق والعملاء من شاشة واحدة متكاملة</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AD%D9%84%D9%88%D9%84%20%D8%A7%D9%84%D8%B0%D9%83%D8%A7%D8%A1%20%D8%A7%D9%84%D8%A7%D8%B5%D8%B7%D9%86%D8%A7%D8%B9%D9%8A%20%D9%88%D8%B1%D9%88%D8%A8%D9%88%D8%AA%D8%A7%D8%AA%20%D8%A7%D9%84%D9%88%D8%A7%D8%AA%D8%B3%D8%A7%D8%A8%20%D8%A7%D9%84%D8%B0%D9%83%D9%8A%D8%A9%20SaaS" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
-
-        <!-- خدمة 4: نقاط البيع السريعة والفوترة الإلكترونية ZATCA -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-cash-register text-xs"></i>
-                <span>💳 معتمد من هيئة ZATCA</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-cash-register"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">نقاط البيع السريعة والفوترة الإلكترونية ZATCA</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">حلول نقاط بيع وكاشير تعمل على شاشات اللمس والكمبيوتر والجوال، تدعم العمل أوفلاين وأونلاين، ومتوافقة تماماً مع متطلبات الفوترة الإلكترونية السعودية (المرحلة الثانية) مع التوقيع الرقمي والـ QR Code المشفر.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1000&q=80" alt="نقاط البيع السريعة والفوترة الإلكترونية ZATCA" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">أنظمة كاشير للمطاعم والمتاجر متوافقة 100% مع هيئة الزكاة والضريبة والجمارك</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">الفوترة الإلكترونية للمرحلة الثانية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">إصدار الفواتير الضريبية والمبسطة بالتوقيع الرقمي المعتمد</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">دعم شاشات اللمس والباركود والموازين</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">واجهة بيع سريعة جداً للمطاعم والسوبرماركت ومحلات التجزئة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">طباعة سريعة وتقارير الوردية (Z-Report)</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">إغلاق الخزائن وإيصالات استلام حرارية وتقارير أرباح الوردية</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">مزامنة سحابية متعددة الفروع</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">ربط مبيعات ومخازن كافة الفروع بالمركز الرئيسي لحظياً</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D9%86%D9%82%D8%A7%D8%B7%20%D8%A7%D9%84%D8%A8%D9%8A%D8%B9%20%D8%A7%D9%84%D8%B3%D8%B1%D9%8A%D8%B9%D8%A9%20%D9%88%D8%A7%D9%84%D9%81%D9%88%D8%AA%D8%B1%D8%A9%20%D8%A7%D9%84%D8%A5%D9%84%D9%83%D8%AA%D8%B1%D9%88%D9%86%D9%8A%D8%A9%20ZATCA" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
-
-        <!-- خدمة 5: الأمن السيبراني واختبار الاختراق وحماية البيانات -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-shield-halved text-xs"></i>
-                <span>🛡️ أمان سيبراني وتشفير عسكري</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-shield-halved"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">الأمن السيبراني واختبار الاختراق وحماية البيانات</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">حماية شاملة لأنظمتك وبيانات عملائك من أي اختراق أو تسريب، من خلال إجراء اختبارات اختراق دورية (Penetration Testing)، وتأمين الاتصالات وقواعد البيانات، ومواجهة هجمات حجب الخدمة DDoS.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80" alt="الأمن السيبراني واختبار الاختراق وحماية البيانات" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">فحص الثغرات، حماية السيرفرات وقواعد البيانات، واختبارات الاختراق الدورية</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">اختبارات الاختراق الدورية (Pentest)</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">كشف الثغرات الأمنية في التطبيقات والخوادم وإغلاقها فوراً</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تشفير البيانات والاتصالات SSL / TLS</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تشفير عالي الأمان لقواعد البيانات والاتصالات الحساسة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">حماية متقدمة من هجمات DDoS</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">جدران نارية سحابية تضمن استمرار عمل أنظمتك تحت أي هجوم</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">خطط النسخ الاحتياطي والاستعادة الفورية</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">نسخ احتياطي مشفر يومياً لحماية البيانات من أي طارئ</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%A3%D9%85%D9%86%20%D8%A7%D9%84%D8%B3%D9%8A%D8%A8%D8%B1%D8%A7%D9%86%D9%8A%20%D9%88%D8%A7%D8%AE%D8%AA%D8%A8%D8%A7%D8%B1%20%D8%A7%D9%84%D8%A7%D8%AE%D8%AA%D8%B1%D8%A7%D9%82%20%D9%88%D8%AD%D9%85%D8%A7%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A8%D9%8A%D8%A7%D9%86%D8%A7%D8%AA" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
-
-        <!-- خدمة 6: الاستضافة السحابية وإدارة الخوادم (Cloud & DevOps) -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-server text-xs"></i>
-                <span>☁️ استقرار سحابي 99.99%</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-server"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">الاستضافة السحابية وإدارة الخوادم (Cloud & DevOps)</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">إعداد وإدارة بنية تحتية سحابية متطورة تضمن أعلى سرعة استجابة واستقرار لأنظمتك، مع تفعيل تقنيات الحاويات Docker و Kubernetes وتوزيع الأحمال التلقائي لمواجهة ذروة الزيارات والعمليات.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80" alt="الاستضافة السحابية وإدارة الخوادم (Cloud & DevOps)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">خوادم سحابية عالية الأداء على AWS و DigitalOcean مع توزيع الأحمال والنسخ اليومي</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">إدارة حاويات Docker و Kubernetes</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">عزل تام للخدمات وسهولة التوسع والترقية بدون توقف النظام</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">توزيع الأحمال وموازنة الخوادم</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">Load Balancing لمضاعفة سرعة الاستجابة تحت الضغط العالي</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">مراقبة ومتابعة على مدار الساعة 24/7</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">لوحات مراقبة حية لاستهلاك المعالج والذاكرة والتنبيهات الفورية</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تهيئة بيئات التطوير والإنتاج CI/CD</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">نشر تلقائي وآمن للتحديثات البرمجية بدون انقطاع الخدمة</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D8%B6%D8%A7%D9%81%D8%A9%20%D8%A7%D9%84%D8%B3%D8%AD%D8%A7%D8%A8%D9%8A%D8%A9%20%D9%88%D8%A5%D8%AF%D8%A7%D8%B1%D8%A9%20%D8%A7%D9%84%D8%AE%D9%88%D8%A7%D8%AF%D9%85%20(Cloud%20%26%20DevOps)" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
-
-        <!-- خدمة 7: تصميم واجهات وتجربة المستخدم الاحترافية (UI/UX Design) -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-pen-ruler text-xs"></i>
-                <span>🎨 تجربة مستخدم سلسة وعصرية</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-pen-ruler"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">تصميم واجهات وتجربة المستخدم الاحترافية (UI/UX Design)</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">نبتكر واجهات رقمية جذابة وسهلة الاستخدام ترتكز على دراسة سلوك العميل وتيسير رحلته داخل النظام أو التطبيق، مع بناء أنظمة تصميم متكاملة (Design Systems) ونماذج أولية تفاعلية قبل كتابة أي سطر كود.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80" alt="تصميم واجهات وتجربة المستخدم الاحترافية (UI/UX Design)" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">دراسة رحلة المستخدم وتصميم واجهات تفاعلية جذابة وعصرية تزيد من تفاعل العملاء</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">أبحاث ودراسة رحلة المستخدم UX Research</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تحليل سلوك الجمهور المستهدف وهندسة تدفق الصفحات</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تصميم واجهات احترافية على Figma</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">واجهات فائقة الجمال والوضوح بنظام التصميم الموحد</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">نماذج أولية تفاعلية Interactive Prototypes</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تجربة التطبيق والشاشات حياً قبل بدء عملية البرمجة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تصاميم متجاوبة 100% مع جميع الأجهزة</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">توافق مثالي مع شاشات الهواتف والتابلت وأجهزة الحاسوب</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%B5%D9%85%D9%8A%D9%85%20%D9%88%D8%A7%D8%AC%D9%87%D8%A7%D8%AA%20%D9%88%D8%AA%D8%AC%D8%B1%D8%A8%D8%A9%20%D8%A7%D9%84%D9%85%D8%B3%D8%AA%D8%AE%D8%AF%D9%85%20%D8%A7%D9%84%D8%A7%D8%AD%D8%AA%D8%B1%D8%A7%D9%81%D9%8A%D8%A9%20(UI%2FUX%20Design)" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
-
-        <!-- خدمة 8: تخصيص وتنفيذ منظومة Odoo ERP المتكاملة -->
-        <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
-          
-          <div class="space-y-4">
-            <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
-                <i class="fa-solid fa-cubes text-xs"></i>
-                <span>🧩 موديولات Odoo مخصصة</span>
-              </span>
-              <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                <i class="fa-solid fa-cubes"></i>
-              </div>
-            </div>
-
-            <div class="space-y-2 text-right">
-              <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">تخصيص وتنفيذ منظومة Odoo ERP المتكاملة</h3>
-              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">تنفيذ وتطوير موديولات Odoo ERP المخصصة لقطاعات المقاولات والمستخلصات، التصنيع وتخطيط المواد MRP، والتوزيع، مع ربطها التام بالدورة المحاسبية ونقاط البيع وتدريب فريق عملك تدريباً شاملاً.</p>
-            </div>
-
-            <!-- صورة / شاشة توضيحية للخدمة -->
-            <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
-              <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1000&q=80" alt="تخصيص وتنفيذ منظومة Odoo ERP المتكاملة" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
-              <div class="absolute bottom-3 right-4 left-4 text-right">
-                <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">تخصيص موديولات أودو للمقاولات والتصنيع والتجارة مع التدريب والدعم الفني الكامل</span>
-              </div>
-            </div>
-
-            <!-- أبرز المميزات -->
-            <div class="space-y-2 pt-2">
-              <p class="text-xs font-black text-white flex items-center gap-1.5">
-                <i class="fa-solid fa-circle-check text-cyan-400"></i>
-                <span>أبرز المميزات والمخرجات:</span>
-              </p>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تخصيص موديول المقاولات والمستخلصات</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">تتبع بنود المشروعات والمستخلصات ونسب الإنجاز التراكمية</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تخطيط الإنتاج والتصنيع الصناعي MRP</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">شجرة المنتج BOM وتتبع أوامر التشغيل وحساب الهالك والتكلفة</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تكامل المحاسبة والمخازن والـ CRM</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">منظومة مترابطة تغنيك عن أي برامج خارجية مع دعم كامل</p>
-                    </div>
-                  </div>
-                
-                  <div class="p-2.5 rounded-xl bg-cyan-950/40 border border-cyan-500/15 flex items-start gap-2">
-                    <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
-                    <div class="text-right">
-                      <p class="text-xs font-bold text-slate-200 leading-tight">تدريب ونقل المعرفة ودعم مستمر</p>
-                      <p class="text-[10px] text-slate-400 leading-relaxed">جلسات تدريبية مفصلة لكوادر الشركة مع وثائق تشغيلية واضحة</p>
-                    </div>
-                  </div>
-                
-              </div>
-            </div>
-          </div>
-
-          <!-- التقنيات والواتساب -->
-          <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-            <a href="https://wa.me/201013688446?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D9%88%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D9%88%D8%B7%D9%84%D8%A8%20%D8%AA%D9%81%D8%A7%D8%B5%D9%8A%D9%84%20%D9%88%D8%AA%D9%83%D9%84%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%AA%D8%AE%D8%B5%D9%8A%D8%B5%20%D9%88%D8%AA%D9%86%D9%81%D9%8A%D8%B0%20%D9%85%D9%86%D8%B8%D9%88%D9%85%D8%A9%20Odoo%20ERP%20%D8%A7%D9%84%D9%85%D8%AA%D9%83%D8%A7%D9%85%D9%84%D8%A9" target="_blank" rel="noopener" class="w-full sm:w-auto px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 transition whitespace-nowrap">
-              <i class="fa-brands fa-whatsapp text-sm"></i>
-              <span>طلب الخدمة عبر واتساب</span>
-            </a>
-          </div>
-
-        </div>
-  
         </div>
 
       </div>
@@ -2881,16 +2280,72 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     const richServicesData = [{"id":"s-web-ai","title":"تطوير تطبيقات الويب والموبايل والذكاء الاصطناعي","shortDesc":"بناء تطبيقات ويب وهواتف ذكية فائقة السرعة مع دمج الـ AI وبوابات الدفع الإلكتروني","icon":"fa-brands fa-react","iconColor":"text-cyan-400","tag":"⚡ تطبيقات سحابية وهجينة","image":"https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80","desc":"نقوم بتطوير منصات وتطبيقات الويب والموبايل المخصصة بأحدث التقنيات العالمية (React, Next.js, Flutter)، مع ربط فوري لنماذج الذكاء الاصطناعي التوليدي LLM وبوابات الدفع الإلكتروني، لتقديم تجربة مستخدم استثنائية وسريعة جداً.","points":[{"title":"تطبيقات الويب التفاعلية","desc":"منصات سحابية فائقة السرعة بـ Next.js و React و Vue.js"},{"title":"تطبيقات الهواتف الذكية","desc":"تطبيقات أصلية موحدة لنظامي iOS و Android باستخدام Flutter"},{"title":"واجهات برمجية REST & GraphQL","desc":"APIs محمية وسريعة لمعالجة آلاف الطلبات المتزامنة"},{"title":"دمج الذكاء الاصطناعي وأتمتة العمليات","desc":"ربط خدمات OpenAI و Gemini والتعرف على الصور والبيانات"}],"tech":["React 19","Next.js","Flutter","FastAPI","Node.js","PostgreSQL"],"filterCat":"ai"},{"id":"s-custom-erp","title":"منظومات ERP السحابية المخصصة للشركات والمصانع","shortDesc":"تخطيط موارد المؤسسات، الحسابات العامة، المخازن المتعددة، وإدارة الـ HR","icon":"fa-solid fa-building-user","iconColor":"text-blue-400","tag":"🏢 إدارة مركزية موحدة","image":"https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=80","desc":"تصميم وبناء منظومات ERP مخصصة بالكامل تناسب طبيعة دورة عمل شركتك وهيكلك المالي، مع تغطية شاملة لشجرة الحسابات العامة، مراكز التكلفة، الفروع والمخازن المتعددة، والرقابة على المشتريات والمبيعات.","points":[{"title":"شجرة الحسابات والقيود الآلية","desc":"توليد تلقائي للقيود المحاسبية ومتابعة الميزانيات ومراكز التكلفة"},{"title":"المخازن والمشتريات والمبيعات","desc":"تتبع حركة المخزون بالجرد المستمر وإشعارات النواقص والباركود"},{"title":"إدارة شؤون الموظفين والرواتب","desc":"حساب مسيرات الرواتب، العهد، الإجازات، والجزاءات التلقائية"},{"title":"تقارير الأرباح واللوحات البيانية","desc":"تحليلات مالية فورية وقوائم الدخل والتدفقات النقدية اللحظية"}],"tech":["Laravel 11","Vue 3","MySQL Multi-Tenant","Redis","PDF Engines"],"filterCat":"erp"},{"id":"s-ai-whatsapp","title":"حلول الذكاء الاصطناعي وروبوتات الواتساب الذكية SaaS","shortDesc":"روبوتات خدمة عملاء تعمل 24/7 وترتبط بقواعد بيانات شركتك لإرسال الفواتير وجدولة المواعيد","icon":"fa-solid fa-robot","iconColor":"text-emerald-400","tag":"🤖 ذكاء اصطناعي وأتمتة WhatsApp","image":"https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1000&q=80","desc":"نبني منصات وروبوتات ذكاء اصطناعي على تطبيق WhatsApp مرتبطة رسمياً بـ WhatsApp Cloud API، تستطيع الرد الآلي والفهم الدقيق لاحتياجات العملاء باللغة العربية والإنجليزية، وتتبع الطلبات وإصدار الفواتير الفورية.","points":[{"title":"ربط رسمي مع WhatsApp Cloud API","desc":"قنوات موثقة آمنة ترسل آلاف الإشعارات دون حظر للأرقام"},{"title":"روبوتات خدمة العملاء بالـ LLM","desc":"إجابة فورية ذكية على استفسارات المنتجات وحجز المواعيد"},{"title":"فواتير وإشعارات تلقائية للعملاء","desc":"إرسال الفواتير وملفات PDF وتأكيد الشحن فورياً عبر الواتساب"},{"title":"لوحة قيادة مركزية للمحادثات","desc":"متابعة كافة محادثات الفريق والعملاء من شاشة واحدة متكاملة"}],"tech":["FastAPI","OpenAI GPT-4o","WhatsApp API","Redis Queue","WebSockets"],"filterCat":"ai"},{"id":"s-pos-zatca","title":"نقاط البيع السريعة والفوترة الإلكترونية ZATCA","shortDesc":"أنظمة كاشير للمطاعم والمتاجر متوافقة 100% مع هيئة الزكاة والضريبة والجمارك","icon":"fa-solid fa-cash-register","iconColor":"text-amber-400","tag":"💳 معتمد من هيئة ZATCA","image":"https://images.unsplash.com/photo-1556742049-0a67c5574f73?auto=format&fit=crop&w=1000&q=80","desc":"حلول نقاط بيع وكاشير تعمل على شاشات اللمس والكمبيوتر والجوال، تدعم العمل أوفلاين وأونلاين، ومتوافقة تماماً مع متطلبات الفوترة الإلكترونية السعودية (المرحلة الثانية) مع التوقيع الرقمي والـ QR Code المشفر.","points":[{"title":"الفوترة الإلكترونية للمرحلة الثانية","desc":"إصدار الفواتير الضريبية والمبسطة بالتوقيع الرقمي المعتمد"},{"title":"دعم شاشات اللمس والباركود والموازين","desc":"واجهة بيع سريعة جداً للمطاعم والسوبرماركت ومحلات التجزئة"},{"title":"طباعة سريعة وتقارير الوردية (Z-Report)","desc":"إغلاق الخزائن وإيصالات استلام حرارية وتقارير أرباح الوردية"},{"title":"مزامنة سحابية متعددة الفروع","desc":"ربط مبيعات ومخازن كافة الفروع بالمركز الرئيسي لحظياً"}],"tech":["ZATCA Phase 2","Cryptographic XML","Electron","Thermal SDK","SQLite"],"filterCat":"zatca"},{"id":"s-cybersecurity","title":"الأمن السيبراني واختبار الاختراق وحماية البيانات","shortDesc":"فحص الثغرات، حماية السيرفرات وقواعد البيانات، واختبارات الاختراق الدورية","icon":"fa-solid fa-shield-halved","iconColor":"text-rose-400","tag":"🛡️ أمان سيبراني وتشفير عسكري","image":"https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1000&q=80","desc":"حماية شاملة لأنظمتك وبيانات عملائك من أي اختراق أو تسريب، من خلال إجراء اختبارات اختراق دورية (Penetration Testing)، وتأمين الاتصالات وقواعد البيانات، ومواجهة هجمات حجب الخدمة DDoS.","points":[{"title":"اختبارات الاختراق الدورية (Pentest)","desc":"كشف الثغرات الأمنية في التطبيقات والخوادم وإغلاقها فوراً"},{"title":"تشفير البيانات والاتصالات SSL / TLS","desc":"تشفير عالي الأمان لقواعد البيانات والاتصالات الحساسة"},{"title":"حماية متقدمة من هجمات DDoS","desc":"جدران نارية سحابية تضمن استمرار عمل أنظمتك تحت أي هجوم"},{"title":"خطط النسخ الاحتياطي والاستعادة الفورية","desc":"نسخ احتياطي مشفر يومياً لحماية البيانات من أي طارئ"}],"tech":["WAF","Cloudflare Enterprise","AES-256 Encryption","OWASP Top 10","Linux Hardening"],"filterCat":"erp"},{"id":"s-cloud-devops","title":"الاستضافة السحابية وإدارة الخوادم (Cloud & DevOps)","shortDesc":"خوادم سحابية عالية الأداء على AWS و DigitalOcean مع توزيع الأحمال والنسخ اليومي","icon":"fa-solid fa-server","iconColor":"text-indigo-400","tag":"☁️ استقرار سحابي 99.99%","image":"https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1000&q=80","desc":"إعداد وإدارة بنية تحتية سحابية متطورة تضمن أعلى سرعة استجابة واستقرار لأنظمتك، مع تفعيل تقنيات الحاويات Docker و Kubernetes وتوزيع الأحمال التلقائي لمواجهة ذروة الزيارات والعمليات.","points":[{"title":"إدارة حاويات Docker و Kubernetes","desc":"عزل تام للخدمات وسهولة التوسع والترقية بدون توقف النظام"},{"title":"توزيع الأحمال وموازنة الخوادم","desc":"Load Balancing لمضاعفة سرعة الاستجابة تحت الضغط العالي"},{"title":"مراقبة ومتابعة على مدار الساعة 24/7","desc":"لوحات مراقبة حية لاستهلاك المعالج والذاكرة والتنبيهات الفورية"},{"title":"تهيئة بيئات التطوير والإنتاج CI/CD","desc":"نشر تلقائي وآمن للتحديثات البرمجية بدون انقطاع الخدمة"}],"tech":["Docker","Kubernetes","AWS","DigitalOcean","Nginx","GitHub Actions"],"filterCat":"erp"},{"id":"s-ui-ux","title":"تصميم واجهات وتجربة المستخدم الاحترافية (UI/UX Design)","shortDesc":"دراسة رحلة المستخدم وتصميم واجهات تفاعلية جذابة وعصرية تزيد من تفاعل العملاء","icon":"fa-solid fa-pen-ruler","iconColor":"text-violet-400","tag":"🎨 تجربة مستخدم سلسة وعصرية","image":"https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&w=1000&q=80","desc":"نبتكر واجهات رقمية جذابة وسهلة الاستخدام ترتكز على دراسة سلوك العميل وتيسير رحلته داخل النظام أو التطبيق، مع بناء أنظمة تصميم متكاملة (Design Systems) ونماذج أولية تفاعلية قبل كتابة أي سطر كود.","points":[{"title":"أبحاث ودراسة رحلة المستخدم UX Research","desc":"تحليل سلوك الجمهور المستهدف وهندسة تدفق الصفحات"},{"title":"تصميم واجهات احترافية على Figma","desc":"واجهات فائقة الجمال والوضوح بنظام التصميم الموحد"},{"title":"نماذج أولية تفاعلية Interactive Prototypes","desc":"تجربة التطبيق والشاشات حياً قبل بدء عملية البرمجة"},{"title":"تصاميم متجاوبة 100% مع جميع الأجهزة","desc":"توافق مثالي مع شاشات الهواتف والتابلت وأجهزة الحاسوب"}],"tech":["Figma","Adobe XD","Design Systems","Wireframing","Prototyping"],"filterCat":"edtech"},{"id":"s-odoo-erp","title":"تخصيص وتنفيذ منظومة Odoo ERP المتكاملة","shortDesc":"تخصيص موديولات أودو للمقاولات والتصنيع والتجارة مع التدريب والدعم الفني الكامل","icon":"fa-solid fa-cubes","iconColor":"text-yellow-400","tag":"🧩 موديولات Odoo مخصصة","image":"https://images.unsplash.com/photo-1542744094-3a31f272c490?auto=format&fit=crop&w=1000&q=80","desc":"تنفيذ وتطوير موديولات Odoo ERP المخصصة لقطاعات المقاولات والمستخلصات، التصنيع وتخطيط المواد MRP، والتوزيع، مع ربطها التام بالدورة المحاسبية ونقاط البيع وتدريب فريق عملك تدريباً شاملاً.","points":[{"title":"تخصيص موديول المقاولات والمستخلصات","desc":"تتبع بنود المشروعات والمستخلصات ونسب الإنجاز التراكمية"},{"title":"تخطيط الإنتاج والتصنيع الصناعي MRP","desc":"شجرة المنتج BOM وتتبع أوامر التشغيل وحساب الهالك والتكلفة"},{"title":"تكامل المحاسبة والمخازن والـ CRM","desc":"منظومة مترابطة تغنيك عن أي برامج خارجية مع دعم كامل"},{"title":"تدريب ونقل المعرفة ودعم مستمر","desc":"جلسات تدريبية مفصلة لكوادر الشركة مع وثائق تشغيلية واضحة"}],"tech":["Odoo 17 / 18","Python","PostgreSQL","XML-RPC","Custom Addons"],"filterCat":"erp"}];
     let servicesData = serverServicesList || JSON.parse(localStorage.getItem('almobtaker_services') || JSON.stringify(richServicesData));
 
-    function renderServicesSection() {
-      const grid = document.getElementById('servicesCardsGrid');
-      if (!grid) return;
+    /* ====================================================================
+       SERVICES SLIDER ENGINE (Responsive 2-Items Slider with Autoplay)
+       ==================================================================== */
+    let currentServicesCategory = 'all';
+    let currentServicesSlideIndex = 0;
+    let servicesAutoplayTimer = null;
+    let isServicesAutoplayActive = true;
+    let filteredServicesData = [];
+
+    // Helper: Determine visible service cards count based on screen width
+    function getVisibleServicesCount() {
+      if (window.innerWidth >= 1024) return 2; // Desktop: 2 large detailed service cards
+      return 1; // Tablet / Mobile: 1 detailed service card
+    }
+
+    // Update Services Slider Dimensions & Card Widths
+    function updateServicesSliderDimensions() {
+      const track = document.getElementById('servicesTrack');
+      if (!track) return;
+      const windowEl = document.getElementById('servicesTrackWindow');
+      if (!windowEl) return;
+
+      const containerWidth = windowEl.offsetWidth;
+      const visible = getVisibleServicesCount();
+      const gap = 24; // gap-6 = 24px
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(280, (containerWidth - totalGaps) / visible);
+
+      const cards = track.querySelectorAll('.service-slide-item');
+      cards.forEach(card => {
+        card.style.width = `${cardWidth}px`;
+        card.style.flexShrink = '0';
+      });
+
+      goToServicesSlide(currentServicesSlideIndex, false);
+    }
+
+    // Render Services into the Slider Track
+    function renderServicesSlider(resetIndex = true) {
+      const track = document.getElementById('servicesTrack');
+      const empty = document.getElementById('servicesEmpty');
+      if (!track) return;
+
       const data = (Array.isArray(servicesData) && servicesData.length) ? servicesData : richServicesData;
-      grid.innerHTML = data.map((s, idx) => {
+      const cat = currentServicesCategory;
+      filteredServicesData = data.filter(s => (cat === 'all' || s.filterCat === cat || s.category === cat));
+
+      if (!filteredServicesData.length) {
+        track.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        renderServicesDots();
+        updateServicesCounters();
+        return;
+      }
+      if (empty) empty.classList.add('hidden');
+
+      if (resetIndex) {
+        currentServicesSlideIndex = 0;
+      }
+
+      track.innerHTML = filteredServicesData.map((s) => {
         const waMsg = encodeURIComponent('مرحباً، أود الاستفسار وطلب تفاصيل وتكلفة خدمة: ' + s.title);
-        const techArr = Array.isArray(s.tech) ? s.tech : (typeof s.tech === 'string' ? s.tech.split('•').map(t=>t.trim()) : []);
         const pointsArr = Array.isArray(s.points) ? s.points : [];
+
         return `
-          <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group">
+          <div class="service-slide-item glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:border-cyan-400/60 transition-all duration-300 hover:-translate-y-1 group select-none h-full" dir="rtl">
             <div class="space-y-4">
               <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-4">
                 <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">
@@ -2901,10 +2356,12 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
                   <i class="${s.icon || 'fa-solid fa-gears'}"></i>
                 </div>
               </div>
+
               <div class="space-y-2 text-right">
                 <h3 class="text-lg sm:text-xl font-black text-white group-hover:text-cyan-300 transition-colors leading-snug">${s.title}</h3>
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">${s.desc}</p>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed line-clamp-3">${s.desc}</p>
               </div>
+
               <div class="relative rounded-2xl overflow-hidden border border-cyan-500/25 bg-[#07172b] h-48 sm:h-52">
                 <img src="${s.image}" alt="${s.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-[#08172c]/30 to-transparent"></div>
@@ -2912,6 +2369,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
                   <span class="text-[11px] font-mono text-cyan-300/90 font-bold drop-shadow-md">${s.shortDesc || s.tag || ''}</span>
                 </div>
               </div>
+
               ${pointsArr.length ? `
                 <div class="space-y-2 pt-2">
                   <p class="text-xs font-black text-white flex items-center gap-1.5">
@@ -2924,7 +2382,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
                         <i class="fa-solid fa-check text-cyan-400 text-xs mt-0.5 flex-shrink-0"></i>
                         <div class="text-right">
                           <p class="text-xs font-bold text-slate-200 leading-tight">${typeof p === 'object' ? p.title : p}</p>
-                          ${(typeof p === 'object' && p.desc) ? `<p class="text-[10px] text-slate-400 leading-relaxed">${p.desc}</p>` : ''}
+                          ${(typeof p === 'object' && p.desc) ? `<p class="text-[10px] text-slate-400 leading-relaxed line-clamp-2">${p.desc}</p>` : ''}
                         </div>
                       </div>
                     `).join('')}
@@ -2932,8 +2390,9 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
                 </div>
               ` : ''}
             </div>
+
             <div class="pt-4 border-t border-cyan-500/20 flex items-center justify-center sm:justify-end">
-              <a href="https://wa.me/201013688446?text=${waMsg}" target="_blank" rel="noopener" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 hover:shadow-green-500/40 transition whitespace-nowrap">
+              <a href="https://wa.me/201013688446?text=${waMsg}" target="_blank" rel="noopener" class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md shadow-green-500/20 hover:shadow-green-500/40 transition whitespace-nowrap active:scale-95">
                 <i class="fa-brands fa-whatsapp text-sm"></i>
                 <span>طلب الخدمة عبر واتساب</span>
               </a>
@@ -2941,8 +2400,205 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
           </div>
         `;
       }).join('');
+
+      updateServicesSliderDimensions();
+      renderServicesDots();
+      updateServicesCounters();
     }
 
+    // Alias for backward compatibility
+    function renderServicesSection() {
+      renderServicesSlider(false);
+    }
+
+    // Go to specific services slide
+    function goToServicesSlide(index, animate = true) {
+      const track = document.getElementById('servicesTrack');
+      if (!track || !filteredServicesData.length) return;
+
+      const visible = getVisibleServicesCount();
+      const maxIndex = Math.max(0, filteredServicesData.length - visible);
+
+      if (index > maxIndex) {
+        currentServicesSlideIndex = 0;
+      } else if (index < 0) {
+        currentServicesSlideIndex = maxIndex;
+      } else {
+        currentServicesSlideIndex = index;
+      }
+
+      const windowEl = document.getElementById('servicesTrackWindow');
+      if (!windowEl) return;
+      const containerWidth = windowEl.offsetWidth;
+      const gap = 24;
+      const totalGaps = (visible - 1) * gap;
+      const cardWidth = Math.max(280, (containerWidth - totalGaps) / visible);
+
+      const shift = currentServicesSlideIndex * (cardWidth + gap);
+
+      track.style.transition = animate ? 'transform 0.65s cubic-bezier(0.16, 1, 0.3, 1)' : 'none';
+      track.style.transform = `translateX(-${shift}px)`;
+
+      updateActiveServicesDot();
+      updateServicesCounters();
+    }
+
+    function servicesSliderNext() {
+      const visible = getVisibleServicesCount();
+      const maxIndex = Math.max(0, filteredServicesData.length - visible);
+      if (currentServicesSlideIndex >= maxIndex) {
+        goToServicesSlide(0);
+      } else {
+        goToServicesSlide(Math.min(currentServicesSlideIndex + visible, maxIndex));
+      }
+    }
+
+    function servicesSliderPrev() {
+      const visible = getVisibleServicesCount();
+      const maxIndex = Math.max(0, filteredServicesData.length - visible);
+      if (currentServicesSlideIndex <= 0) {
+        goToServicesSlide(maxIndex);
+      } else {
+        goToServicesSlide(Math.max(currentServicesSlideIndex - visible, 0));
+      }
+    }
+
+    function filterServicesSlider(cat) {
+      currentServicesCategory = cat;
+      document.querySelectorAll('.srv-pill').forEach(b => {
+        b.className = 'srv-pill px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:border-cyan-500/50 hover:text-cyan-300 whitespace-nowrap transition-all duration-200 cursor-pointer';
+      });
+      const activePill = document.getElementById('srv-pill-' + cat);
+      if (activePill) {
+        activePill.className = 'srv-pill active px-4 py-2 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 shadow-md shadow-cyan-500/20 whitespace-nowrap transition-all duration-200 cursor-pointer';
+      }
+      renderServicesSlider(true);
+      startServicesAutoplay();
+    }
+
+    function renderServicesDots() {
+      const container = document.getElementById('servicesDotsContainer');
+      if (!container) return;
+
+      const visible = getVisibleServicesCount();
+      const total = filteredServicesData.length;
+      if (total <= visible) {
+        container.innerHTML = '';
+        return;
+      }
+
+      const totalPages = Math.ceil(total / visible);
+      let dotsHtml = '';
+      for (let i = 0; i < totalPages; i++) {
+        const targetIndex = Math.min(i * visible, Math.max(0, total - visible));
+        dotsHtml += `
+          <button type="button" onclick="goToServicesSlide(${targetIndex})" data-srv-dot="${i}" aria-label="صفحة الخدمات ${i + 1}"
+                  class="srv-slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer"></button>
+        `;
+      }
+      container.innerHTML = dotsHtml;
+      updateActiveServicesDot();
+    }
+
+    function updateActiveServicesDot() {
+      const visible = getVisibleServicesCount();
+      const currentPage = Math.round(currentServicesSlideIndex / visible);
+      document.querySelectorAll('.srv-slider-dot').forEach((dot, idx) => {
+        if (idx === currentPage) {
+          dot.className = 'srv-slider-dot w-6 h-2.5 rounded-full transition-all duration-300 bg-cyan-400 shadow-[0_0_10px_rgba(0,240,255,0.8)] cursor-pointer';
+        } else {
+          dot.className = 'srv-slider-dot w-2.5 h-2.5 rounded-full transition-all duration-300 bg-slate-700 hover:bg-cyan-400 cursor-pointer';
+        }
+      });
+    }
+
+    function updateServicesCounters() {
+      const badge = document.getElementById('servicesCounterBadge');
+      const mobileCounter = document.getElementById('servicesMobileCounter');
+      const total = filteredServicesData.length;
+      if (!total) {
+        if (badge) badge.textContent = 'لا توجد خدمات';
+        if (mobileCounter) mobileCounter.textContent = '0 من 0';
+        return;
+      }
+
+      const visible = getVisibleServicesCount();
+      const start = currentServicesSlideIndex + 1;
+      const end = Math.min(currentServicesSlideIndex + visible, total);
+
+      const text = `معروض ${start} - ${end} من ${total}`;
+      if (badge) badge.textContent = text;
+      if (mobileCounter) mobileCounter.textContent = `${start} - ${end} من ${total}`;
+    }
+
+    function startServicesAutoplay() {
+      stopServicesAutoplay();
+      if (!isServicesAutoplayActive) return;
+      servicesAutoplayTimer = setInterval(() => {
+        servicesSliderNext();
+      }, 5000);
+    }
+
+    function stopServicesAutoplay() {
+      if (servicesAutoplayTimer) {
+        clearInterval(servicesAutoplayTimer);
+        servicesAutoplayTimer = null;
+      }
+    }
+
+    function toggleServicesAutoplay() {
+      isServicesAutoplayActive = !isServicesAutoplayActive;
+      const icon = document.getElementById('srvPlayPauseIcon');
+      const text = document.getElementById('srvPlayPauseText');
+
+      if (isServicesAutoplayActive) {
+        startServicesAutoplay();
+        if (icon) icon.className = 'fa-solid fa-pause text-cyan-400';
+        if (text) text.textContent = 'إيقاف مؤقت';
+      } else {
+        stopServicesAutoplay();
+        if (icon) icon.className = 'fa-solid fa-play text-cyan-400';
+        if (text) text.textContent = 'تشغيل تلقائي';
+      }
+    }
+
+    // Event listeners for Services Slider (Resize, Hover, Swipe)
+    window.addEventListener('resize', () => {
+      clearTimeout(window.srvSliderResizeTimeout);
+      window.srvSliderResizeTimeout = setTimeout(() => {
+        updateServicesSliderDimensions();
+      }, 150);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const container = document.getElementById('servicesSliderContainer');
+      if (container) {
+        container.addEventListener('mouseenter', stopServicesAutoplay);
+        container.addEventListener('mouseleave', () => {
+          if (isServicesAutoplayActive) startServicesAutoplay();
+        });
+
+        let touchStartX = 0;
+        let touchEndX = 0;
+        container.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+          stopServicesAutoplay();
+        }, { passive: true });
+
+        container.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchEndX - touchStartX;
+          if (Math.abs(diff) > 40) {
+            if (diff < 0) {
+              servicesSliderNext();
+            } else {
+              servicesSliderPrev();
+            }
+          }
+          if (isServicesAutoplayActive) startServicesAutoplay();
+        }, { passive: true });
+      }
+    });
     /* ====================================================================
        PORTFOLIO SLIDER ENGINE (Responsive 3-Items Slider with Autoplay)
        ==================================================================== */
@@ -3465,7 +3121,8 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       }
       if (e.key === 'almobtaker_services') {
         servicesData = JSON.parse(e.newValue || '[]');
-        renderServicesSection();
+        renderServicesSlider();
+    startServicesAutoplay();
       }
     });
 
