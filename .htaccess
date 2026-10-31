@@ -10,6 +10,10 @@
     RewriteRule ^deploy-webhook/?$ deploy-webhook.php [L,QSA]
     RewriteRule ^api/deploy-webhook/?$ deploy-webhook.php [L,QSA]
 
+    # Serve public assets directly when hosted in public_html
+    RewriteCond %{DOCUMENT_ROOT}/public/$1 -f
+    RewriteRule ^(.*)$ public/$1 [L]
+
     # Send Requests to public directory if document root is set to project root
     RewriteCond %{REQUEST_URI} !^/public/
     RewriteCond %{REQUEST_FILENAME} !-d
