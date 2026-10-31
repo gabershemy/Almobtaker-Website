@@ -20,6 +20,8 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->validateCsrfTokens(except: [
             'api/*',
             'api/contact.php',
+            'deploy-webhook*',
+            'api/deploy-webhook*',
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
