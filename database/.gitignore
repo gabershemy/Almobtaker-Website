@@ -1,0 +1,5 @@
+# Ignore everything in this directory except .gitignore and migrations/seeders
+# But keep database.sqlite tracked so production has full data out-of-the-box
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal

@@ -1,6 +1,6 @@
 <?php
 // ─────────────────────────────────────────────────────────────────────────────
-// GitHub Auto-Deploy Webhook for Almobtaker Website
+// GitHub Auto-Deploy Webhook for Almobtaker Website (Laravel & Filament)
 // ─────────────────────────────────────────────────────────────────────────────
 header('Content-Type: application/json; charset=utf-8');
 
@@ -23,7 +23,7 @@ if ($providedSecret !== $secret) {
 }
 
 $baseDir = __DIR__;
-$output = shell_exec("cd {$baseDir} && git pull origin main 2>&1");
+$output = shell_exec("cd {$baseDir} && git pull origin main 2>&1 && (composer install --no-dev --optimize-autoloader 2>&1 || true) && php artisan migrate --force 2>&1 && php artisan optimize:clear 2>&1");
 
 echo json_encode([
     'status' => 'success',
