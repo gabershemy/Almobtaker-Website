@@ -1,15 +1,148 @@
 /* ==========================================================================
-   المبتكر العربي للبرمجيات - Clean Professional Enterprise Theme for Filament
+   المبتكر العربي للبرمجيات - Clean Modern Slate Theme & Full RTL for Filament
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&display=swap');
 
-/* Global Font */
-body, .fi, .fi * {
+/* Global Font & RTL Base */
+html, body, .fi, .fi * {
     font-family: 'Cairo', sans-serif !important;
 }
 
-/* Brand Logo Styling */
+[dir="rtl"] {
+    text-align: right;
+}
+
+/* ==========================================================================
+   Softer, Lighter Dark Theme Palette (Slate Modern)
+   ========================================================================== */
+html.dark {
+    color-scheme: dark;
+}
+
+/* Main Background - Soft Slate instead of pitch black */
+html.dark,
+html.dark body,
+html.dark .fi-layout,
+html.dark .fi-main,
+html.dark .fi-page {
+    background-color: #1e293b !important; /* Tailwind Slate 800 */
+    color: #f1f5f9 !important;
+}
+
+/* Sidebar & Topbar - Medium Deep Slate */
+html.dark .fi-sidebar,
+html.dark .fi-sidebar-header,
+html.dark .fi-sidebar-footer,
+html.dark .fi-topbar,
+html.dark .fi-topbar nav {
+    background-color: #182234 !important;
+    border-color: #334155 !important;
+}
+
+/* RTL Sidebar Separation Border */
+[dir="rtl"] .fi-sidebar {
+    border-left: 1px solid #334155 !important;
+    border-right: none !important;
+}
+
+[dir="ltr"] .fi-sidebar {
+    border-right: 1px solid #334155 !important;
+    border-left: none !important;
+}
+
+/* Cards, Sections, Modals & Table Containers */
+html.dark .fi-section,
+html.dark .fi-card,
+html.dark .fi-ta-ctn,
+html.dark .fi-modal-window,
+html.dark .fi-dropdown-panel {
+    background-color: #27374f !important;
+    border: 1px solid #3b4e6b !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
+}
+
+html.dark .fi-section-header {
+    border-bottom: 1px solid #384e6f !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 16px !important;
+}
+
+html.dark .fi-section-header-heading {
+    color: #ffffff !important;
+    font-weight: 800 !important;
+}
+
+html.dark .fi-section-header-description {
+    color: #94a3b8 !important;
+}
+
+/* Form Inputs, Textareas, Selects & Wrappers */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea,
+html.dark .fi-input-wrp {
+    background-color: #1a2536 !important;
+    border: 1px solid #455a79 !important;
+    color: #ffffff !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus,
+html.dark .fi-input-wrp:focus-within {
+    border-color: #00b8d4 !important;
+    box-shadow: 0 0 0 3px rgba(0, 184, 212, 0.25) !important;
+}
+
+/* Form Field Labels */
+html.dark label,
+html.dark .fi-fo-field-wrp-label span {
+    color: #cbd5e1 !important;
+    font-weight: 700 !important;
+    font-size: 0.92rem !important;
+}
+
+/* Table Headers & Rows */
+html.dark .fi-ta-header-cell {
+    background-color: #202d41 !important;
+    color: #cbd5e1 !important;
+    border-bottom: 1px solid #374b68 !important;
+    font-weight: 700 !important;
+}
+
+html.dark .fi-ta-row:hover {
+    background-color: #2e415d !important;
+}
+
+/* Navigation Items in Sidebar */
+html.dark .fi-sidebar-item a,
+html.dark .fi-sidebar-item button {
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    transition: all 0.2s ease;
+}
+
+html.dark .fi-sidebar-item a:hover,
+html.dark .fi-sidebar-item button:hover {
+    background-color: rgba(0, 184, 212, 0.12) !important;
+    color: #00e5ff !important;
+}
+
+html.dark .fi-sidebar-item-active a,
+html.dark .fi-sidebar-item-active button {
+    background-color: #00b8d4 !important;
+    color: #ffffff !important;
+    box-shadow: 0 2px 8px rgba(0, 184, 212, 0.35) !important;
+}
+
+/* ==========================================================================
+   Brand Logo & Badges
+   ========================================================================== */
 .fi-logo img,
 .fi-sidebar-header img,
 .fi-topbar img {
@@ -30,8 +163,8 @@ body, .fi, .fi * {
     align-items: center;
     gap: 8px;
     padding: 6px 16px;
-    background: rgba(0, 184, 212, 0.1);
-    color: #0097a7;
+    background: rgba(0, 184, 212, 0.12);
+    color: #00e5ff;
     border: 1px solid #00b8d4;
     border-radius: 9999px;
     font-size: 0.85rem;
@@ -47,7 +180,7 @@ body, .fi, .fi * {
     transform: translateY(-1px);
 }
 
-/* Custom Cyber Stats Grid for Dashboard */
+/* Stats Cards on Dashboard */
 .cyber-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -68,15 +201,15 @@ body, .fi, .fi * {
 }
 
 html.dark .cyber-stat-card {
-    background: #1e293b;
-    border-color: #334155;
+    background: #27374f !important;
+    border-color: #3b4e6b !important;
     box-shadow: 0 4px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
 .cyber-stat-card:hover {
     transform: translateY(-3px);
-    border-color: #00b8d4;
-    box-shadow: 0 6px 16px rgba(0, 184, 212, 0.15);
+    border-color: #00b8d4 !important;
+    box-shadow: 0 6px 16px rgba(0, 184, 212, 0.2) !important;
 }
 
 .cyber-stat-icon {
@@ -95,7 +228,7 @@ html.dark .cyber-stat-card {
 }
 
 html.dark .cyber-stat-count {
-    color: #f8fafc;
+    color: #f8fafc !important;
 }
 
 .cyber-stat-label {
@@ -106,7 +239,7 @@ html.dark .cyber-stat-count {
 }
 
 html.dark .cyber-stat-label {
-    color: #cbd5e1;
+    color: #cbd5e1 !important;
 }
 
 .cyber-stat-desc {
@@ -115,7 +248,7 @@ html.dark .cyber-stat-label {
 }
 
 html.dark .cyber-stat-desc {
-    color: #94a3b8;
+    color: #94a3b8 !important;
 }
 
 /* Welcome Box */
@@ -129,9 +262,9 @@ html.dark .cyber-stat-desc {
 }
 
 html.dark .cyber-welcome-box {
-    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-    border-color: #334155;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #27374f 0%, #1e293b 100%) !important;
+    border-color: #3b4e6b !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
 }
 
 .cyber-welcome-title {
@@ -142,7 +275,7 @@ html.dark .cyber-welcome-box {
 }
 
 html.dark .cyber-welcome-title {
-    color: #ffffff;
+    color: #ffffff !important;
 }
 
 .cyber-welcome-subtitle {
@@ -151,16 +284,10 @@ html.dark .cyber-welcome-title {
 }
 
 html.dark .cyber-welcome-subtitle {
-    color: #94a3b8;
+    color: #94a3b8 !important;
 }
 
-/* Form inputs & Sections spacing improvements */
+/* Spacing improvements */
 .fi-section {
     margin-bottom: 1.5rem !important;
-}
-
-.fi-sidebar-item a,
-.fi-sidebar-item button {
-    font-weight: 600 !important;
-    font-size: 0.95rem !important;
 }
