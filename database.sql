@@ -16,7 +16,8 @@ INSERT INTO `settings` (`key_name`, `key_value`) VALUES
 ('site_title', 'المبتكر العربي للبرمجيات | Almobtaker Alaraby Software & AI Solutions'),
 ('phone', '+201013688446'),
 ('whatsapp', '01013688446'),
-('email', 'arabiccreative80@gmail.com'),
+('email', 'gabershemy@gmail.com'),
+('facebook', 'https://www.facebook.com/AlmobtakerAlaraby'),
 ('address', 'دمنهور - مصر'),
 ('work_hours', 'السبت - الخميس: 9:00 ص - 9:00 م'),
 ('hero_title', 'المبتكر العربي للبرمجيات والحلول الذكية'),
@@ -97,18 +98,18 @@ CREATE TABLE IF NOT EXISTS `team` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `team` (`id`, `name`, `role`, `icon`, `image`, `order_num`) VALUES
-(1, 'د. جابر الشيمي', 'Co-Founder & CEO', 'fa-solid fa-user-tie', 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80', 1),
-(2, 'م. حسام مجدي', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&h=400&q=80', 2),
-(3, 'د. آية ماهر غراب', 'Social Team Manager', 'fa-solid fa-bullhorn', 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&h=400&q=80', 3),
-(4, 'م. ندى ياقوت شاهين', 'Front-End Developer', 'fa-solid fa-laptop-code', 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&h=400&q=80', 4),
-(5, 'م. رُقيّة محمد شريط', 'UI/UX Designer', 'fa-solid fa-pen-nib', 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&h=400&q=80', 5),
-(6, 'م. سارة محمود البدري', 'UI/UX Designer', 'fa-solid fa-pen-nib', 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=400&h=400&q=80', 6),
-(7, 'م. روفيده محمد البشلاوي', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?auto=format&fit=crop&w=400&h=400&q=80', 7),
-(8, 'م. ندى صبحي أبو زيد', 'Front-End Developer', 'fa-solid fa-code', 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&h=400&q=80', 8),
-(9, 'أحمد جابر الشيمي', 'Social Media Team', 'fa-brands fa-facebook', 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80', 9),
-(10, 'م. عمرو خالد عيسى', 'Backend Software Engineer', 'fa-solid fa-server', 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=400&h=400&q=80', 10),
-(11, 'م. مصطفى العيسوي', 'Flutter Developer', 'fa-solid fa-mobile-screen', 'https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=400&h=400&q=80', 11),
-(12, 'شمس صبحي الشيمي', 'Marketing Team', 'fa-solid fa-chart-pie', 'https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=400&h=400&q=80', 12)
+(1, 'د. جابر الشيمي', 'Co-Founder & CEO', 'fa-solid fa-user-tie', NULL, 1),
+(2, 'م. حسام مجدي', 'Front-End Developer', 'fa-solid fa-code', NULL, 2),
+(3, 'د. آية ماهر غراب', 'Social Team Manager', 'fa-solid fa-bullhorn', NULL, 3),
+(4, 'م. ندى ياقوت شاهين', 'Front-End Developer', 'fa-solid fa-laptop-code', NULL, 4),
+(5, 'م. رُقيّة محمد شريط', 'UI/UX Designer', 'fa-solid fa-pen-nib', NULL, 5),
+(6, 'م. سارة محمود البدري', 'UI/UX Designer', 'fa-solid fa-pen-nib', NULL, 6),
+(7, 'م. روفيده محمد البشلاوي', 'Front-End Developer', 'fa-solid fa-code', NULL, 7),
+(8, 'م. ندى صبحي أبو زيد', 'Front-End Developer', 'fa-solid fa-code', NULL, 8),
+(9, 'أحمد جابر الشيمي', 'Social Media Team', 'fa-brands fa-facebook', NULL, 9),
+(10, 'م. عمرو خالد عيسى', 'Backend Software Engineer', 'fa-solid fa-server', NULL, 10),
+(11, 'م. مصطفى العيسوي', 'Flutter Developer', 'fa-solid fa-mobile-screen', NULL, 11),
+(12, 'شمس صبحي الشيمي', 'Marketing Team', 'fa-solid fa-chart-pie', NULL, 12)
 ON DUPLICATE KEY UPDATE `name`=VALUES(`name`), `role`=VALUES(`role`), `icon`=VALUES(`icon`), `image`=VALUES(`image`);
 
 CREATE TABLE IF NOT EXISTS `faqs` (

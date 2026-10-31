@@ -81,7 +81,7 @@ class ContactService
         if ($saved) {
             // 6. Send instant email notification to admin
             try {
-                $adminEmail = function_exists('getSetting') ? getSetting('email', 'arabiccreative80@gmail.com') : 'arabiccreative80@gmail.com';
+                $adminEmail = function_exists('getSetting') ? getSetting('email', 'gabershemy@gmail.com') : 'gabershemy@gmail.com';
                 $subject = "طلب دراسة مشروع جديد من: " . $name . " | المبتكر العربي";
                 
                 $body = "<h2>وصلك طلب دراسة مشروع جديد عبر موقع المبتكر العربي للبرمجيات</h2>";

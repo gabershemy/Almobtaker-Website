@@ -208,7 +208,7 @@ class SeoService
     {
         $siteUrl = rtrim($siteSettings['site_url'] ?? $this->defaultSiteUrl, '/');
         $phone = $siteSettings['phone'] ?? '+201013688446';
-        $email = $siteSettings['email'] ?? 'arabiccreative80@gmail.com';
+        $email = $siteSettings['email'] ?? 'gabershemy@gmail.com';
         $logo = $siteUrl . '/logo.jpg';
 
         $graph = [

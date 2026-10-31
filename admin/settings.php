@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 $site_title = getSetting('site_title', 'المبتكر العربي للبرمجيات');
 $phone = getSetting('phone', '+201013688446');
 $whatsapp = getSetting('whatsapp', '01013688446');
-$email = getSetting('email', 'arabiccreative80@gmail.com');
+$email = getSetting('email', 'gabershemy@gmail.com');
 $address = getSetting('address', 'دمنهور - مصر');
 $work_hours = getSetting('work_hours', 'السبت - الخميس: 9:00 ص - 9:00 م');
 $hero_title = getSetting('hero_title', 'المبتكر العربي للبرمجيات والحلول الذكية');

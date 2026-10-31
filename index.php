@@ -12,7 +12,8 @@ $dbGallery = getAllGallery();
 $siteTitle = getSetting('site_title', 'المبتكر العربي للبرمجيات | Almobtaker Alaraby Software & AI Solutions');
 $phone = getSetting('phone', '+201013688446');
 $whatsapp = getSetting('whatsapp', '01013688446');
-$email = getSetting('email', 'arabiccreative80@gmail.com');
+$email = getSetting('email', 'gabershemy@gmail.com');
+$facebook = getSetting('facebook', 'https://www.facebook.com/AlmobtakerAlaraby');
 $address = getSetting('address', 'دمنهور - مصر');
 $workHours = getSetting('work_hours', 'السبت - الخميس: 9:00 ص - 9:00 م');
 $heroTitle = getSetting('hero_title', 'المبتكر العربي للبرمجيات والحلول الذكية');
@@ -139,6 +140,11 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
         <span class="text-cyan-500/40 hidden md:inline">|</span>
         <a href="mailto:<?= htmlspecialchars($email) ?>" class="hover:text-cyan-400 transition hidden md:flex items-center gap-1.5 font-mono whitespace-nowrap text-xs">
           <i class="fa-solid fa-envelope text-cyan-400 text-[11px]"></i><span><?= htmlspecialchars($email) ?></span>
+        </a>
+        <span class="text-cyan-500/40 hidden sm:inline">|</span>
+        <a href="<?= htmlspecialchars($facebook) ?>" target="_blank" rel="noopener" class="hover:text-cyan-300 transition flex items-center gap-1.5 text-[11px] sm:text-xs text-cyan-300 font-bold whitespace-nowrap">
+          <i class="fa-brands fa-facebook text-cyan-400 text-xs sm:text-sm"></i>
+          <span>فيسبوك</span>
         </a>
       </div>
       <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
@@ -484,6 +490,11 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <span id="servicesCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
               معروض 1 - 2
             </span>
+            <button type="button" onclick="openViewAllModal('services')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/35 text-cyan-300 font-bold text-xs border border-cyan-400/50 flex items-center gap-1.5 transition-all duration-300 shadow-md shadow-cyan-500/20 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap">
+              <i class="fa-solid fa-shapes text-cyan-400"></i>
+              <span>عرض كل الخدمات (8)</span>
+              <i class="fa-solid fa-arrow-left text-[10px]"></i>
+            </button>
           </div>
         </div>
 
@@ -581,6 +592,11 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <span id="sliderCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
               معروض 1 - 3 من <?= count($dbProjects) ?>
             </span>
+            <button type="button" onclick="openViewAllModal('portfolio')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/35 text-cyan-300 font-bold text-xs border border-cyan-400/50 flex items-center gap-1.5 transition-all duration-300 shadow-md shadow-cyan-500/20 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap">
+              <i class="fa-solid fa-layer-group text-cyan-400"></i>
+              <span>عرض كل المشاريع (<?= count($dbProjects) ?>)</span>
+              <i class="fa-solid fa-arrow-left text-[10px]"></i>
+            </button>
           </div>
         </div>
 
@@ -666,9 +682,16 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
             <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
             <span class="font-bold text-white">كوادر متخصصة</span>
           </div>
-          <span id="teamCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
-            معروض 1 - 4 من 12
-          </span>
+          <div class="flex items-center gap-3">
+            <span id="teamCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap shadow-inner shadow-cyan-950">
+              معروض 1 - 4 من 12
+            </span>
+            <button type="button" onclick="openViewAllModal('team')" class="px-3.5 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/35 text-cyan-300 font-bold text-xs border border-cyan-400/50 flex items-center gap-1.5 transition-all duration-300 shadow-md shadow-cyan-500/20 hover:scale-105 active:scale-95 cursor-pointer whitespace-nowrap">
+              <i class="fa-solid fa-users text-cyan-400"></i>
+              <span>عرض كامل الفريق (12)</span>
+              <i class="fa-solid fa-arrow-left text-[10px]"></i>
+            </button>
+          </div>
         </div>
 
         <!-- حاوية سلايدر فريق العمل مع أزرار التنقل الجانبية الاحترافية -->
@@ -3197,22 +3220,28 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
 
       track.innerHTML = data.map(t => {
         const iconClass = (t.icon && t.icon.includes('fa-')) ? (t.icon.includes('fa-solid') || t.icon.includes('fa-brands') ? t.icon : 'fa-solid ' + t.icon) : 'fa-solid fa-user';
-        const imgUrl = t.image || 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80';
+        const hasCustomImage = t.image && t.image.trim() !== '' && !t.image.includes('unsplash.com');
 
         return `
-          <div class="team-slide-item glass-card glass-card-hover rounded-3xl p-5 border border-cyan-500/25 flex flex-col items-center text-center justify-between gap-4 transition-all duration-300 group shadow-xl h-full select-none" dir="rtl">
+          <div class="team-slide-item glass-card glass-card-hover rounded-3xl p-6 border border-cyan-500/25 flex flex-col items-center text-center justify-between gap-4 transition-all duration-300 group shadow-xl h-full select-none" dir="rtl">
             <div class="relative">
-              <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-cyan-500/40 p-0.5 bg-gradient-to-tr from-cyan-500/30 to-blue-500/20 shadow-lg shadow-cyan-500/10 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300">
-                <img src="${imgUrl}" alt="${t.name}" class="w-full h-full object-cover rounded-xl group-hover:scale-108 transition-transform duration-300" loading="lazy" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80'" />
-              </div>
-              <div class="absolute -bottom-2 -left-2 w-7 h-7 rounded-lg bg-[#08172c] border border-cyan-500/40 flex items-center justify-center text-cyan-400 text-xs shadow-md">
+              ${hasCustomImage ? `
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-cyan-500/40 p-0.5 bg-gradient-to-tr from-cyan-500/30 to-blue-500/20 shadow-lg shadow-cyan-500/10 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.4)] transition-all duration-300">
+                  <img src="${t.image}" alt="${t.name}" class="w-full h-full object-cover rounded-xl group-hover:scale-108 transition-transform duration-300" loading="lazy" />
+                </div>
+              ` : `
+                <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-gradient-to-tr from-cyan-950 via-[#0a2342] to-slate-900 border-2 border-cyan-500/40 flex flex-col items-center justify-center text-cyan-300 shadow-lg shadow-cyan-500/15 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(0,240,255,0.35)] transition-all duration-300">
+                  <i class="${iconClass} text-2xl sm:text-3xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                </div>
+              `}
+              <div class="absolute -bottom-1.5 -left-1.5 w-7 h-7 rounded-lg bg-[#08172c] border border-cyan-500/50 flex items-center justify-center text-cyan-400 text-xs shadow-md">
                 <i class="${iconClass}"></i>
               </div>
             </div>
 
-            <div class="space-y-1 w-full">
+            <div class="space-y-1.5 w-full">
               <p class="text-xs sm:text-sm font-black text-white group-hover:text-cyan-300 transition-colors leading-snug truncate">${t.name}</p>
-              <p class="text-[10px] sm:text-xs text-cyan-400 font-bold truncate">${t.role}</p>
+              <span class="inline-block px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-cyan-500/10 text-cyan-300 border border-cyan-500/25 truncate max-w-full">${t.role}</span>
             </div>
           </div>
         `;
@@ -3222,8 +3251,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
       renderTeamDots();
       updateTeamCounters();
     }
-
-    function renderTeamGrid() {
+function renderTeamGrid() {
       renderTeamSlider();
     }
 
@@ -3543,5 +3571,281 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
     </button>
   </div>
 
+  <!-- ========================================================
+       MODAL: VIEW ALL (عرض الكل للمشاريع والخدمات وفريق العمل مع بحث وفلاتر)
+       ======================================================== -->
+  <div id="viewAllModal" class="hidden fixed inset-0 z-50 bg-[#040812]/92 backdrop-blur-xl flex flex-col items-center p-3 sm:p-6 overflow-y-auto">
+    <div class="w-full max-w-7xl bg-[#07172b]/95 border border-cyan-500/35 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden my-auto max-h-[92vh]">
+      
+      <!-- Modal Header -->
+      <div class="px-5 sm:px-8 py-5 border-b border-cyan-500/20 bg-[#0c223f]/90 flex items-center justify-between gap-4 sticky top-0 z-20 backdrop-blur-md">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-cyan-500/15 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-lg shadow-md shadow-cyan-500/10">
+            <i id="viewAllModalIcon" class="fa-solid fa-layer-group"></i>
+          </div>
+          <div>
+            <h2 id="viewAllModalTitle" class="text-base sm:text-xl font-black text-white"></h2>
+            <p id="viewAllModalSubtitle" class="text-xs text-slate-400"></p>
+          </div>
+        </div>
+        <button type="button" onclick="closeViewAllModal()" aria-label="إغلاق" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-rose-500 hover:text-white text-slate-300 flex items-center justify-center transition-all duration-200 cursor-pointer">
+          <i class="fa-solid fa-xmark text-lg"></i>
+        </button>
+      </div>
+
+      <!-- Controls: Search & Category Filter Bar -->
+      <div class="p-5 sm:px-8 border-b border-cyan-500/15 bg-[#081b33]/60 space-y-4">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <!-- Live Search Input -->
+          <div class="relative w-full sm:w-80">
+            <input type="text" id="viewAllSearchInput" oninput="filterViewAllGrid()" placeholder="ابحث الفوري بالاسم أو التقنية..." class="w-full bg-[#040812] border border-cyan-500/30 rounded-xl px-4 py-2.5 text-xs text-white placeholder-slate-500 focus:border-cyan-400 outline-none pl-9">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-3 text-cyan-400 text-xs"></i>
+          </div>
+
+          <!-- Counter Badge -->
+          <span id="viewAllCounterBadge" class="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-3.5 py-1.5 rounded-xl border border-cyan-500/30 whitespace-nowrap self-end sm:self-auto">
+            0 عنصر
+          </span>
+        </div>
+
+        <!-- Filter Pills Bar (Shown for portfolio and services) -->
+        <div id="viewAllFilterPills" class="flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none"></div>
+      </div>
+
+      <!-- Grid Content -->
+      <div class="p-5 sm:p-8 overflow-y-auto flex-1">
+        <div id="viewAllGridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+        <p id="viewAllEmptyNotice" class="hidden text-center text-slate-400 py-16 text-sm">لا توجد نتائج تطابق بحثك حالياً</p>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-6 py-4 border-t border-cyan-500/15 bg-[#0c223f]/80 flex items-center justify-between text-xs text-slate-400">
+        <span>شركة المبتكر العربي للبرمجيات والحلول الذكية</span>
+        <button type="button" onclick="closeViewAllModal()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold transition">إغلاق النافذة</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+  let currentViewAllType = 'portfolio'; // 'portfolio' | 'services' | 'team'
+  let currentViewAllCat = 'all';
+
+  function openViewAllModal(type) {
+    currentViewAllType = type;
+    currentViewAllCat = 'all';
+    const modal = document.getElementById('viewAllModal');
+    const title = document.getElementById('viewAllModalTitle');
+    const subtitle = document.getElementById('viewAllModalSubtitle');
+    const icon = document.getElementById('viewAllModalIcon');
+    const pills = document.getElementById('viewAllFilterPills');
+    const searchInput = document.getElementById('viewAllSearchInput');
+
+    if (searchInput) searchInput.value = '';
+
+    if (type === 'portfolio') {
+      title.textContent = 'دليل جميع المشاريع والمنظومات البرمجية (65 منظومة)';
+      subtitle.textContent = 'استكشف كافة الحلول السحابية وتطبيقات الهواتف والـ ERP المنفذة بنجاح';
+      icon.className = 'fa-solid fa-layer-group text-cyan-400';
+      pills.className = 'flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none';
+      pills.innerHTML = `
+        <button onclick="setViewAllFilter('all')" class="va-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 whitespace-nowrap">الكل (65)</button>
+        <button onclick="setViewAllFilter('erp')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">أنظمة ERP</button>
+        <button onclick="setViewAllFilter('medical')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">حلول طبية</button>
+        <button onclick="setViewAllFilter('industrial')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">تصنيع وإنتاج</button>
+        <button onclick="setViewAllFilter('ai')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">ذكاء اصطناعي</button>
+        <button onclick="setViewAllFilter('edtech')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">تعليم وتوظيف</button>
+        <button onclick="setViewAllFilter('zatca')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">فوترة ZATCA</button>
+      `;
+    } else if (type === 'services') {
+      title.textContent = 'دليل كافة الخدمات التقنية والهندسية (8 خدمات)';
+      subtitle.textContent = 'حلول برمجية سحابية وبنية تحتية وتطبيقات متكاملة لدعم أعمالك';
+      icon.className = 'fa-solid fa-shapes text-cyan-400';
+      pills.className = 'flex items-center gap-2 overflow-x-auto pb-1 scrollbar-none';
+      pills.innerHTML = `
+        <button onclick="setViewAllFilter('all')" class="va-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 whitespace-nowrap">جميع الخدمات (8)</button>
+        <button onclick="setViewAllFilter('erp')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">أنظمة ERP</button>
+        <button onclick="setViewAllFilter('ai')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">ذكاء اصطناعي</button>
+        <button onclick="setViewAllFilter('zatca')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">كاشير وZATCA</button>
+        <button onclick="setViewAllFilter('edtech')" class="va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap">تصميم UI/UX</button>
+      `;
+    } else if (type === 'team') {
+      title.textContent = 'فريق العمل والخبراء المتخصصون (12 خبيراً)';
+      subtitle.textContent = 'نخبة من مهندسي البرمجيات ومصممي الواجهات وإدارة المشروعات';
+      icon.className = 'fa-solid fa-users text-cyan-400';
+      pills.className = 'hidden';
+      pills.innerHTML = '';
+    }
+
+    if (modal) {
+      modal.classList.remove('hidden');
+      document.body.classList.add('overflow-hidden');
+    }
+    filterViewAllGrid();
+  }
+
+  function closeViewAllModal() {
+    const modal = document.getElementById('viewAllModal');
+    if (modal) {
+      modal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }
+  }
+
+  function setViewAllFilter(cat) {
+    currentViewAllCat = cat;
+    document.querySelectorAll('.va-pill').forEach(b => {
+      b.className = 'va-pill px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500/20 text-slate-400 hover:text-cyan-300 whitespace-nowrap transition-all cursor-pointer';
+    });
+    if (event && event.target) {
+      event.target.className = 'va-pill active px-3.5 py-1.5 rounded-xl text-xs font-bold border border-cyan-500 bg-cyan-500/20 text-cyan-300 whitespace-nowrap transition-all cursor-pointer';
+    }
+    filterViewAllGrid();
+  }
+
+  function filterViewAllGrid() {
+    const q = (document.getElementById('viewAllSearchInput')?.value || '').trim().toLowerCase();
+    const container = document.getElementById('viewAllGridContainer');
+    const badge = document.getElementById('viewAllCounterBadge');
+    const empty = document.getElementById('viewAllEmptyNotice');
+    if (!container) return;
+
+    if (currentViewAllType === 'portfolio') {
+      const filtered = projects.filter(p => {
+        const matchCat = (currentViewAllCat === 'all' || p.category === currentViewAllCat);
+        const matchQuery = !q || (p.title && p.title.toLowerCase().includes(q)) || (p.description && p.description.toLowerCase().includes(q)) || (p.tech && p.tech.toLowerCase().includes(q));
+        return matchCat && matchQuery;
+      });
+
+      if (badge) badge.textContent = `${filtered.length} مشروع`;
+      if (!filtered.length) {
+        container.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        return;
+      }
+      if (empty) empty.classList.add('hidden');
+
+      container.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6';
+      container.innerHTML = filtered.map(p => {
+        const ic = categoryIcons[p.category] || 'fa-code';
+        const fallbackImg = 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80';
+        return `
+          <div class="glass-card glass-card-hover rounded-3xl overflow-hidden border border-cyan-500/20 flex flex-col justify-between transition-all duration-300 group shadow-xl">
+            <div class="relative overflow-hidden bg-[#07172b] border-b border-cyan-500/20">
+              <div class="bg-[#0c223f] px-4 py-2 border-b border-cyan-500/15 flex items-center justify-between text-xs">
+                <span class="text-[10px] font-mono text-cyan-300/80 font-bold">${p.categoryName || p.category}</span>
+                <span class="text-[10px] text-emerald-400 font-bold">${p.status}</span>
+              </div>
+              <div class="relative h-44 overflow-hidden">
+                <img src="${p.image || fallbackImg}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-500" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#08172c] via-transparent to-transparent"></div>
+              </div>
+            </div>
+            <div class="p-5 space-y-3 flex-1 flex flex-col justify-between text-right">
+              <div>
+                <h3 class="text-sm font-black text-white group-hover:text-cyan-300 transition-colors leading-snug line-clamp-1">${p.title}</h3>
+                <p class="text-xs text-slate-300 line-clamp-2 leading-relaxed mt-1">${p.description}</p>
+              </div>
+              <div class="pt-3 border-t border-cyan-500/15 flex items-center justify-between">
+                <span class="text-[10px] font-mono text-cyan-400">${p.tech}</span>
+                <button type="button" onclick="closeViewAllModal(); openProjectDetailsModal('${p.id}')" class="px-3 py-1.5 rounded-xl bg-cyan-500/20 hover:bg-cyan-500/40 text-cyan-300 font-bold text-xs border border-cyan-400/40 transition">
+                  المزيد <i class="fa-solid fa-arrow-left text-[10px]"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+    } else if (currentViewAllType === 'services') {
+      const data = (Array.isArray(servicesData) && servicesData.length) ? servicesData : richServicesData;
+      const filtered = data.filter(s => {
+        const matchCat = (currentViewAllCat === 'all' || s.filterCat === currentViewAllCat || s.category === currentViewAllCat);
+        const matchQuery = !q || (s.title && s.title.toLowerCase().includes(q)) || (s.desc && s.desc.toLowerCase().includes(q));
+        return matchCat && matchQuery;
+      });
+
+      if (badge) badge.textContent = `${filtered.length} خدمة`;
+      if (!filtered.length) {
+        container.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        return;
+      }
+      if (empty) empty.classList.add('hidden');
+
+      container.className = 'grid grid-cols-1 md:grid-cols-2 gap-6';
+      container.innerHTML = filtered.map(s => {
+        const waMsg = encodeURIComponent('مرحباً، أود الاستفسار وطلب تفاصيل وتكلفة خدمة: ' + s.title);
+        return `
+          <div class="glass-card rounded-3xl border border-cyan-500/30 overflow-hidden shadow-2xl p-6 flex flex-col justify-between space-y-5 group text-right">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-3 border-b border-cyan-500/20 pb-3">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-300 border border-cyan-500/30">${s.tag || 'خدمة تقنية'}</span>
+                <div class="w-9 h-9 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-300 text-base">
+                  <i class="${s.icon || 'fa-solid fa-gears'}"></i>
+                </div>
+              </div>
+              <h3 class="text-base font-black text-white leading-snug">${s.title}</h3>
+              <p class="text-xs text-slate-300 leading-relaxed">${s.desc}</p>
+            </div>
+            <div class="pt-3 border-t border-cyan-500/20 flex items-center justify-between">
+              <span class="text-[11px] text-cyan-400 font-mono">${s.shortDesc || ''}</span>
+              <a href="https://wa.me/201013688446?text=${waMsg}" target="_blank" rel="noopener" class="px-4 py-2 rounded-xl bg-green-500 hover:bg-green-400 text-white font-bold text-xs flex items-center gap-1.5 transition">
+                <i class="fa-brands fa-whatsapp text-sm"></i> طلب الخدمة
+              </a>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+    } else if (currentViewAllType === 'team') {
+      const data = (Array.isArray(teamData) && teamData.length) ? teamData : defaultTeam;
+      const filtered = data.filter(t => !q || (t.name && t.name.toLowerCase().includes(q)) || (t.role && t.role.toLowerCase().includes(q)));
+
+      if (badge) badge.textContent = `${filtered.length} عضو`;
+      if (!filtered.length) {
+        container.innerHTML = '';
+        if (empty) empty.classList.remove('hidden');
+        return;
+      }
+      if (empty) empty.classList.add('hidden');
+
+      container.className = 'grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5';
+      container.innerHTML = filtered.map(t => {
+        const iconClass = (t.icon && t.icon.includes('fa-')) ? (t.icon.includes('fa-solid') || t.icon.includes('fa-brands') ? t.icon : 'fa-solid ' + t.icon) : 'fa-solid fa-user';
+        const hasCustomImage = t.image && t.image.trim() !== '' && !t.image.includes('unsplash.com');
+
+        return `
+          <div class="glass-card rounded-2xl p-5 border border-cyan-500/25 flex flex-col items-center text-center justify-between gap-3 shadow-lg">
+            <div class="relative">
+              ${hasCustomImage ? `
+                <div class="w-18 h-18 rounded-2xl overflow-hidden border-2 border-cyan-500/40 p-0.5 shadow-md">
+                  <img src="${t.image}" alt="${t.name}" class="w-full h-full object-cover rounded-xl" loading="lazy" />
+                </div>
+              ` : `
+                <div class="w-18 h-18 rounded-2xl bg-gradient-to-tr from-cyan-950 via-[#0a2342] to-slate-900 border-2 border-cyan-500/40 flex items-center justify-center text-cyan-300 shadow-md">
+                  <i class="${iconClass} text-2xl text-cyan-400"></i>
+                </div>
+              `}
+              <div class="absolute -bottom-1 -left-1 w-6 h-6 rounded-md bg-[#08172c] border border-cyan-500/50 flex items-center justify-center text-cyan-400 text-[10px]">
+                <i class="${iconClass}"></i>
+              </div>
+            </div>
+            <div>
+              <p class="text-xs sm:text-sm font-black text-white truncate max-w-[150px]">${t.name}</p>
+              <p class="text-[10px] text-cyan-400 font-bold mt-0.5 truncate max-w-[150px]">${t.role}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeViewAllModal();
+    }
+  });
+  </script>
 </body>
 </html>
