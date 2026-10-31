@@ -160,10 +160,7 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
           </a>
         </div>
         <div class="flex items-center gap-2 sm:gap-3 text-xs shrink-0">
-          <a href="admin/index.php" class="px-2.5 sm:px-3.5 py-1 rounded-lg bg-cyan-400/20 border border-cyan-500/40 text-cyan-300 hover:bg-cyan-500/30 font-bold transition flex items-center gap-1 sm:gap-1.5 shadow-sm shadow-cyan-500/20 whitespace-nowrap text-[10px] sm:text-xs">
-            <i class="fa-solid fa-lock text-[9px] sm:text-[10px] text-cyan-400"></i><span>لوحة التحكم</span>
-          </a>
-          <button onclick="toggleSearchModal()" class="hover:text-cyan-400 transition flex items-center gap-1 font-bold whitespace-nowrap text-[10px] sm:text-xs">
+          <button onclick="toggleSearchModal()" class="hover:text-cyan-400 transition flex items-center gap-1.5 font-bold whitespace-nowrap text-[10px] sm:text-xs px-2.5 sm:px-3 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300">
             <i class="fa-solid fa-magnifying-glass text-cyan-400 text-[10px] sm:text-xs"></i><span>بحث</span>
           </button>
         </div>
@@ -271,9 +268,6 @@ $schemaJsonLd = $seoService->generateSchemaOrg([
           </a>
           <a href="#contact" onclick="toggleMobileDrawer()" class="flex items-center gap-3 p-3 rounded-2xl text-slate-200 hover:bg-cyan-500/15 hover:text-cyan-300 transition">
             <i class="fa-solid fa-phone text-cyan-400 w-5 text-center"></i><span>اتصل بنا</span>
-          </a>
-          <a href="admin/index.php" class="flex items-center gap-3 p-3 rounded-2xl text-slate-300 hover:bg-cyan-500/15 hover:text-cyan-300 transition">
-            <i class="fa-solid fa-lock text-cyan-400 w-5 text-center"></i><span>لوحة التحكم الإدارية</span>
           </a>
         </nav>
       </div>
