@@ -11,15 +11,30 @@ class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $user = User::firstOrCreate(
-            ['email' => 'newmobtaker@admin.com'],
+        $superAdminRole = Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
+
+        // Account 1: Dr. Gaber Elshemy
+        $user1 = User::updateOrCreate(
+            ['email' => 'gabershemy@gmail.com'],
             [
                 'name' => 'د. جابر الشيمي',
                 'password' => Hash::make('password'),
             ]
         );
+        if (method_exists($user1, 'assignRole')) {
+            $user1->assignRole($superAdminRole);
+        }
 
-        $superAdminRole = Role::firstOrCreate(['name' => 'super_admin', 'guard_name' => 'web']);
-        $user->assignRole($superAdminRole);
+        // Account 2: Admin System Account
+        $user2 = User::updateOrCreate(
+            ['email' => 'newmobtaker@admin.com'],
+            [
+                'name' => 'إدارة المبتكر العربي',
+                'password' => Hash::make('password'),
+            ]
+        );
+        if (method_exists($user2, 'assignRole')) {
+            $user2->assignRole($superAdminRole);
+        }
     }
 }
