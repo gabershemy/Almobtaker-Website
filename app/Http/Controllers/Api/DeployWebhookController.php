@@ -67,11 +67,15 @@ class DeployWebhookController extends Controller
 
         // 7. Execute Deployment Commands (< 3 seconds execution)
         $baseDir = base_path();
+        $target = $request->input('target') ?? $request->query('target');
+        if ($target === 'saadsakr' || $target === 'saadsakr.mobtakeraraby.com') {
+            $baseDir = '/home/mobtaker/public_html/saadsakr.mobtakeraraby.com';
+        }
         $startTime = microtime(true);
 
         $commands = [
             "cd \"{$baseDir}\"",
-            "(git checkout -- database/database.sqlite database.sqlite 2>&1 || true)",
+            "(git checkout -- database/database.sqlite database.sqlite storage/ 2>&1 || true)",
             "git pull origin main 2>&1",
             "php artisan migrate --force 2>&1",
             "php artisan optimize:clear 2>&1"
