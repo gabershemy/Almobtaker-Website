@@ -94,6 +94,7 @@ class DeployWebhookController extends Controller
             'status' => 'success',
             'message' => 'Deployment executed successfully',
             'project_path' => $baseDir,
+            'commit' => trim(shell_exec("cd \"{$baseDir}\" && git rev-parse --short HEAD") ?? ''),
             'output' => $output,
             'duration_ms' => $executionTimeMs,
             'timestamp' => now()->toIso8601String(),
