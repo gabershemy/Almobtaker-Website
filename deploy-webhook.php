@@ -26,6 +26,23 @@ if (!is_dir($baseDir . '/.git') && is_dir(dirname($baseDir) . '/.git')) {
     $baseDir = dirname($baseDir);
 }
 
+// Support target parameter for subdomains hosted in subdirectories under public_html
+$target = $_GET['target'] ?? ($_POST['target'] ?? null);
+if (!$target) {
+    $rawInput = file_get_contents('php://input');
+    $decoded = json_decode($rawInput, true);
+    if (is_array($decoded) && isset($decoded['target'])) {
+        $target = $decoded['target'];
+    }
+}
+
+if ($target === 'saadsakr') {
+    $saadSakrDir = $baseDir . '/saadsakr.mobtakeraraby.com';
+    if (is_dir($saadSakrDir)) {
+        $baseDir = $saadSakrDir;
+    }
+}
+
 // 3. Resolve valid secrets (.env or fallback default)
 $envSecret = getenv('DEPLOY_SECRET');
 if (!$envSecret && file_exists($baseDir . '/.env')) {
@@ -118,7 +135,7 @@ if (!$lockHandle || !flock($lockHandle, LOCK_EX | LOCK_NB)) {
 // 8. Execute Deployment Commands (< 3 seconds execution)
 $commands = [
     "cd \"{$baseDir}\"",
-    "(git checkout -- database/database.sqlite database.sqlite 2>&1 || true)",
+    "(git checkout -- routes/web.php database/database.sqlite database.sqlite 2>&1 || true)",
     "git pull origin main 2>&1",
     "php artisan migrate --force 2>&1",
     "php artisan optimize:clear 2>&1"
